@@ -1,5 +1,7 @@
 package ua.training.guessnumber;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Model {
@@ -7,6 +9,7 @@ public class Model {
     private int currentGuessRangeMax;
 
     private int secretNumber;  //numberToGuess
+    private List<Integer> guessHistory = new ArrayList<Integer>();
     
     public void setInitialInterval(int guessRangeMin, int guessRangeMax) {
         currentGuessRangeMin = guessRangeMin;
@@ -14,6 +17,8 @@ public class Model {
     }
 
     public boolean isVictory(int currentGuess){
+        guessHistory.add(currentGuess);
+
         if ((currentGuess < secretNumber) && (currentGuess > currentGuessRangeMin))
             currentGuessRangeMin = currentGuess;
 
@@ -23,12 +28,24 @@ public class Model {
         return secretNumber == currentGuess;
     }
 
+    public boolean isSecretNumberLower(int currentGuess){
+        return secretNumber < currentGuess;
+    }
+
+    public boolean isSecretNumberHigher(int currentGuess){
+        return secretNumber > currentGuess;
+    }
+
     public int getCurrentGuessRangeMin() {
         return currentGuessRangeMin;
     }
 
     public int getCurrentGuessRangeMax() {
         return currentGuessRangeMax;
+    }
+
+    public List<Integer> getGuessHistory() {
+        return guessHistory;
     }
 
     public void setSecretNumber() {
