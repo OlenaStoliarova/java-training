@@ -18,4 +18,20 @@ public class TestModel {
         Assert.assertEquals( model.getCurrentGuessRangeMin(), 0);
         Assert.assertEquals( model.getCurrentGuessRangeMax(), 100);
     }
+
+    @Test
+    public void testSetSecretNumber(){
+        Model model = new Model();
+        int intervalMin = 0, intervalMax = 100;
+        model.setInitialInterval(intervalMin, intervalMax);
+
+        int i = 10000;
+        while( i-- > 0) {
+            model.setSecretNumber();
+            int secretNumber = model.getSecretNumber();
+            if ((secretNumber <= intervalMin) || (secretNumber >= intervalMax))
+                Assert.fail();
+        }
+    }
+
 }
