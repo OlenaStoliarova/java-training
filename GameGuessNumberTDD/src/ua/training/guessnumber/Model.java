@@ -13,6 +13,16 @@ public class Model {
         currentGuessRangeMax = guessRangeMax;
     }
 
+    public boolean isVictory(int currentGuess){
+        if ((currentGuess < secretNumber) && (currentGuess > currentGuessRangeMin))
+            currentGuessRangeMin = currentGuess;
+
+        if ((currentGuess > secretNumber) && (currentGuess < currentGuessRangeMax))
+            currentGuessRangeMax = currentGuess;
+
+        return secretNumber == currentGuess;
+    }
+
     public int getCurrentGuessRangeMin() {
         return currentGuessRangeMin;
     }
@@ -36,7 +46,6 @@ public class Model {
     private int rand(int rangeMin, int rangeMax) {
         Random random = new Random();
         //nextInt(int n) returns a pseudorandom int value between 0 (inclusive) and the specified value (exclusive),
-        int randomNumberFromRange = random.nextInt(rangeMax-1 - rangeMin) + rangeMin + 1;
-        return randomNumberFromRange;
+        return random.nextInt(rangeMax-1 - rangeMin) + rangeMin + 1;
     }
 }

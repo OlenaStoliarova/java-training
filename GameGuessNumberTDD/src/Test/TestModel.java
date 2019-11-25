@@ -34,4 +34,18 @@ public class TestModel {
         }
     }
 
+    @Test
+    public void testIsVictory(){
+        Model model = new Model();
+        int intervalMin = 0, intervalMax = 100;
+        model.setInitialInterval(intervalMin, intervalMax);
+        model.setSecretNumber();
+
+        int secretNumber = model.getSecretNumber();
+        Assert.assertTrue( model.isVictory(secretNumber));
+
+        for (int i =  intervalMax; i>= intervalMin; i--)
+            if ( i != secretNumber)
+                Assert.assertFalse( model.isVictory(i) );
+    }
 }
