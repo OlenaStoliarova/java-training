@@ -1,14 +1,21 @@
 package Test;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import ua.training.guessnumber.Model;
 
 public class TestModel {
+    private Model model;
+    private int intervalMin = 0, intervalMax = 100;
+
+    @Before
+    public void setModel(){
+        model = new Model();
+    }
+
     @Test
     public void testSetInitialInterval(){
-        Model model = new Model();
-
         //initial interval shouldn't be hardcoded in the Model. here we check that
         model.setInitialInterval(25, 67);
         Assert.assertEquals( model.getCurrentGuessRangeMin(), 25);
@@ -21,8 +28,6 @@ public class TestModel {
 
     @Test
     public void testSetSecretNumber(){
-        Model model = new Model();
-        int intervalMin = 0, intervalMax = 100;
         model.setInitialInterval(intervalMin, intervalMax);
 
         int i = 10000;
@@ -36,8 +41,6 @@ public class TestModel {
 
     @Test
     public void testIsVictory(){
-        Model model = new Model();
-        int intervalMin = 0, intervalMax = 100;
         model.setInitialInterval(intervalMin, intervalMax);
         model.setSecretNumber();
 
