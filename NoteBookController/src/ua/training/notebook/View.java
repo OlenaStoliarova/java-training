@@ -12,6 +12,9 @@ public class View {
     public static final String NICKNAME = "contact's nickname";
     public static final String WRONG_INPUT_NICKNAME = "only letters, numbers and underscore character are allowed";
 
+    public static final String COMMENT = "comment about the contact";
+    public static final String WRONG_COMMENT_LENGTH = "maximum length of Comment field is 150 characters";
+
     public void printMessage(String message){
         System.out.println(message);
     }

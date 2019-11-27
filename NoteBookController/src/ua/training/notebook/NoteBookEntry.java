@@ -9,7 +9,7 @@ public class NoteBookEntry {
     String contactShortName; // Lastname N.
     String contactNickname;
 
-    String Comment;
+    String comment;
     ContactType contactType;
 
     String contactHomePhone;

@@ -25,12 +25,14 @@ public class Controller{
         noteBookEntry.contactShortName = noteBookEntry.contactLastName + " " + noteBookEntry.contactFirstName.charAt(0) + "." ;
 
         noteBookEntry.contactNickname = inputStringWithScannerUsingRegEx(sc,View.PLEASE_ENTER + View.NICKNAME, NoteBookRegExs.NICKNAME, View.WRONG_INPUT_NICKNAME);
+        noteBookEntry.comment = inputStringWithScannerUsingRegEx(sc,View.PLEASE_ENTER + View.COMMENT + View.SKIP, NoteBookRegExs.EMPTY_STRING + "|" + NoteBookRegExs.COMMENT, View.WRONG_COMMENT_LENGTH);
 
         view.printMessage( View.LASTNAME + ": " + noteBookEntry.contactLastName);
         view.printMessage( View.FIRSTNAME + ": " + noteBookEntry.contactFirstName);
         view.printMessage( View.PATRONYMIC + ": " + noteBookEntry.contactPatronymic);
         view.printMessage( "contact's short name: " + noteBookEntry.contactShortName);
         view.printMessage( View.NICKNAME + ": " + noteBookEntry.contactNickname);
+        view.printMessage( View.COMMENT + ": " + noteBookEntry.comment);
 
         model.addContact(noteBookEntry);
     }
