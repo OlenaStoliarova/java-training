@@ -15,6 +15,13 @@ public class View {
     public static final String COMMENT = "comment about the contact";
     public static final String WRONG_COMMENT_LENGTH = "maximum length of Comment field is 150 characters";
 
+    public static final String PHONE_HOME = "contact's home phone number";
+    public static final String PHONE_CELL1 = "contact's cell phone number";
+    public static final String PHONE_CELL2 = "contact's second cell phone number";
+    public static final String FOR_EXAMPLE = " (for example: %s)";
+    public static final String PHONE_EXPECTED_FORMAT = "+38(050)111-11-11 (with or without delimiters)";
+    public static final String WRONG_PHONE_FORMAT = "please enter phone in expected format";
+
     public void printMessage(String message){
         System.out.println(message);
     }
