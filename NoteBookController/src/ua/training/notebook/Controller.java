@@ -42,6 +42,11 @@ public class Controller{
                 NoteBookRegExs.PHONE + "|" + NoteBookRegExs.PHONE_NO_DELIMITERS + "|" + NoteBookRegExs.EMPTY_STRING, View.WRONG_PHONE_FORMAT);
         noteBookEntry.contactCellPhone2 = addDelimitersToPhoneNumber(enteredPhone);
 
+        noteBookEntry.contactEmail = inputStringWithScannerUsingRegEx(sc,
+                View.PLEASE_ENTER + View.EMAIL + View.SKIP,
+                NoteBookRegExs.EMAIL + "|" + NoteBookRegExs.EMPTY_STRING, View.WRONG_EMAIL_FORMAT);
+
+
         view.printMessage( View.LASTNAME + ":\t\t" + noteBookEntry.contactLastName);
         view.printMessage( View.FIRSTNAME + ":\t\t" + noteBookEntry.contactFirstName);
         view.printMessage( View.PATRONYMIC + ":\t\t" + noteBookEntry.contactPatronymic);
@@ -51,6 +56,7 @@ public class Controller{
         view.printMessage( View.PHONE_HOME + ":\t\t" + noteBookEntry.contactHomePhone);
         view.printMessage( View.PHONE_CELL1 + ":\t\t" + noteBookEntry.contactCellPhone);
         view.printMessage( View.PHONE_CELL2 + ":\t\t" + noteBookEntry.contactCellPhone2);
+        view.printMessage( View.EMAIL + ":\t\t" + noteBookEntry.contactEmail);
 
         model.addContact(noteBookEntry);
     }

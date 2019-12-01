@@ -22,6 +22,10 @@ public class View {
     public static final String PHONE_EXPECTED_FORMAT = "+38(050)111-11-11 (with or without delimiters)";
     public static final String WRONG_PHONE_FORMAT = "please enter phone in expected format";
 
+    public static final String EMAIL = "contact's e-mail";
+    public static final String WRONG_EMAIL_FORMAT = "wrong format. please enter valid email";
+
+
     public void printMessage(String message){
         System.out.println(message);
     }
