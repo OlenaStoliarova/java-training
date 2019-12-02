@@ -46,7 +46,7 @@ public class InputNoteBookEntry {
     public void inputEntry() {
         UtilityController utilityController = new UtilityController(sc, view);
         String currentLocale = view.getLocale();
-/*
+
         contactLastName = utilityController.inputStringWithScannerUsingRegEx(
                 view.concatenateLocalizedStrings(PLEASE_ENTER, LASTNAME),
                 currentLocale.equals("uk_UA") ? NoteBookRegExs.NAME_UKR : NoteBookRegExs.NAME_LAT,
@@ -131,7 +131,7 @@ public class InputNoteBookEntry {
             contactAddress = contactStreet  + ", " + contactBuilding + ", " + (contactApartment.equals("") ? "" : contactApartment + ", ") + contactCity + " " + contactZipCode;
         else
             contactAddress = contactBuilding + " " + contactStreet + ", " + (contactApartment.equals("") ? "" : contactApartment + ", ") + contactCity + " " + contactZipCode;
-*/
+
         StringBuilder all_groups = new StringBuilder();
         for ( ContactType elem: ContactType.values())
         {
