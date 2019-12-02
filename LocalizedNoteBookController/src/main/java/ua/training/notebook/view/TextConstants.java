@@ -5,6 +5,7 @@ public interface TextConstants {
     String PLEASE_ENTER = "input.please.enter";
     String SKIP = "input.skip";
     String PHONE_EXPECTED_FORMAT = "input.expected.phone";
+    String CHOOSE_CONTACT_TYPE = "input.choose.contact.type";
 
     String WRONG_INPUT_NAME = "input.wrong.name";
     String WRONG_INPUT_NICKNAME = "input.wrong.nickname";
@@ -16,6 +17,7 @@ public interface TextConstants {
     String WRONG_INPUT_STREET = "input.wrong.street";
     String WRONG_INPUT_BUILDING = "input.wrong.building";
     String WRONG_INPUT_APARTMENT = "input.wrong.apartment";
+    String WRONG_INPUT_CONTACT_TYPE = "input.wrong.contact.type";
 
     String LASTNAME = "contact.lastname";
     String FIRSTNAME = "contact.firstname";
@@ -23,6 +25,7 @@ public interface TextConstants {
     String SHORTNAME = "contact.shortname";
     String NICKNAME = "contact.nickname";
     String COMMENT = "contact.comment";
+    String TYPE = "contact.type";
     String PHONE_HOME = "contact.homephone";
     String PHONE_CELL1 = "contact.cellphone1";
     String PHONE_CELL2 = "contact.cellphone2";

@@ -46,7 +46,7 @@ public class InputNoteBookEntry {
     public void inputEntry() {
         UtilityController utilityController = new UtilityController(sc, view);
         String currentLocale = view.getLocale();
-
+/*
         contactLastName = utilityController.inputStringWithScannerUsingRegEx(
                 view.concatenateLocalizedStrings(PLEASE_ENTER, LASTNAME),
                 currentLocale.equals("uk_UA") ? NoteBookRegExs.NAME_UKR : NoteBookRegExs.NAME_LAT,
@@ -131,11 +131,29 @@ public class InputNoteBookEntry {
             contactAddress = contactStreet  + ", " + contactBuilding + ", " + (contactApartment.equals("") ? "" : contactApartment + ", ") + contactCity + " " + contactZipCode;
         else
             contactAddress = contactBuilding + " " + contactStreet + ", " + (contactApartment.equals("") ? "" : contactApartment + ", ") + contactCity + " " + contactZipCode;
+*/
+        StringBuilder all_groups = new StringBuilder();
+        for ( ContactType elem: ContactType.values())
+        {
+            all_groups.append(elem.getValue());
+            all_groups.append(" - ");
+            if (currentLocale.equals("uk_UA"))
+                all_groups.append(elem.getUkrName());
+            else
+                all_groups.append( elem.toString());
+            all_groups.append("; ");
+        }
+        contactType = ContactType.getContactType( Integer.parseInt(utilityController.inputStringWithScannerUsingRegEx(
+                view.returnLocalizedMessage(CHOOSE_CONTACT_TYPE) + "\n" + all_groups.toString(),
+                NoteBookRegExs.CONTACT_TYPE,
+                view.returnLocalizedMessage(WRONG_INPUT_CONTACT_TYPE))));
+
 
         entryCreationDate = new Date();
     }
 
     public void printNoteBookEntry(){
+        String currentLocale = view.getLocale();
         String printFormat = "%-50s%s";
         view.printMessage( String.format( printFormat, view.returnLocalizedMessage(LASTNAME)+ ":", this.contactLastName));
         view.printMessage( String.format( printFormat, view.returnLocalizedMessage(FIRSTNAME) + ":", this.contactFirstName));
@@ -143,6 +161,7 @@ public class InputNoteBookEntry {
         view.printMessage( String.format( printFormat, view.returnLocalizedMessage(SHORTNAME) + ":", this.contactShortName));
         view.printMessage( String.format( printFormat, view.returnLocalizedMessage(NICKNAME) + ":", this.contactNickname));
         view.printMessage( String.format( printFormat, view.returnLocalizedMessage(COMMENT) + ":", this.comment));
+        view.printMessage( String.format( printFormat, view.returnLocalizedMessage(TYPE) + ":", (currentLocale.equals("uk_UA") ? this.contactType.getUkrName() : this.contactType)));
         view.printMessage( String.format( printFormat, view.returnLocalizedMessage(PHONE_HOME) + ":", this.contactHomePhone));
         view.printMessage( String.format( printFormat, view.returnLocalizedMessage(PHONE_CELL1) + ":", this.contactCellPhone));
         view.printMessage( String.format( printFormat, view.returnLocalizedMessage(PHONE_CELL2) + ":", this.contactCellPhone2));

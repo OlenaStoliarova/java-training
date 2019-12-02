@@ -22,4 +22,5 @@ public interface NoteBookRegExs {
     String BUILDING_NUMBER_UKR = "^[1-9][0-9]*([А-ЩЬЮЯҐІЇЄа-щьюяґіїє]?|([/]?[1-9][0-9]*))$";
     String APARTMENT_NUMBER_LAT = "^[1-9][0-9]*([a-zA-Z]?|([./]?[1-9][0-9]*))$";
     String APARTMENT_NUMBER_UKR = "^[1-9][0-9]*([./]?[1-9][0-9]*)?$";
+    String CONTACT_TYPE = "^[1-5]$";
 }
