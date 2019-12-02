@@ -2,6 +2,7 @@ package ua.training.notebook.controller;
 
 import ua.training.notebook.view.View;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -31,7 +32,7 @@ public class InputNoteBookEntry {
     private String contactCity;
     private String contactStreet;
     private String contactBuilding;
-    private String contactAppartment;
+    private String contactApartment;
     private String contactAddress;
 
     private Date entryCreationDate;
@@ -95,6 +96,43 @@ public class InputNoteBookEntry {
                 view.concatenateLocalizedStrings(PLEASE_ENTER, EMAIL, SKIP),
                 NoteBookRegExs.EMAIL + "|" + NoteBookRegExs.EMPTY_STRING,
                 view.returnLocalizedMessage(WRONG_EMAIL_FORMAT));
+
+        contactSkype = utilityController.inputStringWithScannerUsingRegEx(
+                view.concatenateLocalizedStrings(PLEASE_ENTER, SKYPE, SKIP),
+                NoteBookRegExs.SKYPE + "|" + NoteBookRegExs.EMPTY_STRING,
+                view.returnLocalizedMessage(WRONG_SKYPE_FORMAT));
+
+        contactZipCode = utilityController.inputStringWithScannerUsingRegEx(
+                view.concatenateLocalizedStrings(PLEASE_ENTER, ZIPCODE, SKIP),
+                NoteBookRegExs.EMPTY_STRING + "|" + (currentLocale.equals("uk_UA") ? NoteBookRegExs.ZIPCODE_UA : NoteBookRegExs.ZIPCODE_US),
+                view.returnLocalizedMessage(WRONG_ZIPCODE_FORMAT));
+
+        contactCity = utilityController.inputStringWithScannerUsingRegEx(
+                view.concatenateLocalizedStrings(PLEASE_ENTER, CITY),
+                currentLocale.equals("uk_UA") ? NoteBookRegExs.NAME_UKR : NoteBookRegExs.NAME_LAT,
+                view.returnLocalizedMessage(WRONG_INPUT_NAME));
+
+        contactStreet = utilityController.inputStringWithScannerUsingRegEx(
+                view.concatenateLocalizedStrings(PLEASE_ENTER, STREET),
+                currentLocale.equals("uk_UA") ? NoteBookRegExs.STREET_UKR : NoteBookRegExs.STREET_LAT,
+                view.returnLocalizedMessage(WRONG_INPUT_STREET));
+
+        contactBuilding = utilityController.inputStringWithScannerUsingRegEx(
+                view.concatenateLocalizedStrings(PLEASE_ENTER, BUILDING),
+                currentLocale.equals("uk_UA") ? NoteBookRegExs.BUILDING_NUMBER_UKR : NoteBookRegExs.BUILDING_NUMBER_LAT,
+                view.returnLocalizedMessage(WRONG_INPUT_BUILDING));
+
+        contactApartment = utilityController.inputStringWithScannerUsingRegEx(
+                view.concatenateLocalizedStrings(PLEASE_ENTER, APARTMENT, SKIP),
+                NoteBookRegExs.EMPTY_STRING + "|" + (currentLocale.equals("uk_UA") ? NoteBookRegExs.APARTMENT_NUMBER_UKR : NoteBookRegExs.APARTMENT_NUMBER_LAT),
+                view.returnLocalizedMessage(WRONG_INPUT_APARTMENT));
+
+        if (currentLocale.equals("uk_UA"))
+            contactAddress = contactStreet  + ", " + contactBuilding + ", " + (contactApartment.equals("") ? "" : contactApartment + ", ") + contactCity + " " + contactZipCode;
+        else
+            contactAddress = contactBuilding + " " + contactStreet + ", " + (contactApartment.equals("") ? "" : contactApartment + ", ") + contactCity + " " + contactZipCode;
+
+        entryCreationDate = new Date();
     }
 
     public void printNoteBookEntry(){
@@ -109,6 +147,11 @@ public class InputNoteBookEntry {
         view.printMessage( String.format( printFormat, view.returnLocalizedMessage(PHONE_CELL1) + ":", this.contactCellPhone));
         view.printMessage( String.format( printFormat, view.returnLocalizedMessage(PHONE_CELL2) + ":", this.contactCellPhone2));
         view.printMessage( String.format( printFormat, view.returnLocalizedMessage(EMAIL) + ":", this.contactEmail));
+        view.printMessage( String.format( printFormat, view.returnLocalizedMessage(SKYPE) + ":", this.contactSkype));
+        view.printMessage( String.format( printFormat, view.returnLocalizedMessage(ADDRESS) + ":", this.contactAddress));
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        view.printMessage( String.format( printFormat, view.returnLocalizedMessage(CREATION_DATE) + ":", formatter.format(this.entryCreationDate)));
     }
 
     private String addDelimitersToPhoneNumber(String enteredPhone) {
