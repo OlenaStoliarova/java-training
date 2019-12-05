@@ -30,5 +30,11 @@ public class Controller {
         view.printMessage( train1.toString());
 
         view.printMessage( String.format( view.returnLocalizedMessage(PASSENGERS_AND_LUGGAGE), train1.countPassengers(), train1.countLuggageKg()));
+        view.printMessage("");
+
+        view.printLocalizedMessage(LETS_SORT_BY_COMFORT);
+        view.printMessage("");
+        train1.sortRailcarsByComfortLevel();
+        view.printMessage( train1.toString());
     }
 }

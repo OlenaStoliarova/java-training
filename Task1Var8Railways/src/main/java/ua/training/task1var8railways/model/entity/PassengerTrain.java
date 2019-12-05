@@ -1,6 +1,7 @@
 package ua.training.task1var8railways.model.entity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class PassengerTrain {
     private String name;
@@ -28,6 +29,10 @@ public class PassengerTrain {
             luggageKg += car.getMaxLuggagePerPassengerKg() * car.getNumberOfPassengers();
         }
         return luggageKg;
+    }
+
+    public void sortRailcarsByComfortLevel(){
+        Collections.sort(passengerTrain);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package ua.training.task1var8railways.model.entity;
 
-public abstract class PassengerRailcar{
+public abstract class PassengerRailcar implements Comparable<PassengerRailcar>{
     protected String numberID;
     protected PassengerRailcarComfortLevel comfortLevel;
     protected int numberOfPassengers;
@@ -23,6 +23,11 @@ public abstract class PassengerRailcar{
 
     public PassengerRailcarComfortLevel getComfortLevel(){
         return comfortLevel;
+    }
+
+    @Override
+    public int compareTo(PassengerRailcar o) {
+        return this.comfortLevel.compareTo( o.comfortLevel);
     }
 
     protected String readableClassName = "PassengerRailcar";
