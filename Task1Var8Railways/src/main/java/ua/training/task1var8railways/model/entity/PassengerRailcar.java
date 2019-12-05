@@ -25,9 +25,10 @@ public abstract class PassengerRailcar{
         return comfortLevel;
     }
 
+    protected String readableClassName = "PassengerRailcar";
     @Override
     public String toString() {
-        return "PassengerRailcar{" +
+        return readableClassName + "\t{" +
                 "numberID='" + numberID + '\'' +
                 ", \tcomfortLevel=" + comfortLevel +
                 ", \tnumberOfPassengers=" + numberOfPassengers +

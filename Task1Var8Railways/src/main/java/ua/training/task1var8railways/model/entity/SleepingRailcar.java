@@ -6,6 +6,9 @@ public class SleepingRailcar extends PassengerRailcar {
 
     Boolean isPossibleToBuyOneSeat = true;
 
+    {
+        readableClassName = "SleepingRailcar";
+    }
     public SleepingRailcar(String railcarNumber) {
         super(railcarNumber, PassengerRailcarComfortLevel.FIRST, SleepingRailcar.STANDARD_NUMBER_OF_PASSENGERS, SleepingRailcar.STANDARD_LUGGAGE_ALLOWANCE);
     }
