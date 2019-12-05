@@ -13,4 +13,16 @@ public class PassengerTrain {
     public void addRailcar(PassengerRailcar railcar){
         passengerTrain.add(railcar);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder allTrainCars = new StringBuilder();
+        for (PassengerRailcar car: passengerTrain) {
+            allTrainCars.append( car.toString() );
+            allTrainCars.append( "\n");
+        }
+        return "PassengerTrain{" +
+                "number=" + name +
+                "}:\n" + allTrainCars.toString();
+    }
 }

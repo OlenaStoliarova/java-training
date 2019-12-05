@@ -26,5 +26,6 @@ public class Controller {
         view.printLocalizedMessage(GREETING);
 
         PassengerTrain train1 = model.createTrain();
+        view.printMessage( train1.toString());
     }
 }

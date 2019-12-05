@@ -24,4 +24,14 @@ public abstract class PassengerRailcar{
     public PassengerRailcarComfortLevel getComfortLevel(){
         return comfortLevel;
     }
+
+    @Override
+    public String toString() {
+        return "PassengerRailcar{" +
+                "numberID='" + numberID + '\'' +
+                ", \tcomfortLevel=" + comfortLevel +
+                ", \tnumberOfPassengers=" + numberOfPassengers +
+                ", \tmaxLuggagePerPassengerKg=" + maxLuggagePerPassengerKg +
+                '}';
+    }
 }
