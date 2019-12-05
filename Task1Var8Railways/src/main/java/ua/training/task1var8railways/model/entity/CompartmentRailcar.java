@@ -7,4 +7,14 @@ public class CompartmentRailcar extends PassengerRailcar {
     public CompartmentRailcar(String railcarNumber, CompartmentRailcarComfortLevel comfortLevel) {
         super(railcarNumber, comfortLevel.getComfortLevel(), CompartmentRailcar.STANDARD_NUMBER_OF_PASSENGERS, CompartmentRailcar.STANDARD_LUGGAGE_ALLOWANCE);
     }
+
+    @Override
+    public String toString() {
+        return "CompartmentRailcar\t{" +
+                "numberID='" + numberID + '\'' +
+                ", \tcomfortLevel=" + comfortLevel +
+                ", \tnumberOfPassengers=" + numberOfPassengers +
+                ", \tmaxLuggagePerPassengerKg=" + maxLuggagePerPassengerKg +
+                '}';
+    }
 }

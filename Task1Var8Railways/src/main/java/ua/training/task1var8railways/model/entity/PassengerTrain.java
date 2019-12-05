@@ -14,6 +14,22 @@ public class PassengerTrain {
         passengerTrain.add(railcar);
     }
 
+    public int countPassengers(){
+        int passengerCount = 0;
+        for (PassengerRailcar car: passengerTrain) {
+            passengerCount += car.getNumberOfPassengers();
+        }
+        return passengerCount;
+    }
+
+    public int countLuggageKg(){
+        int luggageKg = 0;
+        for (PassengerRailcar car: passengerTrain) {
+            luggageKg += car.getMaxLuggagePerPassengerKg() * car.getNumberOfPassengers();
+        }
+        return luggageKg;
+    }
+
     @Override
     public String toString() {
         StringBuilder allTrainCars = new StringBuilder();

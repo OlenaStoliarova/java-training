@@ -7,4 +7,14 @@ public class CouchetteRailcar extends PassengerRailcar {
     public CouchetteRailcar(String railcarNumber, CouchetteRailcarComfortLevel comfortLevel) {
         super(railcarNumber, comfortLevel.getComfortLevel(), CouchetteRailcar.STANDARD_NUMBER_OF_PASSENGERS, CouchetteRailcar.STANDARD_LUGGAGE_ALLOWANCE);
     }
+
+    @Override
+    public String toString() {
+        return "CouchetteRailcar\t{" +
+                "numberID='" + numberID + '\'' +
+                ", \tcomfortLevel=" + comfortLevel +
+                ", \tnumberOfPassengers=" + numberOfPassengers +
+                ", \tmaxLuggagePerPassengerKg=" + maxLuggagePerPassengerKg +
+                '}';
+    }
 }

@@ -1,10 +1,10 @@
 package ua.training.task1var8railways.model.entity;
 
 public abstract class PassengerRailcar{
-    private String numberID;
-    private PassengerRailcarComfortLevel comfortLevel;
-    private int numberOfPassengers;
-    private int maxLuggagePerPassengerKg;
+    protected String numberID;
+    protected PassengerRailcarComfortLevel comfortLevel;
+    protected int numberOfPassengers;
+    protected int maxLuggagePerPassengerKg;
 
     public PassengerRailcar(String railcarNumber, PassengerRailcarComfortLevel comfortLevel, int numberOfPassengers, int maxLuggagePerPassengerKg){
         numberID = railcarNumber;

@@ -14,4 +14,14 @@ public class SleepingRailcar extends PassengerRailcar {
         this(railcarNumber);
         this.isPossibleToBuyOneSeat = isPossibleToBuyOneSeat;
     }
+
+    @Override
+    public String toString() {
+        return "SleepingRailcar\t\t{" +
+                "numberID='" + numberID + '\'' +
+                ", \tcomfortLevel=" + comfortLevel +
+                ", \tnumberOfPassengers=" + numberOfPassengers +
+                ", \tmaxLuggagePerPassengerKg=" + maxLuggagePerPassengerKg +
+                '}';
+    }
 }

@@ -22,10 +22,13 @@ public class Controller {
 
         view.printMessage(CHOOSE_LANGUAGE);
         view.setBundle( sc.nextLine());
-
         view.printLocalizedMessage(GREETING);
 
+        view.printLocalizedMessage(TRAIN_CREATED);
+        view.printMessage("");
         PassengerTrain train1 = model.createTrain();
         view.printMessage( train1.toString());
+
+        view.printMessage( String.format( view.returnLocalizedMessage(PASSENGERS_AND_LUGGAGE), train1.countPassengers(), train1.countLuggageKg()));
     }
 }
