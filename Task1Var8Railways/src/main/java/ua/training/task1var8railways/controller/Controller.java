@@ -1,6 +1,7 @@
 package ua.training.task1var8railways.controller;
 
 import ua.training.task1var8railways.model.Model;
+import ua.training.task1var8railways.model.entity.PassengerTrain;
 import ua.training.task1var8railways.view.View;
 
 import java.util.Scanner;
@@ -23,5 +24,7 @@ public class Controller {
         view.setBundle( sc.nextLine());
 
         view.printLocalizedMessage(GREETING);
+
+        PassengerTrain train1 = model.createTrain();
     }
 }
