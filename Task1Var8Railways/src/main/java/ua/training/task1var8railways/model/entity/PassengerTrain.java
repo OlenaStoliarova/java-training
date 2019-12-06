@@ -11,6 +11,11 @@ public class PassengerTrain {
         this.name = name;
     }
 
+    public PassengerTrain(String name, ArrayList<PassengerRailcar> cars){
+        this.name = name;
+        passengerTrain = cars;
+    }
+
     public void addRailcar(PassengerRailcar railcar){
         passengerTrain.add(railcar);
     }
@@ -43,6 +48,10 @@ public class PassengerTrain {
             }
         }
         return onlyRequestedRailcars;
+    }
+
+    public PassengerRailcar getRailcar(int index){
+        return passengerTrain.get(index);
     }
 
     @Override
