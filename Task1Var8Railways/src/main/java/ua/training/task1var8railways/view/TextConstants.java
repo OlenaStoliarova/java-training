@@ -6,4 +6,5 @@ public interface TextConstants {
     String TRAIN_CREATED = "train.created";
     String PASSENGERS_AND_LUGGAGE = "train.passengers.luggage";
     String LETS_SORT_BY_COMFORT = "train.sort.comfort";
+    String RANGE_BY_NUMBER_OF_PASSENGERS = "train.carriages.range";
 }

@@ -1,9 +1,11 @@
 package ua.training.task1var8railways.controller;
 
 import ua.training.task1var8railways.model.Model;
+import ua.training.task1var8railways.model.entity.PassengerRailcar;
 import ua.training.task1var8railways.model.entity.PassengerTrain;
 import ua.training.task1var8railways.view.View;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static ua.training.task1var8railways.view.TextConstants.*;
@@ -36,5 +38,20 @@ public class Controller {
         view.printMessage("");
         train1.sortRailcarsByComfortLevel();
         view.printMessage( train1.toString());
+
+        showRailcarsWithinPassengerNumberRange(train1, 10, 20);
+        showRailcarsWithinPassengerNumberRange(train1, 36, 54);
+    }
+
+    private void showRailcarsWithinPassengerNumberRange(PassengerTrain train, int minPassengerNumber, int maxPassengerNumber){
+        view.printMessage( String.format( view.returnLocalizedMessage(RANGE_BY_NUMBER_OF_PASSENGERS), minPassengerNumber, maxPassengerNumber));
+        view.printMessage("");
+        ArrayList<PassengerRailcar> requestedCars = train.findRailcarsByNumberOfPassengers(minPassengerNumber, maxPassengerNumber);
+        StringBuilder requestedCarsStr = new StringBuilder();
+        for (PassengerRailcar car: requestedCars) {
+            requestedCarsStr.append( car.toString() );
+            requestedCarsStr.append( "\n");
+        }
+        view.printMessage( requestedCarsStr.toString());
     }
 }

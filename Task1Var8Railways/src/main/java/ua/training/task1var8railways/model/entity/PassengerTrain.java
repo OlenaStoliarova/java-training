@@ -35,6 +35,16 @@ public class PassengerTrain {
         Collections.sort(passengerTrain);
     }
 
+    public ArrayList<PassengerRailcar> findRailcarsByNumberOfPassengers(int minNumberOfPassengers, int maxNumberOfPassengers){
+        ArrayList<PassengerRailcar> onlyRequestedRailcars = new ArrayList<>();
+        for (PassengerRailcar car: passengerTrain) {
+            if ((car.getNumberOfPassengers() >= minNumberOfPassengers) && (car.getNumberOfPassengers() <= maxNumberOfPassengers)){
+                onlyRequestedRailcars.add(car);
+            }
+        }
+        return onlyRequestedRailcars;
+    }
+
     @Override
     public String toString() {
         StringBuilder allTrainCars = new StringBuilder();
