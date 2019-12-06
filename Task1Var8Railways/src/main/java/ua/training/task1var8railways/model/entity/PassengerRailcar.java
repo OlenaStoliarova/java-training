@@ -1,7 +1,13 @@
 package ua.training.task1var8railways.model.entity;
 
+/**
+ * <p> <b>Class to represent a railway carriage of a passenger train</b></p>
+ * @author Olena Stoliarova
+ ***/
 public abstract class PassengerRailcar implements Comparable<PassengerRailcar>{
+    /** numberID unique  number of a railway carriage given to it by its manufacturer */
     protected String numberID;
+    /** @see PassengerRailcarComfortLevel PassengerRailcarComfortLevel */
     protected PassengerRailcarComfortLevel comfortLevel;
     protected int numberOfPassengers;
     protected int maxLuggagePerPassengerKg;

@@ -1,7 +1,8 @@
 package ua.training.task1var8railways.model.entity;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
+/**
+ * enum represents typical comfort levels of Ukrainian passenger trains
+ * */
 public enum PassengerRailcarComfortLevel {
     FIRST (true, true,true),
     SECOND_A (true, true,true),
