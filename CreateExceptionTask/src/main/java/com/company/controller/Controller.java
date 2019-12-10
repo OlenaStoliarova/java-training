@@ -20,7 +20,7 @@ public class Controller {
     public void processUser() {
         Scanner sc = new Scanner(System.in);
         InputNoteNoteBook inputNoteNoteBook =
-                new InputNoteNoteBook(view, sc);
+                new InputNoteNoteBook(model, view, sc);
         inputNoteNoteBook.inputNote();
     }
 }

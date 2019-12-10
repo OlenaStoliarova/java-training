@@ -45,5 +45,12 @@ public class View {
                 bundle.getString(message)));
     }
 
+    public void printLocalizedMessage(String message){
+        System.out.println(returnLocalizedMessage(message));
+    }
+
+    public String  returnLocalizedMessage(String message){
+        return bundle.getString(message);
+    }
 
 }
