@@ -7,9 +7,9 @@ import ua.training.task01cut2.interfaces.PassengerTrainRailcar;
 import java.math.BigDecimal;
 
 public class PassengerRailcar extends RailcarImpl implements PassengerTrainRailcar {
-    PassengerTrainRailcarComfortLevel comfortLevel;
-    int numberOfPassengers;
-    int maxLuggagePerPassengerKg;
+    private PassengerTrainRailcarComfortLevel comfortLevel;
+    private int numberOfPassengers;
+    private int maxLuggagePerPassengerKg;
 
     public int getNumberOfPassengers() {
         return numberOfPassengers;
