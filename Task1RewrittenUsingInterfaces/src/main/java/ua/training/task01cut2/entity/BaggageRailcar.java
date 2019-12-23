@@ -8,8 +8,8 @@ public class BaggageRailcar extends RailcarImpl implements PassengerTrainRailcar
     public static final int STANDARD_TARE_WEIGHT_TN = 51;
     public static final int STANDARD_MAX_LOAD_TN = 21;
 
-    PassengerTrainRailcarComfortLevel comfortLevel;
-    BigDecimal maxBaggageLoadTn;
+    private final PassengerTrainRailcarComfortLevel comfortLevel;
+    private final BigDecimal maxBaggageLoadTn;
 
     public BaggageRailcar(String id){
         super.setIdNumber(id);

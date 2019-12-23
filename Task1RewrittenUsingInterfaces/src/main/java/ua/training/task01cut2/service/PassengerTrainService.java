@@ -8,7 +8,6 @@ import ua.training.task01cut2.entity.PassengerTrain;
 import ua.training.task01cut2.entity.PassengerTrainRailcarComfortLevel;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,23 +33,27 @@ public class PassengerTrainService {
                 .stream()
                 .filter(PassengerRailcar.class::isInstance)
                 .map (PassengerRailcar.class::cast)
-                .map( car -> car.getTotalLuggageKg())
-                .reduce( (x,y) -> x.add(y))
+                .map(PassengerRailcar::getTotalLuggageKg)
+                .reduce(BigDecimal::add)
                 .orElse(BigDecimal.ZERO);
 
         BigDecimal totalBaggageWeightTn =  train.getCars()
                 .stream()
                 .filter(BaggageRailcar.class::isInstance)
                 .map(BaggageRailcar.class::cast)
-                .map( car -> car.getMaxBaggageLoadTn())
-                .reduce( (x,y) -> x.add(y))
+                .map(BaggageRailcar::getMaxBaggageLoadTn)
+                .reduce(BigDecimal::add)
                 .orElse(BigDecimal.ZERO);
 
-        return totalBaggageWeightTn.add( totalLuggageWeightKg.divide(new BigDecimal(1000)));
+        return totalBaggageWeightTn.add( totalLuggageWeightKg.divide(new BigDecimal(1000), 3, BigDecimal.ROUND_HALF_UP));
     }
 
     public PassengerTrain sortRailcarsByComfortLevel(PassengerTrain unsortedTrain) {
-        PassengerTrain sortedTrain = unsortedTrain;
+        PassengerTrain sortedTrain = PassengerTrain.builder()
+                .name(unsortedTrain.getName())
+                .locomotive(unsortedTrain.getLocomotive())
+                .build();
+
         sortedTrain.setCars( unsortedTrain.getCars()
                 .stream()
                 .sorted(Comparator.comparing(PassengerTrainRailcar::getComfortLevel))

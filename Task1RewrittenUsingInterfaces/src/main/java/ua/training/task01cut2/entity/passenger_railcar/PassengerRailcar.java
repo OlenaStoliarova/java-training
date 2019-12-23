@@ -23,11 +23,11 @@ public class PassengerRailcar extends RailcarImpl implements PassengerTrainRailc
         return comfortLevel;
     }
 
-    private static int AVERAGE_PASSENGER_WEIGHT_KG = 100;
     @Override
     public BigDecimal getMaxWeightTn() {
+        int AVERAGE_PASSENGER_WEIGHT_KG = 100;
         BigDecimal totalKg = getTotalLuggageKg().add( new BigDecimal(numberOfPassengers * AVERAGE_PASSENGER_WEIGHT_KG));
-        return tareWeight.add(totalKg.divide(new BigDecimal(1000)));
+        return tareWeight.add(totalKg.divide(new BigDecimal(1000), 3, BigDecimal.ROUND_HALF_UP));
     }
 
     public void setComfortLevel(PassengerTrainRailcarComfortLevel comfortLevel) {

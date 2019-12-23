@@ -14,9 +14,9 @@ public enum PassengerTrainRailcarComfortLevel {
     THIRD_C(false,false,false),
     BAGGAGE(null,null,null);
 
-    Boolean hasSoftBunks;
-    Boolean hasAirConditioning;
-    Boolean hasBioToilet;
+    final Boolean hasSoftBunks;
+    final Boolean hasAirConditioning;
+    final Boolean hasBioToilet;
 
     PassengerTrainRailcarComfortLevel (Boolean hasSoftBunks, Boolean hasAirConditioning, Boolean hasBioToilet){
         this.hasSoftBunks = hasSoftBunks;
