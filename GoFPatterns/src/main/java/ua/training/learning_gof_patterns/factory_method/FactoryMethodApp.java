@@ -1,6 +1,5 @@
 package ua.training.learning_gof_patterns.factory_method;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class FactoryMethodApp {
