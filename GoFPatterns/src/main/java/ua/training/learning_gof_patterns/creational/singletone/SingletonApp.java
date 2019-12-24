@@ -1,4 +1,4 @@
-package ua.training.learning_gof_patterns.singletone;
+package ua.training.learning_gof_patterns.creational.singletone;
 
 
 public class SingletonApp {

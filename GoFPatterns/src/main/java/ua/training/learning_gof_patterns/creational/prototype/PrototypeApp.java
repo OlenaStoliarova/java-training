@@ -1,4 +1,4 @@
-package ua.training.learning_gof_patterns.prototype;
+package ua.training.learning_gof_patterns.creational.prototype;
 
 //в Java этот шаблон реализован с помощью интерфейса Cloneable и метода clone()
 

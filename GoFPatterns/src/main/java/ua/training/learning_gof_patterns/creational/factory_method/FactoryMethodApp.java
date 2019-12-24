@@ -1,4 +1,4 @@
-package ua.training.learning_gof_patterns.factory_method;
+package ua.training.learning_gof_patterns.creational.factory_method;
 
 import java.time.LocalTime;
 

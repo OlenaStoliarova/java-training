@@ -1,4 +1,4 @@
-package ua.training.learning_gof_patterns.absrtact_factory;
+package ua.training.learning_gof_patterns.creational.absrtact_factory;
 
 
 public class AbstractFactoryApp {

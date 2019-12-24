@@ -1,4 +1,4 @@
-package ua.training.learning_gof_patterns.builder;
+package ua.training.learning_gof_patterns.creational.builder;
 
 public class BuilderSimplifiedApp {
     public static void main(String[] args) {
