@@ -23,7 +23,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Bean(name = "localeResolver")
     public LocaleResolver getLocaleResolver()  {
         CookieLocaleResolver resolver= new CookieLocaleResolver();
-        resolver.setCookieDomain("CruiseCompanyLocaleCookie");
         // 60 minutes
         resolver.setCookieMaxAge(60*60);
         return resolver;
@@ -38,12 +37,16 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return messageResource;
     }
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
+    @Bean
+    public LocaleChangeInterceptor localeInterceptor() {
         LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
         localeInterceptor.setParamName("lang");
+        return localeInterceptor;
+    }
 
-        registry.addInterceptor(localeInterceptor).addPathPatterns("/*");
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeInterceptor());
     }
 
 }
