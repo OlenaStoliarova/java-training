@@ -3,21 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title th:utext="#{label.title}"></title>
-    <style>
-        .langlinks{
-                color: white;
-                text-decoration: none;
-        }
-    </style>
+    <link rel="stylesheet" href="css/global.css" type="text/css" media="all" />
 </head>
 <body>
-<div style="text-align: center; padding:5px;margin:5px 0px;background:#63BDF2; color:white;">
-    <b>
-        <a class="langlinks" th:href="@{/?lang=en}">English</a>
-        &nbsp;|&nbsp;
-        <a class="langlinks" th:href="@{/?lang=uk}">Українська</a>
-    </b>
-</div>
+<div th:replace="header::lang_choice"></div>
 
 <div>
     <h2 th:utext="#{label.greeting}"></h2>

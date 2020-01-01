@@ -1,0 +1,7 @@
+<div th:fragment="lang_choice" class="langsDiv">
+    <span th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}">
+        <a class="langlinks" th:href="${urlBuilder.replaceQueryParam('lang', 'en').toUriString()}">English</a>
+        &nbsp;|&nbsp;
+        <a class="langlinks" th:href="${urlBuilder.replaceQueryParam('lang', 'uk').toUriString()}">Українська</a>
+    </span>
+</div>
