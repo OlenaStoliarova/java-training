@@ -28,6 +28,8 @@ public class MainController {
 
     @RequestMapping(value = { "/main" })
     public String openMain(Authentication authentication) {
+        if( authentication.getAuthorities().contains(UserRole.ROLE_ADMIN))
+            return "/admin/admin_main";
         if( authentication.getAuthorities().contains(UserRole.ROLE_TRAVEL_AGENT))
             return "travel_agent/travel_agent_main";
 

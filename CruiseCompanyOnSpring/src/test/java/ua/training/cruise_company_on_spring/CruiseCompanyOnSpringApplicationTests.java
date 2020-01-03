@@ -14,9 +14,20 @@ class CruiseCompanyOnSpringApplicationTests {
 
 	@Test
 	void testCreateUser() {
-		userService.updateUserRole("boss@c.ua", UserRole.ROLE_TRAVEL_AGENT);
+
+		userService.updateUserRole("admin@a.a", UserRole.ROLE_ADMIN);
+		/*
+		userService.saveUser(User.builder()
+				.email("admin@a.a")
+				.password("admin")
+				.firstNameEn("Olena")
+				.lastNameEn("Stoliarova")
+				.firstNameNative("Олена")
+				.lastNameNative("Столярова")
+				.build());*/
 
 /*
+		userService.updateUserRole("boss@c.ua", UserRole.ROLE_TRAVEL_AGENT);
 		userService.saveUser(User.builder()
 				.email("boss@c.ua")
 				.password("boss")

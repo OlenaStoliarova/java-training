@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:utext="#{ui.main.title}"></title>
+    <link rel="stylesheet" href="/css/global.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="header::lang_choice"></div>
+<div th:replace="header::logout_button"></div>
+
+<h2>Ports</h2>
+<div class="container">
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="table-primary">
+                <th>id</th>
+                <th>countryEn</th>
+                <th>nameEn</th>
+                <th>countryUkr</th>
+                <th>nameUkr</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each = "port: ${all_ports}">
+                <td th:text="${port.id}"></td>
+                <td th:text="${port.countryEn}"></td>
+                <td th:text="${port.nameEn}"></td>
+                <td th:text="${port.countryUkr}"></td>
+                <td th:text="${port.nameUkr}"></td>
+            </tr>
+        </tbody>
+</table>
+</div>
+</div>
+
+</body>
+</html>
