@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -8,12 +8,9 @@
 </head>
 <body>
 <div th:replace="header::lang_choice"></div>
+<div th:replace="header::logout_button"></div>
 
-<br/><br/>
-<div class="container">
-    <h2 th:utext="#{ui.main.greeting}" ></h2>
-    <a class="btn btn-info" href="/main" th:utext="#{ui.login.login}"></a>
-</div>
+<h1 th:utext="#{ui.travelagent.hello}"></h1>
 
 </body>
 </html>

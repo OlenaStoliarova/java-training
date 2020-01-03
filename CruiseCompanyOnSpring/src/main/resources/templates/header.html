@@ -5,3 +5,11 @@
         <a class="langlinks" th:href="${urlBuilder.replaceQueryParam('lang', 'uk').toUriString()}">Українська</a>
     </span>
 </div>
+
+<div th:fragment="logout_button" class="row justify-content-end">
+    <div class="col-1">
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" class="btn btn-link" th:value="#{ui.main.logout}" />
+        </form>
+    </div>
+</div>
