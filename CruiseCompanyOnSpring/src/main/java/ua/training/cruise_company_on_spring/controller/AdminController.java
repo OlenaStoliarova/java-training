@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ua.training.cruise_company_on_spring.entity.Seaport;
 import ua.training.cruise_company_on_spring.entity.UserRole;
 import ua.training.cruise_company_on_spring.service.SeaportService;
 import ua.training.cruise_company_on_spring.service.UserService;
@@ -28,8 +29,8 @@ public class AdminController {
     }
 
     @PostMapping("/admin/updateUserRole")
-    public String updateUserRole(@RequestParam(required = true) String email,
-                                 @RequestParam(required = true) String userRoles,
+    public String updateUserRole(@RequestParam String email,
+                                 @RequestParam String userRoles,
                                  Model model){
         userService.updateUserRole(email, UserRole.valueOf(userRoles));
         return "redirect:/admin/users";
@@ -40,5 +41,27 @@ public class AdminController {
     public String getAllPortsList(Model model) {
         model.addAttribute("all_ports", seaportService.allPorts());
         return "/admin/seaports";
+    }
+
+    @PostMapping("/admin/addPort")
+    public String addSeaport(@RequestParam String nameEn,
+                             @RequestParam String countryEn,
+                             @RequestParam String nameUkr,
+                             @RequestParam String countryUkr,
+                             Model model){
+
+        boolean result = seaportService.savePort(Seaport.builder()
+                .nameEn(nameEn)
+                .countryEn(countryEn)
+                .nameUkr(nameUkr)
+                .countryUkr(countryUkr)
+                .build());
+
+        //if port was not added
+        if ( !result) {
+            return "redirect:/admin/seaports?error";
+        }
+
+        return "redirect:/admin/seaports";
     }
 }

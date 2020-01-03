@@ -11,29 +11,60 @@
 <div th:replace="header::logout_button"></div>
 
 <h2>Ports</h2>
-<div class="container">
-<div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead>
-            <tr class="table-primary">
-                <th>id</th>
-                <th>countryEn</th>
-                <th>nameEn</th>
-                <th>countryUkr</th>
-                <th>nameUkr</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each = "port: ${all_ports}">
-                <td th:text="${port.id}"></td>
-                <td th:text="${port.countryEn}"></td>
-                <td th:text="${port.nameEn}"></td>
-                <td th:text="${port.countryUkr}"></td>
-                <td th:text="${port.nameUkr}"></td>
-            </tr>
-        </tbody>
-</table>
-</div>
+<div class="container-lg">
+    <div class="row">
+        <div class="col-7">
+            <div class="table-responsive">
+                <table class="table table-condensed table-bordered table-hover">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>id</th>
+                            <th>nameEn</th>
+                            <th>countryEn</th>
+                            <th>nameUkr</th>
+                            <th>countryUkr</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each = "port: ${all_ports}">
+                            <td th:text="${port.id}"></td>
+                            <td th:text="${port.nameEn}"></td>
+                            <td th:text="${port.countryEn}"></td>
+                            <td th:text="${port.nameUkr}"></td>
+                            <td th:text="${port.countryUkr}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-5">
+            <h3>Add port</h3>
+            <form th:action="@{/admin/addPort}" method="post">
+                <div class="form-group">
+                    <label for="nameEn">Seaport name in English</label>
+                    <input type="text" class="form-control" id="nameEn" name="nameEn" th:required="required"
+                           th:pattern="#{regex.name.en}" th:title="#{regex.name.en.tip}">
+                </div>
+                <div class="form-group">
+                    <label for="countryEn">Country of seaport in English</label>
+                    <input type="text" class="form-control" id="countryEn" name="countryEn" th:required="required"
+                           th:pattern="#{regex.name.en}" th:title="#{regex.name.en.tip}">
+                </div>
+                <div class="form-group">
+                    <label for="nameUkr">Seaport name in Ukrainian</label>
+                    <input type="text" class="form-control" id="nameUkr" name="nameUkr" th:required="required"
+                           th:pattern="#{regex.name.ukr}" th:title="#{regex.name.ukr.tip}">
+                </div>
+                <div class="form-group">
+                    <label for="countryUkr">Country of seaport in Ukrainian</label>
+                    <input type="text" class="form-control" id="countryUkr" name="countryUkr" th:required="required"
+                           th:pattern="#{regex.name.ukr}" th:title="#{regex.name.ukr.tip}">
+                </div>
+                <div class="text-danger" th:if="${param.error}">Port wasn't added. The most probably it already exists in the DB</div>
+                <input type="submit" class="btn btn-primary" value="Add"/>
+            </form>
+        </div>
+    </div>
 </div>
 
 </body>
