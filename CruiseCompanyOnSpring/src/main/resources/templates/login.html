@@ -13,19 +13,19 @@
             <br/>
             <div class="text-danger" th:if="${param.error}" th:text="#{ui.login.error}">
             </div>
-            <div class="panel panel-default" style="margin-top:45px">
-                <div class="panel-heading">
-                    <h3 class="panel-title" th:utext="#{ui.login.invitation}"></h3>
+            <div class="card" style="margin-top:45px">
+                <div class="card-header">
+                    <h3 class="card-title" th:utext="#{ui.login.invitation}"></h3>
                 </div><br/>
-                <div class="panel-body">
+                <div class="card-body">
                     <form method="post">
                         <div class="form-group">
                             <label th:utext="#{ui.login.userName}" for="username"></label>
-                            <input type="email" class="form-control" id="username" name="username">
+                            <input type="email" class="form-control" id="username" name="username" required="required">
                         </div>
                         <div class="form-group">
                             <label th:utext="#{ui.login.password}" for="password"></label>
-                            <input type="password" class="form-control" id="password" name="password">
+                            <input type="password" class="form-control" id="password" name="password" required="required">
                         </div>
                         <input type="submit" class="btn btn-primary" th:value="#{ui.login.login}" />
                     </form>
