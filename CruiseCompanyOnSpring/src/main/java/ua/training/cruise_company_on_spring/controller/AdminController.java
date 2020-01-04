@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ua.training.cruise_company_on_spring.entity.Seaport;
@@ -40,22 +41,14 @@ public class AdminController {
     @GetMapping("/admin/seaports")
     public String getAllPortsList(Model model) {
         model.addAttribute("all_ports", seaportService.allPorts());
+        model.addAttribute("new_port", new Seaport());
         return "/admin/seaports";
     }
 
     @PostMapping("/admin/addPort")
-    public String addSeaport(@RequestParam String nameEn,
-                             @RequestParam String countryEn,
-                             @RequestParam String nameUkr,
-                             @RequestParam String countryUkr,
-                             Model model){
+    public String addSeaport(@ModelAttribute Seaport seaport){
 
-        boolean result = seaportService.savePort(Seaport.builder()
-                .nameEn(nameEn)
-                .countryEn(countryEn)
-                .nameUkr(nameUkr)
-                .countryUkr(countryUkr)
-                .build());
+        boolean result = seaportService.savePort(seaport);
 
         //if port was not added
         if ( !result) {

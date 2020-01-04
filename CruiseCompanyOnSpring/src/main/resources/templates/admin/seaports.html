@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title th:utext="#{ui.main.title}"></title>
     <link rel="stylesheet" href="/css/global.css" type="text/css" media="all" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -39,25 +39,25 @@
         </div>
         <div class="col-5">
             <h3>Add port</h3>
-            <form th:action="@{/admin/addPort}" method="post">
+            <form th:action="@{/admin/addPort}" method="post" th:object="${new_port}">
                 <div class="form-group">
-                    <label for="nameEn">Seaport name in English</label>
-                    <input type="text" class="form-control" id="nameEn" name="nameEn" th:required="required"
+                    <label th:for="nameEn">Seaport name in English</label>
+                    <input class="form-control" th:field="*{nameEn}" th:required="required"
                            th:pattern="#{regex.name.en}" th:title="#{regex.name.en.tip}">
                 </div>
                 <div class="form-group">
-                    <label for="countryEn">Country of seaport in English</label>
-                    <input type="text" class="form-control" id="countryEn" name="countryEn" th:required="required"
+                    <label th:for="countryEn">Country of seaport in English</label>
+                    <input class="form-control" th:field="*{countryEn}" th:required="required"
                            th:pattern="#{regex.name.en}" th:title="#{regex.name.en.tip}">
                 </div>
                 <div class="form-group">
-                    <label for="nameUkr">Seaport name in Ukrainian</label>
-                    <input type="text" class="form-control" id="nameUkr" name="nameUkr" th:required="required"
+                    <label th:for="nameUkr">Seaport name in Ukrainian</label>
+                    <input class="form-control" th:field="*{nameUkr}" th:required="required"
                            th:pattern="#{regex.name.ukr}" th:title="#{regex.name.ukr.tip}">
                 </div>
                 <div class="form-group">
-                    <label for="countryUkr">Country of seaport in Ukrainian</label>
-                    <input type="text" class="form-control" id="countryUkr" name="countryUkr" th:required="required"
+                    <label th:for="countryUkr">Country of seaport in Ukrainian</label>
+                    <input class="form-control" th:field="*{countryUkr}" th:required="required"
                            th:pattern="#{regex.name.ukr}" th:title="#{regex.name.ukr.tip}">
                 </div>
                 <div class="text-danger" th:if="${param.error}">Port wasn't added. The most probably it already exists in the DB</div>
