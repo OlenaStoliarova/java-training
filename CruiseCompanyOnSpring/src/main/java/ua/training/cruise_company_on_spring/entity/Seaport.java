@@ -31,4 +31,8 @@ public class Seaport {
 
     @Column(nullable = false)
     private String countryUkr;
+
+    /*
+    @OneToMany(mappedBy="seaport")
+    private Set<Excursion> excursions;*/
 }

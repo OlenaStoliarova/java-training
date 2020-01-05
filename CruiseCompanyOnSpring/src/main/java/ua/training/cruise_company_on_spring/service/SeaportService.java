@@ -17,6 +17,14 @@ public class SeaportService {
         return seaportRepository.findAllByOrderByNameEnAsc();
     }
 
+    public Seaport findPortByNameEn(String nameEn){
+        return seaportRepository.findByNameEn(nameEn).orElse(null);
+    }
+
+    public Seaport findPortById(String portId){
+        return seaportRepository.findById(new Long(portId)).orElse(null);
+    }
+
     public boolean savePort(Seaport seaport) {
         Optional<Seaport> seaportFromDB = seaportRepository.findByNameEn(seaport.getNameEn());
 

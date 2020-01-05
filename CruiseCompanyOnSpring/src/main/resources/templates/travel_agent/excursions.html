@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:utext="#{ui.main.title}"></title>
+    <link rel="stylesheet" href="/css/global.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+</head>
+<body>
+<div th:replace="header::lang_choice"></div>
+<div th:replace="header::logout_button"></div>
+
+<h2 th:utext="#{ui.excursion.all.title}" class="text-center"></h2>
+<div class="container-fluid">
+    <div class="table-responsive">
+        <table class="table table-condensed table-bordered table-hover">
+            <thead>
+            <tr class="table-primary">
+                <th>id</th>
+                <th th:utext="#{ui.excursion.name.en}"></th>
+                <th th:utext="#{ui.excursion.name.ukr}"></th>
+                <th th:utext="#{ui.excursion.description.en}"></th>
+                <th th:utext="#{ui.excursion.description.ukr}"></th>
+                <th th:utext="#{ui.excursion.duration}"></th>
+                <th th:utext="#{ui.excursion.price}"></th>
+                <th th:utext="#{ui.seaport}"></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="excursion: ${all_excursions}">
+                <td th:text="${excursion.id}"></td>
+                <td th:text="${excursion.nameEn}"></td>
+                <td th:text="${excursion.nameUkr}"></td>
+                <td th:text="${excursion.descriptionEn}"></td>
+                <td th:text="${excursion.descriptionUkr}"></td>
+                <td th:text="${excursion.approximateDurationHr}"></td>
+                <td th:text="${excursion.priceUSD}"></td>
+                <td th:text="${excursion.seaport.nameEn + '-' + excursion.seaport.countryEn}"></td>
+                <td>
+                    <form class="form-inline" th:action="@{/travel_agent/edit_excursion}" method="get">
+                        <input type="hidden" name="excursionId" th:value="${excursion.id}"/>
+                        <input type="submit" class="btn btn-light" th:value="#{ui.button.edit}" />
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
