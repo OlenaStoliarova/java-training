@@ -49,4 +49,27 @@ public class TravelAgentExcursionsController {
     }
 
 
+    @GetMapping("/add_excursion")
+    public String showExcursionAddForm( @RequestParam( value = "error", required = false ) String error,
+                                        Model model){
+        model.addAttribute("excursion", new Excursion());
+        model.addAttribute("error", error != null);
+        model.addAttribute("all_seaports", seaportService.allPorts());
+        return "/travel_agent/add_excursion";
+    }
+
+    @PostMapping("/add_excursion")
+    public String saveNewExcursion(@ModelAttribute Excursion excursion,
+                                   @RequestParam String seaportId) {
+
+        excursion.setSeaport( seaportService.findPortById(seaportId));
+        boolean result = excursionService.saveExcursion(excursion);
+
+        //if excursion was not added
+        if ( !result) {
+            return "redirect:/travel_agent/add_excursion?error";
+        }
+
+        return "redirect:/travel_agent/excursions";
+    }
 }

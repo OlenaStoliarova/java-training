@@ -56,7 +56,7 @@
                            th:pattern="#{regex.name.ukr}" th:title="#{regex.name.ukr.tip}">
                 </div>
                 <div class="text-danger" th:if="${param.error}">Port wasn't added. The most probably it already exists in the DB</div>
-                <input type="submit" class="btn btn-primary" value="Add"/>
+                <input type="submit" class="btn btn-primary" th:value="#{ui.button.add}"/>
             </form>
         </div>
     </div>

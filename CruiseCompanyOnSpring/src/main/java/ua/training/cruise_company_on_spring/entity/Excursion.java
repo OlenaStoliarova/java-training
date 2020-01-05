@@ -13,7 +13,6 @@ import java.math.BigDecimal;
 @Data
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 
 @Entity
 @Table(name="excursion")
@@ -43,4 +42,8 @@ public class Excursion {
     @JoinColumn(name = "seaport_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Seaport seaport;
+
+    public Excursion() {
+        seaport = new Seaport();
+    }
 }

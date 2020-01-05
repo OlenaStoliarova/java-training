@@ -7,6 +7,11 @@
 
 <h2 th:utext="#{ui.excursion.all.title}" class="text-center"></h2>
 <div class="container-fluid">
+    <div class="row">
+        <div class="col text-right">
+            <a class="btn btn-success btn-lg" href="/travel_agent/add_excursion"><div th:text="#{ui.button.add}"></div></a>
+        </div>
+    </div>
     <div class="table-responsive">
         <table class="table table-condensed table-bordered table-hover">
             <thead>
