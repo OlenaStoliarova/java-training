@@ -29,6 +29,7 @@ public class TravelAgentExcursionsController {
         Excursion excursion = excursionService.getExcursionById(excursionId);
         model.addAttribute("excursion", excursion);
         model.addAttribute("error", error != null);
+        model.addAttribute("all_seaports", seaportService.allPorts());
         return "/travel_agent/edit_excursion";
     }
 

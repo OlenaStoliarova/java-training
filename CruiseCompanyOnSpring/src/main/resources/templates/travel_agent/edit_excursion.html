@@ -55,7 +55,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label th:for="priceUSD" th:utext="#{ui.excursion.price}"
+                                    <label th:for="priceUSD" th:utext="#{ui.excursion.price.usd}"
                                            class="col-4 col-form-label"></label>
                                     <div class="col-8">
                                         <input class="form-control" th:field="*{priceUSD}" th:required="required"
@@ -63,16 +63,32 @@
                                                th:value="${excursion.priceUSD}">
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label for="seaportId" th:utext="#{ui.excursion.port}"
+                                           class="col-4 col-form-label"></label>
+                                    <div class="col-8">
+                                        <select class="form-control" id="seaportId" name="seaportId">
+                                            <option th:if="#{localization.lang}==UKR"
+                                                    th:each="seaport : ${all_seaports}"
+                                                    th:value="${seaport.id}" th:text="${seaport.nameUkr}"
+                                                    th:selected="${seaport.id}==${excursion.seaport.id}"></option>
+                                            <option th:unless="#{localization.lang}==UKR"
+                                                    th:each="seaport : ${all_seaports}"
+                                                    th:value="${seaport.id}" th:text="${seaport.nameEn}"
+                                                    th:selected="${seaport.id}==${excursion.seaport.id}"></option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <input type="hidden" name="seaportId" th:value="${excursion.seaport.id}">
-                        <div th:text="${excursion.seaport.countryEn + '-' + excursion.seaport.nameEn}"></div>
-
-                        <h6 class="text-danger" th:if="${param.error}" th:utext="#{ui.error.not.saved}"></h6>
-                        <input type="submit" class="btn btn-success" th:value="#{ui.button.save}" />
-                        <a class="btn btn-secondary" href="/travel_agent/excursions"><div th:text="#{ui.button.cancel}"></div></a>
-
+                        <div class="row">
+                            <div class="col text-right">
+                                <h6 class="text-danger" th:if="${param.error}" th:utext="#{ui.error.not.saved}"></h6>
+                                <a class="btn btn-secondary" href="/travel_agent/excursions"><div th:text="#{ui.button.cancel}"></div></a>
+                                <input type="submit" class="btn btn-success" th:value="#{ui.button.save}" />
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
