@@ -30,8 +30,9 @@
                 <td th:text="${excursion.descriptionEn}"></td>
                 <td th:text="${excursion.descriptionUkr}"></td>
                 <td th:text="${excursion.approximateDurationHr}"></td>
-                <td th:text="${excursion.priceUSD}"></td>
-                <td th:text="${excursion.seaport.nameEn + '-' + excursion.seaport.countryEn}"></td>
+                <td th:text="#{localization.price.multiplier}*${excursion.priceUSD}"></td>
+                <td th:if="#{localization.lang}==UKR" th:text="${excursion.seaport.nameUkr + '-' + excursion.seaport.countryUkr}"></td>
+                <td th:unless="#{localization.lang}==UKR" th:text="${excursion.seaport.nameEn + '-' + excursion.seaport.countryEn}"></td>
                 <td>
                     <form class="form-inline" th:action="@{/travel_agent/edit_excursion}" method="get">
                         <input type="hidden" name="excursionId" th:value="${excursion.id}"/>
