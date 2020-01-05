@@ -1,3 +1,10 @@
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title th:utext="#{ui.main.title}"></title>
+    <link rel="stylesheet" href="/css/global.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+</head>
+
 <div th:fragment="lang_choice" class="langsDiv">
     <span th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}">
         <a class="langlinks" th:href="${urlBuilder.replaceQueryParam('lang', 'en').toUriString()}">English</a>
