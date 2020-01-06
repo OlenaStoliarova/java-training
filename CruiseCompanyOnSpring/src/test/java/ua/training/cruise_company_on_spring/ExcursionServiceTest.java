@@ -10,7 +10,6 @@ import ua.training.cruise_company_on_spring.service.NoEntityFoundException;
 import ua.training.cruise_company_on_spring.service.SeaportService;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 
 @SpringBootTest
 public class ExcursionServiceTest {
