@@ -22,6 +22,8 @@
                         <div class="row">
                             <div class="col text-right">
                                 <h6 class="text-danger" th:if="${param.error}" th:utext="#{ui.excursion.add.error}"></h6>
+                                <h6 class="text-danger" th:if="${param.no_port_found}" th:utext="#{ui.error.not.saved}"></h6>
+                                <h6 class="text-danger" th:if="${param.no_port_found}" th:utext="#{ui.error.excursion.port.not.fond}"></h6>
                                 <a class="btn btn-secondary" href="/travel_agent/excursions"><div th:text="#{ui.button.cancel}"></div></a>
                                 <input type="submit" class="btn btn-success" th:value="#{ui.button.add}" />
                             </div>

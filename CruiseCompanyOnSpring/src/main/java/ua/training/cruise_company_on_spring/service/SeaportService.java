@@ -17,12 +17,15 @@ public class SeaportService {
         return seaportRepository.findAllByOrderByNameEnAsc();
     }
 
-    public Seaport findPortByNameEn(String nameEn){
-        return seaportRepository.findByNameEn(nameEn).orElse(null);
+    public Seaport findPortByNameEn(String nameEn) throws NoEntityFoundException {
+
+        return seaportRepository.findByNameEn(nameEn)
+                                .orElseThrow(() -> new NoEntityFoundException("There is no port with provided name (" + nameEn + ")"));
     }
 
-    public Seaport findPortById(String portId){
-        return seaportRepository.findById(new Long(portId)).orElse(null);
+    public Seaport findPortById (String portId) throws NoEntityFoundException {
+        return seaportRepository.findById(new Long(portId))
+                                .orElseThrow(() -> new NoEntityFoundException("There is no port with provided id (" + portId + ")"));
     }
 
     public boolean savePort(Seaport seaport) {

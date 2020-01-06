@@ -22,8 +22,9 @@ public class ExcursionService {
         return excursionRepository.findBySeaport(seaport);
     }
 
-    public Excursion getExcursionById(String id){
-        return excursionRepository.findById(new Long(id)).orElse(null);
+    public Excursion getExcursionById(String id) throws NoEntityFoundException {
+        return excursionRepository.findById(new Long(id))
+                .orElseThrow(() -> new NoEntityFoundException("There is no excursion with provided id (" + id + ")"));
     }
 
     public boolean saveExcursion(Excursion excursion) {

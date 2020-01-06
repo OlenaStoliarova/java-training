@@ -8,6 +8,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
+            <h3 class="text-danger" th:if="${no_excursion_found}" th:utext="#{ui.error.excursion.not.found}"></h3>
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title" th:utext="#{ui.excursion.edit.invitation}"></h3>
@@ -22,6 +23,8 @@
                         <div class="row">
                             <div class="col text-right">
                                 <h6 class="text-danger" th:if="${param.error}" th:utext="#{ui.error.not.saved}"></h6>
+                                <h6 class="text-danger" th:if="${param.no_port_found}" th:utext="#{ui.error.not.saved}"></h6>
+                                <h6 class="text-danger" th:if="${param.no_port_found}" th:utext="#{ui.error.excursion.port.not.fond}"></h6>
                                 <a class="btn btn-secondary" href="/travel_agent/excursions"><div th:text="#{ui.button.cancel}"></div></a>
                                 <input type="submit" class="btn btn-success" th:value="#{ui.button.save}" />
                             </div>

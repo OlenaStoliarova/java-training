@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import ua.training.cruise_company_on_spring.entity.Excursion;
 import ua.training.cruise_company_on_spring.entity.Seaport;
 import ua.training.cruise_company_on_spring.service.ExcursionService;
+import ua.training.cruise_company_on_spring.service.NoEntityFoundException;
 import ua.training.cruise_company_on_spring.service.SeaportService;
 
 import java.math.BigDecimal;
@@ -20,11 +21,16 @@ public class ExcursionServiceTest {
 
     @Test
     void addExcursion() {
-        boolean result = false;
+        Seaport seaport;
+        try {
+            seaport = seaportService.findPortByNameEn("Izmir");
+        }
+        catch (NoEntityFoundException e){
+            assert(false);
+            return;
+        }
 
-        Seaport seaport = seaportService.findPortByNameEn("Izmir");
-        if(seaport != null) {
-            result = excursionService.saveExcursion(
+        boolean result = excursionService.saveExcursion(
                     Excursion.builder()
                             .nameEn("Ephesus")
                             .descriptionEn("Explore the ruins of the ancient city of Ephesus. Visit the terrace houses, the House of the Virgin Mary, St. John’s Basilica, and other sites. Experience the world’s most spectacular open-air museum on a guided tour from Izmir.")
@@ -34,7 +40,6 @@ public class ExcursionServiceTest {
                             .priceUSD(new BigDecimal(20))
                             .seaport(seaport)
                             .build());
-        }
         assert (result);
     }
 }

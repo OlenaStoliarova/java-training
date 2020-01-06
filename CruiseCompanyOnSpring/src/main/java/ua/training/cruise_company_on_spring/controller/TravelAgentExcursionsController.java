@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.training.cruise_company_on_spring.entity.Excursion;
 import ua.training.cruise_company_on_spring.service.ExcursionService;
+import ua.training.cruise_company_on_spring.service.NoEntityFoundException;
 import ua.training.cruise_company_on_spring.service.SeaportService;
 
 @Controller
@@ -24,11 +25,15 @@ public class TravelAgentExcursionsController {
 
     @GetMapping("/edit_excursion")
     public String showExcursionEditForm(@RequestParam String excursionId,
-                                        @RequestParam( value = "error", required = false ) String error,
                                         Model model){
-        Excursion excursion = excursionService.getExcursionById(excursionId);
-        model.addAttribute("excursion", excursion);
-        model.addAttribute("error", error != null);
+        try{
+            Excursion excursion = excursionService.getExcursionById(excursionId);
+            model.addAttribute("excursion", excursion);
+        }
+        catch (NoEntityFoundException ex){
+            model.addAttribute("excursion", new Excursion());
+            model.addAttribute("no_excursion_found", true);
+        }
         model.addAttribute("all_seaports", seaportService.allPorts());
         return "/travel_agent/edit_excursion";
     }
@@ -37,7 +42,13 @@ public class TravelAgentExcursionsController {
     public String saveUpdatedExcursion(@ModelAttribute Excursion excursion,
                                        @RequestParam String seaportId) {
 
-        excursion.setSeaport( seaportService.findPortById(seaportId));
+        try{
+            excursion.setSeaport(seaportService.findPortById(seaportId));
+        }
+        catch (NoEntityFoundException ex){
+            return "redirect:/travel_agent/edit_excursion?excursionId="+ excursion.getId() + "&no_port_found";
+        }
+
         boolean result = excursionService.saveExcursion(excursion);
 
         //if excursion was not updated
@@ -50,10 +61,8 @@ public class TravelAgentExcursionsController {
 
 
     @GetMapping("/add_excursion")
-    public String showExcursionAddForm( @RequestParam( value = "error", required = false ) String error,
-                                        Model model){
+    public String showExcursionAddForm( Model model){
         model.addAttribute("excursion", new Excursion());
-        model.addAttribute("error", error != null);
         model.addAttribute("all_seaports", seaportService.allPorts());
         return "/travel_agent/add_excursion";
     }
@@ -62,7 +71,13 @@ public class TravelAgentExcursionsController {
     public String saveNewExcursion(@ModelAttribute Excursion excursion,
                                    @RequestParam String seaportId) {
 
-        excursion.setSeaport( seaportService.findPortById(seaportId));
+        try{
+            excursion.setSeaport(seaportService.findPortById(seaportId));
+        }
+        catch (NoEntityFoundException ex){
+            return "redirect:/travel_agent/add_excursion?no_port_found";
+        }
+
         boolean result = excursionService.saveExcursion(excursion);
 
         //if excursion was not added
