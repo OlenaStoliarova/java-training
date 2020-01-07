@@ -103,4 +103,160 @@ public class ShipServiceTest {
                         .build());
         assert (result);
     }
+
+
+    @Test
+    void addShip3(){
+        Route route;
+        try {
+            route = routeService.findByNameEn("Three northern capitals");
+        }
+        catch (NoEntityFoundException e){
+            assert(false);
+            return;
+        }
+
+        Set<Extra> extras = new HashSet<>();
+        try {
+            extras.add(extraService.findExtraByNameEn("Gym"));
+            extras.add(extraService.findExtraByNameEn("Swimming pool"));
+            extras.add(extraService.findExtraByNameEn("Cinema hall"));
+            extras.add(extraService.findExtraByNameEn("Theater"));
+            extras.add(extraService.findExtraByNameEn("Disco"));
+            extras.add(extraService.findExtraByNameEn("Sauna"));
+            extras.add(extraService.findExtraByNameEn("Jacuzzi"));
+            extras.add(extraService.findExtraByNameEn("Mini golf"));
+        }
+        catch (NoEntityFoundException e){
+            assert(false);
+            return;
+        }
+
+        boolean result = shipService.saveShip(
+                Ship.builder()
+                        .name("Viking Star")
+                        .route(route)
+                        .firstClassCapacity(130)
+                        .secondClassCapacity(600)
+                        .thirdClassCapacity(200)
+                        .extras(extras)
+                        .build());
+        assert (result);
+    }
+
+    @Test
+    void addShip4(){
+        Route route;
+        try {
+            route = routeService.findByNameEn("South coast of France plus Monaco");
+        }
+        catch (NoEntityFoundException e){
+            assert(false);
+            return;
+        }
+
+        Set<Extra> extras = new HashSet<>();
+        try {
+            extras.add(extraService.findExtraByNameEn("Disco"));
+            extras.add(extraService.findExtraByNameEn("Casino"));
+            extras.add(extraService.findExtraByNameEn("Beauty salon"));
+            extras.add(extraService.findExtraByNameEn("Swimming pool"));
+            extras.add(extraService.findExtraByNameEn("Surf simulator"));
+            extras.add(extraService.findExtraByNameEn("Water slide"));
+            extras.add(extraService.findExtraByNameEn("Children room"));
+            extras.add(extraService.findExtraByNameEn("Children's pool"));
+        }
+        catch (NoEntityFoundException e){
+            assert(false);
+            return;
+        }
+
+        boolean result = shipService.saveShip(
+                Ship.builder()
+                        .name("Monarch")
+                        .route(route)
+                        .firstClassCapacity(1000)
+                        .secondClassCapacity(1000)
+                        .thirdClassCapacity(280)
+                        .extras(extras)
+                        .build());
+        assert (result);
+    }
+
+    @Test
+    void addShip5(){
+        Route route;
+        try {
+            route = routeService.findByNameEn("Three northern capitals");
+        }
+        catch (NoEntityFoundException e){
+            assert(false);
+            return;
+        }
+
+        Set<Extra> extras = new HashSet<>();
+        try {
+            extras.add(extraService.findExtraByNameEn("Cinema hall"));
+            extras.add(extraService.findExtraByNameEn("Disco"));
+            extras.add(extraService.findExtraByNameEn("Sauna"));
+            extras.add(extraService.findExtraByNameEn("Gym"));
+        }
+        catch (NoEntityFoundException e){
+            assert(false);
+            return;
+        }
+
+        boolean result = shipService.saveShip(
+                Ship.builder()
+                        .name("Nordkapp")
+                        .route(route)
+                        .firstClassCapacity(0)
+                        .secondClassCapacity(450)
+                        .thirdClassCapacity(0)
+                        .extras(extras)
+                        .build());
+        assert (result);
+    }
+
+    @Test
+    void addShip6(){
+        Route route;
+        try {
+            route = routeService.findByNameEn("South coast of France plus Monaco");
+        }
+        catch (NoEntityFoundException e){
+            assert(false);
+            return;
+        }
+
+        Set<Extra> extras = new HashSet<>();
+        try {
+            extras.add(extraService.findExtraByNameEn("Theater"));
+            extras.add(extraService.findExtraByNameEn("Disco"));
+            extras.add(extraService.findExtraByNameEn("Casino"));
+            extras.add(extraService.findExtraByNameEn("Beauty salon"));
+            extras.add(extraService.findExtraByNameEn("SPA"));
+            extras.add(extraService.findExtraByNameEn("Swimming pool"));
+            extras.add(extraService.findExtraByNameEn("Water slide"));
+            extras.add(extraService.findExtraByNameEn("Children room"));
+            extras.add(extraService.findExtraByNameEn("Children's pool"));
+        }
+        catch (NoEntityFoundException e){
+            assert(false);
+            return;
+        }
+
+        boolean result = shipService.saveShip(
+                Ship.builder()
+                        .name("Costa Mediterranea")
+                        .route(route)
+                        .firstClassCapacity(900)
+                        .secondClassCapacity(900)
+                        .thirdClassCapacity(400)
+                        .extras(extras)
+                        .build());
+        assert (result);
+    }
+
+
 }
