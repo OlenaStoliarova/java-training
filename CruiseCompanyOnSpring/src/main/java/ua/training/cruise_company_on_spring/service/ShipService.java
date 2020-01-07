@@ -2,18 +2,23 @@ package ua.training.cruise_company_on_spring.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ua.training.cruise_company_on_spring.dto.ShipDTO;
+import ua.training.cruise_company_on_spring.entity.Extra;
 import ua.training.cruise_company_on_spring.entity.Ship;
 import ua.training.cruise_company_on_spring.repository.ShipRepository;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ShipService {
     @Autowired
     private ShipRepository shipRepository;
 
-    public List<Ship> allShips(){ return shipRepository.findAllByOrderByName();}
+    public List<ShipDTO> allShips(){
+        return shipRepository.findAllByOrderByName().stream().map(ShipService::shipToDTO).collect(Collectors.toList());}
 
     public Ship getShipById(Long id) throws NoEntityFoundException {
         return shipRepository.findById(id)
@@ -38,5 +43,20 @@ public class ShipService {
             }
             return false;
         }
+    }
+
+    static ShipDTO shipToDTO(Ship ship){
+        return ShipDTO.builder()
+                .id(ship.getId())
+                .name(ship.getName())
+                .firstClassCapacity(ship.getFirstClassCapacity())
+                .secondClassCapacity(ship.getSecondClassCapacity())
+                .thirdClassCapacity(ship.getThirdClassCapacity())
+                .totalCapacity(ship.getFirstClassCapacity() + ship.getSecondClassCapacity() + ship.getThirdClassCapacity())
+                .route(RouteService.routeToDTO(ship.getRoute()))
+                .extras(ship.getExtras()
+                        .stream().sorted( Comparator.comparing(Extra::getNameEn))
+                        .collect(Collectors.toList()))
+                .build();
     }
 }

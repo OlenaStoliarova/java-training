@@ -13,7 +13,7 @@ public class ExtraService {
     @Autowired
     private ExtraRepository extraRepository;
 
-    public List<Extra> allExtras() { return extraRepository.findAll();}
+    public List<Extra> allExtras() { return extraRepository.findAllByOrderByNameEn();}
 
     public Extra findExtraByNameEn(String nameEn) throws NoEntityFoundException {
         return extraRepository.findByNameEn(nameEn)

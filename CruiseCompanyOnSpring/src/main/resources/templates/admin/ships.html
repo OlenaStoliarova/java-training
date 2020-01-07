@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header::head"></head>
+<body>
+<div th:replace="header::lang_choice"></div>
+<div th:replace="header::logout_button"></div>
+
+<h2>Ships</h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-sm table-bordered table-hover">
+                    <thead>
+                    <tr class="table-primary">
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Total capacity</th>
+                        <th>Route</th>
+                        <th>Facilities</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each = "ship: ${all_ships}">
+                        <td th:text="${ship.id}"></td>
+                        <td class="font-weight-bold" th:text="${ship.name}"></td>
+                        <td th:text="${ship.totalCapacity}"></td>
+                        <td>
+                            <p>
+                                <span th:unless="#{localization.lang}==UKR" class="font-weight-bold" th:text="${ship.route.nameEn}"></span>
+                                <span th:if="#{localization.lang}==UKR" class="font-weight-bold" th:text="${ship.route.nameUkr}"></span>
+                                <span class="font-weight-normal" th:text="${'(' + ship.route.durationDays + ' days/' + ship.route.durationNights + ' nights)'}"></span>
+                            </p>
+                            <span class="font-italic" th:unless="#{localization.lang}==UKR"  th:each="port, iterStat: ${ship.route.portsList}" >
+                                <span th:if="${iterStat.index < iterStat.size-1}" th:text="${port.nameEn + '(' + port.countryEn + ') - '}"></span>
+                                <span th:if="${iterStat.index == iterStat.size-1}" th:text="${port.nameEn + '(' + port.countryEn + ')'}"></span>
+                            </span>
+                            <span class="font-italic" th:if="#{localization.lang}==UKR" th:each = "port, iterStat: ${ship.route.portsList}" >
+                                <span th:if="${iterStat.index < iterStat.size-1}" th:text="${port.nameUkr + '(' + port.countryUkr + ') - '}"></span>
+                                <span th:if="${iterStat.index == iterStat.size-1}" th:text="${port.nameUkr + '(' + port.countryUkr + ')'}"></span>
+                            </span>
+                        </td>
+                        <td>
+                            <span th:unless="#{localization.lang}==UKR"  th:each="facility, iterStat: ${ship.extras}" >
+                                <span th:if="${iterStat.index < iterStat.size-1}" th:text="${facility.nameEn + ', '}"></span>
+                                <span th:if="${iterStat.index == iterStat.size-1}" th:text="${facility.nameEn}"></span>
+                            </span>
+                            <span th:if="#{localization.lang}==UKR"  th:each="facility, iterStat: ${ship.extras}" >
+                                <span th:if="${iterStat.index < iterStat.size-1}" th:text="${facility.nameUkr + ', '}"></span>
+                                <span th:if="${iterStat.index == iterStat.size-1}" th:text="${facility.nameUkr}"></span>
+                            </span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ua.training.cruise_company_on_spring.entity.Seaport;
 import ua.training.cruise_company_on_spring.entity.UserRole;
 import ua.training.cruise_company_on_spring.service.SeaportService;
+import ua.training.cruise_company_on_spring.service.ShipService;
 import ua.training.cruise_company_on_spring.service.UserService;
 
 import java.util.Arrays;
@@ -18,9 +19,10 @@ import java.util.Arrays;
 public class AdminController {
     @Autowired
     private UserService userService;
-
     @Autowired
     private SeaportService seaportService;
+    @Autowired
+    private ShipService shipService;
 
     @GetMapping("/admin/users")
     public String userList(Model model) {
@@ -56,5 +58,11 @@ public class AdminController {
         }
 
         return "redirect:/admin/seaports";
+    }
+
+    @GetMapping("/admin/ships")
+    public String viewAllShips(Model model){
+        model.addAttribute("all_ships",  shipService.allShips());
+        return "/admin/ships";
     }
 }
