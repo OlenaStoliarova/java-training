@@ -13,9 +13,23 @@ public class ExtraServiceTest {
 
     @Test
     void addExtras(){
+        /*
         assert( extraService.saveExtra(new Extra("Gym", "Спортивна зала")) );
         assert( extraService.saveExtra(new Extra("Swimming pool", "Басейн")) );
         assert( extraService.saveExtra(new Extra("Cinema hall", "Кінозала")) );
         assert( extraService.saveExtra(new Extra("SPA", "СПА салон")) );
+
+        assert( extraService.saveExtra(new Extra("Theater","Театр")) );
+        assert( extraService.saveExtra(new Extra("Disco","Дискотека")) );
+        assert( extraService.saveExtra(new Extra("Beauty salon","Салон краси")) );
+        assert( extraService.saveExtra(new Extra("Sauna","Сауна")) );
+        assert( extraService.saveExtra(new Extra("Jacuzzi","Джакузі")) );*/
+
+        assert( extraService.saveExtra(new Extra("Casino","Казино")) );
+        assert( extraService.saveExtra(new Extra("Water slide","Водна гірка")) );
+        assert( extraService.saveExtra(new Extra("Mini golf","Міні-гольф")) );
+        assert( extraService.saveExtra(new Extra("Surf simulator","Симулятор серфінгу")) );
+        assert( extraService.saveExtra(new Extra("Children room","Дитяча кімната")) );
+        assert( extraService.saveExtra(new Extra("Children's pool","Дитячий басейн")) );
     }
 }

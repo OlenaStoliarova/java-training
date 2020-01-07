@@ -17,6 +17,10 @@ public class RouteService {
         return routeRepository.findAllByOrderByNameEnAsc();
     }
 
+    public Route findByNameEn(String nameEn) throws NoEntityFoundException {
+        return routeRepository.findByNameEn(nameEn)
+                                .orElseThrow(() -> new NoEntityFoundException("There is no rout with name (" + nameEn + ")"));
+    }
 
     public boolean saveRoute(Route route) {
         if ( route.getId() == null) {
