@@ -29,7 +29,7 @@
                             <p>
                                 <span th:unless="#{localization.lang}==UKR" class="font-weight-bold" th:text="${ship.route.nameEn}"></span>
                                 <span th:if="#{localization.lang}==UKR" class="font-weight-bold" th:text="${ship.route.nameUkr}"></span>
-                                <span class="font-weight-normal" th:text="${'(' + ship.route.durationDays + ' days/' + ship.route.durationNights + ' nights)'}"></span>
+                                <span class="font-weight-normal" th:text="${'(' + ship.route.durationDays + ' __#{ui.route.days}__/' + ship.route.durationNights + ' __#{ui.route.nights}__)'}"></span>
                             </p>
                             <span class="font-italic" th:unless="#{localization.lang}==UKR"  th:each="port, iterStat: ${ship.route.portsList}" >
                                 <span th:if="${iterStat.index < iterStat.size-1}" th:text="${port.nameEn + '(' + port.countryEn + ') - '}"></span>
