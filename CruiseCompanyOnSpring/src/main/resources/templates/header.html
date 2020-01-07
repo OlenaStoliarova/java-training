@@ -13,7 +13,10 @@
     </span>
 </div>
 
-<div th:fragment="logout_button" class="row justify-content-end">
+<div th:fragment="top_menu" class="row">
+    <div class="col-11">
+        <a class="btn btn-link" th:if="${#httpServletRequest.requestURI != '/main'}" href="/main" th:utext="#{ui.main.tomain}"></a>
+    </div>
     <div class="col-1">
         <form th:action="@{/logout}" method="post">
             <input type="submit" class="btn btn-link" th:value="#{ui.main.logout}" />
