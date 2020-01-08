@@ -3,7 +3,6 @@ package ua.training.cruise_company_on_spring.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.training.cruise_company_on_spring.entity.Excursion;
-import ua.training.cruise_company_on_spring.entity.Seaport;
 import ua.training.cruise_company_on_spring.repository.ExcursionRepository;
 
 import java.util.List;
@@ -18,8 +17,8 @@ public class ExcursionService {
         return excursionRepository.findAllByOrderBySeaportAsc();
     }
 
-    public List<Excursion> allExcursionsInSeaport(Seaport seaport){
-        return excursionRepository.findBySeaport(seaport);
+    public List<Excursion> allExcursionsInSeaport(Long seaportId){
+        return excursionRepository.findBySeaportId(seaportId);
     }
 
     public Excursion getExcursionById(String id) throws NoEntityFoundException {

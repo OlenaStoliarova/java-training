@@ -52,17 +52,7 @@
             <label for="seaportId" th:utext="#{ui.excursion.port}"
                    class="col-4 col-form-label"></label>
             <div class="col-8">
-                <select class="form-control" id="seaportId" name="seaportId" required>
-                    <option hidden disabled selected value>-</option>
-                    <option th:if="#{localization.lang}==UKR"
-                            th:each="seaport : ${all_seaports}"
-                            th:value="${seaport.id}" th:text="${seaport.nameUkr}"
-                            th:selected="${seaport.id}==${excursion.seaport.id}"></option>
-                    <option th:unless="#{localization.lang}==UKR"
-                            th:each="seaport : ${all_seaports}"
-                            th:value="${seaport.id}" th:text="${seaport.nameEn}"
-                            th:selected="${seaport.id}==${excursion.seaport.id}"></option>
-                </select>
+                <select th:replace="common_fragments::port_select"></select>
             </div>
         </div>
     </div>

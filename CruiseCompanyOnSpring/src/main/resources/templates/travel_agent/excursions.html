@@ -8,9 +8,17 @@
 <h2 th:utext="#{ui.excursion.all.title}" class="text-center"></h2>
 <div class="container-fluid">
     <div class="row">
-        <div class="col text-right">
+        <span class="col-6">
+            <form class="form-inline" method="get">
+                <span th:utext="#{ui.seaport}"></span>
+                <select th:replace="common_fragments::port_select"></select>
+                <input type="submit" class="btn btn-light" th:value="#{ui.button.filter}" />
+                <a class="btn btn-light" href="/travel_agent/excursions"><div th:text="#{ui.button.clear.filters}"></div></a>
+            </form>
+        </span>
+        <span class="col-6 text-right">
             <a class="btn btn-success btn-lg" href="/travel_agent/add_excursion"><div th:text="#{ui.button.add}"></div></a>
-        </div>
+        </span>
     </div>
     <div class="table-responsive">
         <table class="table table-condensed table-bordered table-hover">

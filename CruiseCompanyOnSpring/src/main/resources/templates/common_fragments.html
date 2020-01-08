@@ -1,0 +1,11 @@
+<select th:fragment="port_select" class="form-control" id="seaportId" name="seaportId" required>
+    <option hidden disabled selected value>-</option>
+    <option th:if="#{localization.lang}==UKR"
+            th:each="seaport : ${all_seaports}"
+            th:value="${seaport.id}" th:text="${seaport.nameUkr}"
+            th:selected="${seaport.id}==${excursion?.seaport?.id} OR ${seaport.id}==${#request.getParameter('seaportId')}"></option>
+    <option th:unless="#{localization.lang}==UKR"
+            th:each="seaport : ${all_seaports}"
+            th:value="${seaport.id}" th:text="${seaport.nameEn}"
+            th:selected="${seaport.id}==${excursion?.seaport?.id} OR ${seaport.id}==${#request.getParameter('seaportId')}"></option>
+</select>

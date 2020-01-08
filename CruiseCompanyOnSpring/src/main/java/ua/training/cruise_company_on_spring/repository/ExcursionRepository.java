@@ -10,6 +10,6 @@ import java.util.Optional;
 public interface ExcursionRepository extends JpaRepository<Excursion, Long> {
     List<Excursion> findAllByOrderBySeaportAsc();
 
-    List<Excursion> findBySeaport(Seaport seaport);
+    List<Excursion> findBySeaportId(Long seaportId);
     Optional<Excursion> findByNameEnAndSeaport(String nameEn, Seaport seaport);
 }

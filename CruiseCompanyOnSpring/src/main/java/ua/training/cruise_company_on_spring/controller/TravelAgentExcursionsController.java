@@ -18,8 +18,15 @@ public class TravelAgentExcursionsController {
     private SeaportService seaportService;
 
     @GetMapping("/excursions")
-    public String getAllExcursionList(Model model) {
-        model.addAttribute("all_excursions", excursionService.allExcursions());
+    public String getExcursionsList(@RequestParam(required = false) String seaportId,
+                                    Model model) {
+        if(seaportId != null){
+            model.addAttribute("all_excursions", excursionService.allExcursionsInSeaport(new Long(seaportId)));
+        }
+        else {
+            model.addAttribute("all_excursions", excursionService.allExcursions());
+        }
+        model.addAttribute("all_seaports", seaportService.allPorts());
         return "/travel_agent/excursions";
     }
 
