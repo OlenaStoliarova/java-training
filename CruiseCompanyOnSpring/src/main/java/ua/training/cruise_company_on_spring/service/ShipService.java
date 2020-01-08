@@ -25,6 +25,11 @@ public class ShipService {
                             .orElseThrow(() -> new NoEntityFoundException("There is no ship with provided id (" + id + ")"));
     }
 
+    public Ship getShipByName(String name) throws NoEntityFoundException {
+        return shipRepository.findByName(name)
+                .orElseThrow(() -> new NoEntityFoundException("There is no ship with provided name (" + name + ")"));
+    }
+
     public boolean saveShip(Ship ship){
         if ( ship.getId() == null) {
             //adding new ship
