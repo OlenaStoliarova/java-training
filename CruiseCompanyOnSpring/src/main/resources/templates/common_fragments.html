@@ -9,3 +9,14 @@
             th:value="${seaport.id}" th:text="${seaport.nameEn}"
             th:selected="${seaport.id}==${excursion?.seaport?.id} OR ${seaport.id}==${#request.getParameter('seaportId')}"></option>
 </select>
+
+<span th:fragment="route_ports_to_string" >
+    <span class="font-italic" th:unless="#{localization.lang}==UKR"  th:each="port, iterStat: ${route.portsList}" >
+        <span th:if="${iterStat.index < iterStat.size-1}" th:text="${port.nameEn + '(' + port.countryEn + ') - '}"></span>
+        <span th:if="${iterStat.index == iterStat.size-1}" th:text="${port.nameEn + '(' + port.countryEn + ')'}"></span>
+    </span>
+    <span class="font-italic" th:if="#{localization.lang}==UKR" th:each = "port, iterStat: ${route.portsList}" >
+        <span th:if="${iterStat.index < iterStat.size-1}" th:text="${port.nameUkr + '(' + port.countryUkr + ') - '}"></span>
+        <span th:if="${iterStat.index == iterStat.size-1}" th:text="${port.nameUkr + '(' + port.countryUkr + ')'}"></span>
+    </span>
+</span>
