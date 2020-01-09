@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface RouteRepository extends JpaRepository<Route, Long> {
     List<Route> findAllByOrderByNameEnAsc();
+    List<Route> findAllByOrderByDurationDaysAsc();
 
     Optional<Route> findByNameEn(String nameEn);
 }

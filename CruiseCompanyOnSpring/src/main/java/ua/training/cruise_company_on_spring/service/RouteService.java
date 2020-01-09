@@ -18,7 +18,7 @@ public class RouteService {
     private RouteRepository routeRepository;
 
     public List<RouteDTO> allRouts(){
-        List<Route> rawRouts = routeRepository.findAllByOrderByNameEnAsc();
+        List<Route> rawRouts = routeRepository.findAllByOrderByDurationDaysAsc();
         return rawRouts.stream().map(RouteService::routeToDTO).collect(Collectors.toList());
     }
 

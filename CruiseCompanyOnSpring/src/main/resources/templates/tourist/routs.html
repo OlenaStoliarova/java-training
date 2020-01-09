@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header::head"></head>
+<body>
+<div th:replace="header::lang_choice"></div>
+<div th:replace="header::top_menu"></div>
+
+<h2 th:utext="#{ui.route.all.title}" class="text-center"></h2>
+<br/>
+
+<div class="container-fluid">
+<th:block th:with="colCount=${3}">
+    <div th:each="r : ${#numbers.sequence(0, all_routs.size(), colCount)}"  class="row">
+        <div th:each="c : ${#numbers.sequence(0, colCount - 1)}" th:if="${r + c &lt; all_routs.size()}"
+             th:with="route=${all_routs.get(r + c)}" class="col-4 border rounded-lg">
+            <p th:unless="#{localization.lang}==UKR" class="font-weight-bold">
+                <a th:href="@{/tourist/route/{id}(id=${route.id})}" th:text="${route.nameEn}"></a></p>
+            <p th:if="#{localization.lang}==UKR" class="font-weight-bold">
+                <a th:href="@{/tourist/route/{id}(id=${route.id})}" th:text="${route.nameUkr}"></a></p>
+            <p class="font-weight-normal" th:text="${'(' + route.durationDays + ' __#{ui.route.days}__/' + route.durationNights + ' __#{ui.route.nights}__)'}"></p>
+            <span class="font-italic" th:unless="#{localization.lang}==UKR"  th:each="port, iterStat: ${route.portsList}" >
+                <span th:if="${iterStat.index < iterStat.size-1}" th:text="${port.nameEn + '(' + port.countryEn + ') - '}"></span>
+                <span th:if="${iterStat.index == iterStat.size-1}" th:text="${port.nameEn + '(' + port.countryEn + ')'}"></span>
+            </span>
+            <span class="font-italic" th:if="#{localization.lang}==UKR" th:each = "port, iterStat: ${route.portsList}" >
+                <span th:if="${iterStat.index < iterStat.size-1}" th:text="${port.nameUkr + '(' + port.countryUkr + ') - '}"></span>
+                <span th:if="${iterStat.index == iterStat.size-1}" th:text="${port.nameUkr + '(' + port.countryUkr + ')'}"></span>
+            </span>
+        </div>
+    </div>
+</th:block>
+</div>
+
+</body>
+</html>
