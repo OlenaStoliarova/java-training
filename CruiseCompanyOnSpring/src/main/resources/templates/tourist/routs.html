@@ -17,7 +17,7 @@
                 <a th:href="@{/tourist/route/{id}(id=${route.id})}" th:text="${route.nameEn}"></a></p>
             <p th:if="#{localization.lang}==UKR" class="font-weight-bold">
                 <a th:href="@{/tourist/route/{id}(id=${route.id})}" th:text="${route.nameUkr}"></a></p>
-            <p class="font-weight-normal" th:text="${'(' + route.durationDays + ' __#{ui.route.days}__/' + route.durationNights + ' __#{ui.route.nights}__)'}"></p>
+            <p th:insert="common_fragments::route_duration_to_string" class="font-weight-normal"></p>
             <span th:insert="common_fragments::route_ports_to_string"></span>
         </div>
     </div>

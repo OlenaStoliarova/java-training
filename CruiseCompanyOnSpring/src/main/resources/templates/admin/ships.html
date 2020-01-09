@@ -27,9 +27,8 @@
                         <td th:text="${ship.totalCapacity}"></td>
                         <td>
                             <p>
-                                <span th:unless="#{localization.lang}==UKR" class="font-weight-bold" th:text="${ship.route.nameEn}"></span>
-                                <span th:if="#{localization.lang}==UKR" class="font-weight-bold" th:text="${ship.route.nameUkr}"></span>
-                                <span class="font-weight-normal" th:text="${'(' + ship.route.durationDays + ' __#{ui.route.days}__/' + ship.route.durationNights + ' __#{ui.route.nights}__)'}"></span>
+                                <span th:insert="common_fragments::route_localized_name" th:with="route=${ship.route}" class="font-weight-bold"></span>
+                                <span th:insert="common_fragments::route_duration_to_string" th:with="route=${ship.route}" class="font-weight-normal"></span>
                             </p>
                             <span th:insert="common_fragments::route_ports_to_string" th:with="route=${ship.route}"></span>
                         </td>
