@@ -5,5 +5,31 @@
 <div th:replace="header::lang_choice"></div>
 <div th:replace="header::top_menu"></div>
 
+
+<h2 class="text-danger" th:if="${NoRouteException}!=null" th:utext="#{ui.error.route.not.found}"></h2>
+
+<span th:if="${NoRouteException}==null">
+    <h2 th:insert="common_fragments::route_localized_name" class="text-center font-weight-bold"></h2>
+    <p th:insert="common_fragments::route_duration_to_string" class="text-center font-weight-normal"></p>
+    <p th:insert="common_fragments::route_ports_to_string" class="text-center font-weight-normal"></p>
+
+    <p th:utext="#{ui.route.ships.title}"></p>
+
+    <div class="container-fluid" th:each="ship: ${ships_on_route}">
+        <div class="row">
+            <div class="col-12">
+                <a th:href="@{/tourist/route/{rid}/ship/{shid}(rid=${route.id}, shid=${ship.id})}">
+                    <h4 class="font-weight-bold bg-primary text-white" th:text="${ship.name}"></h4>
+                </a>
+                <div th:text="${'__#{ui.ship.total.capacity.title}__: ' + ship.totalCapacity}"></div>
+
+                <div th:insert="common_fragments::ship_facilities_nice" class="container bg-light text-dark"
+                     th:with="ship_extrasIds=${ship.extrasIds}"></div>
+            </div>
+        </div><br/>
+    </div>
+
+</span>
+
 </body>
 </html>

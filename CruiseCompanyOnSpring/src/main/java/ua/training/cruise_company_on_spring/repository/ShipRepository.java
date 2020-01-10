@@ -9,5 +9,9 @@ import java.util.Optional;
 public interface ShipRepository extends JpaRepository<Ship,Long> {
     List<Ship> findAllByOrderByName();
 
+    List<Ship> findAllByIdIn(Iterable<Long> ids);
+
+    List<Ship> findAllByRoute_Id(Long routeId);
+
     Optional<Ship> findByName(String name);
 }

@@ -27,6 +27,12 @@ public class RouteService {
                                 .orElseThrow(() -> new NoEntityFoundException("There is no rout with name (" + nameEn + ")"));
     }
 
+    public RouteDTO findById(Long routeId) throws NoEntityFoundException {
+        Route route = routeRepository.findById(routeId)
+                .orElseThrow(() -> new NoEntityFoundException("There is no rout with id (" + routeId + ")"));
+        return routeToDTO(route);
+    }
+
     public boolean saveRoute(Route route) {
         if ( route.getId() == null) {
             //adding new route

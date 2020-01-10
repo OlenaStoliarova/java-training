@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.training.cruise_company_on_spring.dto.ShipDTO;
 import ua.training.cruise_company_on_spring.entity.Extra;
+import ua.training.cruise_company_on_spring.entity.Route;
 import ua.training.cruise_company_on_spring.entity.Ship;
 import ua.training.cruise_company_on_spring.repository.ShipRepository;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -19,6 +19,15 @@ public class ShipService {
 
     public List<ShipDTO> allShips(){
         return shipRepository.findAllByOrderByName().stream().map(ShipService::shipToDTO).collect(Collectors.toList());}
+
+    public List<ShipDTO> allShipsByIds(List<Long> ids){
+        return shipRepository.findAllByIdIn(ids).stream().map(ShipService::shipToDTO).collect(Collectors.toList());}
+
+    public List<ShipDTO> allShipsOnRoute(Route route){
+        return allShipsOnRoute(route.getId());}
+
+    public List<ShipDTO> allShipsOnRoute(Long routeId){
+        return shipRepository.findAllByRoute_Id(routeId).stream().map(ShipService::shipToDTO).collect(Collectors.toList());}
 
     public Ship getShipById(Long id) throws NoEntityFoundException {
         return shipRepository.findById(id)
@@ -54,14 +63,11 @@ public class ShipService {
         return ShipDTO.builder()
                 .id(ship.getId())
                 .name(ship.getName())
-                .firstClassCapacity(ship.getFirstClassCapacity())
-                .secondClassCapacity(ship.getSecondClassCapacity())
-                .thirdClassCapacity(ship.getThirdClassCapacity())
                 .totalCapacity(ship.getFirstClassCapacity() + ship.getSecondClassCapacity() + ship.getThirdClassCapacity())
                 .route(RouteService.routeToDTO(ship.getRoute()))
-                .extras(ship.getExtras()
-                        .stream().sorted( Comparator.comparing(Extra::getNameEn))
-                        .collect(Collectors.toList()))
+                .extrasIds(ship.getExtras().stream()
+                            .map(Extra::getId)
+                            .collect(Collectors.toList()))
                 .build();
     }
 }

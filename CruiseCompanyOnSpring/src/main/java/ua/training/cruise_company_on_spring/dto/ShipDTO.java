@@ -1,7 +1,6 @@
 package ua.training.cruise_company_on_spring.dto;
 
 import lombok.*;
-import ua.training.cruise_company_on_spring.entity.Extra;
 
 import java.util.List;
 
@@ -16,10 +15,7 @@ public class ShipDTO {
     private String name;
 
     private int totalCapacity;
-    private int firstClassCapacity;
-    private int secondClassCapacity;
-    private int thirdClassCapacity;
 
     private RouteDTO route;
-    private List<Extra> extras;
+    private List<Long> extrasIds;
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ua.training.cruise_company_on_spring.entity.Seaport;
 import ua.training.cruise_company_on_spring.entity.UserRole;
+import ua.training.cruise_company_on_spring.service.ExtraService;
 import ua.training.cruise_company_on_spring.service.SeaportService;
 import ua.training.cruise_company_on_spring.service.ShipService;
 import ua.training.cruise_company_on_spring.service.UserService;
@@ -23,6 +24,8 @@ public class AdminController {
     private SeaportService seaportService;
     @Autowired
     private ShipService shipService;
+    @Autowired
+    private ExtraService extraService;
 
     @GetMapping("/admin/users")
     public String userList(Model model) {
@@ -63,6 +66,7 @@ public class AdminController {
     @GetMapping("/admin/ships")
     public String viewAllShips(Model model){
         model.addAttribute("all_ships",  shipService.allShips());
+        model.addAttribute("all_ship_facilities", extraService.allExtras());
         return "/admin/ships";
     }
 }

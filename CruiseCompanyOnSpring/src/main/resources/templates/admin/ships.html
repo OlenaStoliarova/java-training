@@ -32,15 +32,7 @@
                             </p>
                             <span th:insert="common_fragments::route_ports_to_string" th:with="route=${ship.route}"></span>
                         </td>
-                        <td>
-                            <span th:unless="#{localization.lang}==UKR"  th:each="facility, iterStat: ${ship.extras}" >
-                                <span th:if="${iterStat.index < iterStat.size-1}" th:text="${facility.nameEn + ', '}"></span>
-                                <span th:if="${iterStat.index == iterStat.size-1}" th:text="${facility.nameEn}"></span>
-                            </span>
-                            <span th:if="#{localization.lang}==UKR"  th:each="facility, iterStat: ${ship.extras}" >
-                                <span th:if="${iterStat.index < iterStat.size-1}" th:text="${facility.nameUkr + ', '}"></span>
-                                <span th:if="${iterStat.index == iterStat.size-1}" th:text="${facility.nameUkr}"></span>
-                            </span>
+                        <td th:insert="common_fragments::ship_facilities_nice" th:with="ship_extrasIds=${ship.extrasIds}">
                         </td>
                     </tr>
                     </tbody>
