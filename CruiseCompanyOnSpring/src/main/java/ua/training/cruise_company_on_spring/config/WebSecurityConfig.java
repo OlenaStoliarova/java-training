@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/tourist/**").hasRole("TOURIST")
                 .antMatchers("/travel_agent/**").hasRole("TRAVEL_AGENT")
                 //Доступ разрешен всем пользователей
-                .antMatchers("/", "/css/**").permitAll()
+                .antMatchers("/", "/css/**", "/imgs/**").permitAll()
                 //Все остальные страницы требуют аутентификации
                 .anyRequest().authenticated()
                 .and()
