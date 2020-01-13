@@ -16,6 +16,8 @@
                 <th>email</th>
                 <th>First name</th>
                 <th>Last name</th>
+                <th>First name (native)</th>
+                <th>Last name (native)</th>
                 <th>role</th>
             </tr>
             </thead>
@@ -25,6 +27,8 @@
                 <td th:text="${user.email}"></td>
                 <td th:text="${user.firstNameEn}"></td>
                 <td th:text="${user.lastNameEn}"></td>
+                <td th:text="${user.firstNameNative}"></td>
+                <td th:text="${user.lastNameNative}"></td>
                 <td>
                     <form th:unless="${user.email} == ${current_user}" class="form-inline" th:action="@{/admin/updateUserRole}" th:object="${user}" method="post">
                         <select class="form-control" id="userRoles" name="userRoles">

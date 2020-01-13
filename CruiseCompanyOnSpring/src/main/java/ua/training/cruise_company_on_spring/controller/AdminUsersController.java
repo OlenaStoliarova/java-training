@@ -15,7 +15,7 @@ import ua.training.cruise_company_on_spring.service.UserService;
 import java.util.Arrays;
 
 @Controller
-public class AdminController {
+public class AdminUsersController {
     @Autowired
     private UserService userService;
 

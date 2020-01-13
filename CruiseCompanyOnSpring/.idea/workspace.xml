@@ -1,41 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71f2c6bc-19de-4978-95c7-3cef884b802d" name="Default Changelist" comment="CruiseCompanyOnSpring: added nice view for ship &quot;extras&quot; (facilities)">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/CruiseCompanyOnSpringApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/config/WebMvcConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/config/WebSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/controller/AdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/controller/MainController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/entity/UserRole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/NoEntityFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/lang/messages.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/lang/messages_uk.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/global.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/admin_main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/users.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/header.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/tourist/tourist_main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/travel_agent/travel_agent_main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ua/training/cruise_company_on_spring/UserServiceTest.java" afterDir="false" />
+    <list default="true" id="71f2c6bc-19de-4978-95c7-3cef884b802d" name="Default Changelist" comment="CruiseCompanyOnSpring: re-added Seaports and Excursions with small changes">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/controller/AdminSeaportController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/controller/TravelAgentExcursionsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/entity/Excursion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/entity/Seaport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/repository/ExcursionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/repository/SeaportRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/ExcursionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/SeaportService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/seaports.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/common_fragments.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/travel_agent/add_excursion.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/travel_agent/edit_excursion.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/travel_agent/excursion_form_fragments.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/travel_agent/excursions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/controller/AdminUsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lang/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lang/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/lang/messages_uk.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lang/messages_uk.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/admin_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/admin_main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/users.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/travel_agent/travel_agent_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/travel_agent/travel_agent_main.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -388,7 +376,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578657591913</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="CruiseCompanyOnSpring: cut2. starting over">
+      <created>1578918556506</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1578918556506</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -415,8 +410,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="CruiseCompanyOnSpring: implemented ability to add Seaports from admin user interface" />
-    <MESSAGE value="CruiseCompanyOnSpring: small fixes to login.html" />
     <MESSAGE value="CruiseCompanyOnSpring: refactored &quot;add seaport&quot; form to correctly use th:object &amp; th:field" />
     <MESSAGE value="CruiseCompanyOnSpring: added entity 'Excursion' (+ corresponding repository &amp; service) and started to use it in the view for travel agent" />
     <MESSAGE value="CruiseCompanyOnSpring: moved common &lt;head&gt; fragment to header.html to reduce repetition on html pages (DRY principle)" />
@@ -440,7 +433,9 @@
     <MESSAGE value="CruiseCompanyOnSpring: added README.md with instructions on how to run project without IDE" />
     <MESSAGE value="CruiseCompanyOnSpring: bootstrap.min.css was included into project to be accessible on machine without internet access" />
     <MESSAGE value="CruiseCompanyOnSpring: added nice view for ship &quot;extras&quot; (facilities)" />
-    <option name="LAST_COMMIT_MESSAGE" value="CruiseCompanyOnSpring: added nice view for ship &quot;extras&quot; (facilities)" />
+    <MESSAGE value="CruiseCompanyOnSpring: cut2. starting over" />
+    <MESSAGE value="CruiseCompanyOnSpring: re-added Seaports and Excursions with small changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="CruiseCompanyOnSpring: re-added Seaports and Excursions with small changes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="69" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578222537901">
@@ -459,34 +454,34 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="297" y="157" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1578409205295" />
-    <state x="491" y="271" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1578918328529">
+    <state x="491" y="271" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1578956297620">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="491" y="271" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1578918328529" />
-    <state x="242" y="0" key="CommitChangelistDialog2" timestamp="1578918515094">
+    <state x="491" y="271" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1578956297620" />
+    <state x="242" y="0" key="CommitChangelistDialog2" timestamp="1578956495417">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="242" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1578918515094" />
-    <state x="33" y="28" width="1338" height="689" key="DiffContextDialog" timestamp="1578657395675">
+    <state x="242" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1578956495417" />
+    <state x="33" y="28" width="1338" height="689" key="DiffContextDialog" timestamp="1578956489915">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="33" y="28" width="1338" height="689" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1578657395675" />
-    <state width="1537" height="309" key="GridCell.Tab.0.bottom" timestamp="1578918329908">
+    <state x="33" y="28" width="1338" height="689" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1578956489915" />
+    <state width="1537" height="309" key="GridCell.Tab.0.bottom" timestamp="1578956227945">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="309" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578918329908" />
-    <state width="1537" height="309" key="GridCell.Tab.0.center" timestamp="1578918329908">
+    <state width="1537" height="309" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578956227945" />
+    <state width="1537" height="309" key="GridCell.Tab.0.center" timestamp="1578956227945">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="309" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1578918329908" />
-    <state width="1537" height="309" key="GridCell.Tab.0.left" timestamp="1578918329908">
+    <state width="1537" height="309" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1578956227945" />
+    <state width="1537" height="309" key="GridCell.Tab.0.left" timestamp="1578956227945">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="309" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1578918329908" />
-    <state width="1537" height="309" key="GridCell.Tab.0.right" timestamp="1578918329908">
+    <state width="1537" height="309" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1578956227945" />
+    <state width="1537" height="309" key="GridCell.Tab.0.right" timestamp="1578956227945">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="309" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1578918329908" />
+    <state width="1537" height="309" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1578956227945" />
     <state width="1537" height="349" key="GridCell.Tab.1.bottom" timestamp="1578595575213">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -511,10 +506,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="279" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1578683156211" />
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1578657639646">
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1578918565680">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1578657639646" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1578918565680" />
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578084067700">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

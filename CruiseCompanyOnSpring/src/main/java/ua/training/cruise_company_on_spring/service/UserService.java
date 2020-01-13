@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import ua.training.cruise_company_on_spring.CruiseCompanyOnSpringApplication;
 import ua.training.cruise_company_on_spring.entity.User;
 import ua.training.cruise_company_on_spring.entity.UserRole;
 import ua.training.cruise_company_on_spring.repository.UserRepository;
@@ -20,7 +19,7 @@ import java.util.List;
 
 @Service
 public class UserService implements UserDetailsService {
-    private static final Logger LOGGER= LoggerFactory.getLogger(CruiseCompanyOnSpringApplication.class);
+    private static final Logger LOGGER= LoggerFactory.getLogger(UserService.class);
 
     @PersistenceContext
     private EntityManager em;
