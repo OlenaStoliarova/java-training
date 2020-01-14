@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71f2c6bc-19de-4978-95c7-3cef884b802d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/entity/Extra.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/entity/Ship.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/repository/ExtraRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/repository/ShipRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/ExtraService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/ShipService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ua/training/cruise_company_on_spring/ShipServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/lang/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lang/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/lang/messages_uk.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lang/messages_uk.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +58,7 @@
       <recent name="D:\JavaPractice\GitHub\java-training\CruiseCompanyOnSpring\src\test\java\ua\training\cruise_company_on_spring" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CruiseCompanyOnSpringApplication">
+  <component name="RunManager" selected="JUnit.ShipServiceTest.addShips">
     <configuration name="CruiseCompanyOnSpringApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ua.training.cruise_company_on_spring.CruiseCompanyOnSpringApplication" />
       <module name="CruiseCompanyOnSpring" />
@@ -83,22 +88,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ShipServiceTest.addShip5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CruiseCompanyOnSpring" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ua.training.cruise_company_on_spring.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ua.training.cruise_company_on_spring" />
-      <option name="MAIN_CLASS_NAME" value="ua.training.cruise_company_on_spring.ShipServiceTest" />
-      <option name="METHOD_NAME" value="addShip5" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ShipServiceTest.addShip6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CruiseCompanyOnSpring" />
       <extension name="coverage">
@@ -110,6 +99,22 @@
       <option name="PACKAGE_NAME" value="ua.training.cruise_company_on_spring" />
       <option name="MAIN_CLASS_NAME" value="ua.training.cruise_company_on_spring.ShipServiceTest" />
       <option name="METHOD_NAME" value="addShip6" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShipServiceTest.addShips" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CruiseCompanyOnSpring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ua.training.cruise_company_on_spring.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ua.training.cruise_company_on_spring" />
+      <option name="MAIN_CLASS_NAME" value="ua.training.cruise_company_on_spring.ShipServiceTest" />
+      <option name="METHOD_NAME" value="addShips" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -133,11 +138,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ShipServiceTest.addShips" />
         <item itemvalue="Application.CruiseCompanyOnSpringApplication" />
         <item itemvalue="JUnit.UserServiceTest.addNewUser" />
         <item itemvalue="JUnit.CruiseServiceTest.addCruise" />
         <item itemvalue="JUnit.ShipServiceTest.addShip6" />
-        <item itemvalue="JUnit.ShipServiceTest.addShip5" />
       </list>
     </recent_temporary>
   </component>
@@ -374,7 +379,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578956516902</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="CruiseCompanyOnSpring: messages.properties files were restructured">
+      <created>1578993237572</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1578993237572</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -401,7 +413,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="CruiseCompanyOnSpring: refactored &quot;add seaport&quot; form to correctly use th:object &amp; th:field" />
     <MESSAGE value="CruiseCompanyOnSpring: added entity 'Excursion' (+ corresponding repository &amp; service) and started to use it in the view for travel agent" />
     <MESSAGE value="CruiseCompanyOnSpring: moved common &lt;head&gt; fragment to header.html to reduce repetition on html pages (DRY principle)" />
     <MESSAGE value="CruiseCompanyOnSpring: added price localization in excursions list view" />
@@ -426,7 +437,8 @@
     <MESSAGE value="CruiseCompanyOnSpring: added nice view for ship &quot;extras&quot; (facilities)" />
     <MESSAGE value="CruiseCompanyOnSpring: cut2. starting over" />
     <MESSAGE value="CruiseCompanyOnSpring: re-added Seaports and Excursions with small changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="CruiseCompanyOnSpring: re-added Seaports and Excursions with small changes" />
+    <MESSAGE value="CruiseCompanyOnSpring: messages.properties files were restructured" />
+    <option name="LAST_COMMIT_MESSAGE" value="CruiseCompanyOnSpring: messages.properties files were restructured" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="69" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578222537901">
@@ -449,30 +461,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="491" y="271" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1578956297620" />
-    <state x="242" y="0" key="CommitChangelistDialog2" timestamp="1578956513414">
+    <state x="242" y="0" key="CommitChangelistDialog2" timestamp="1578993235031">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="242" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1578956513414" />
-    <state x="33" y="28" width="1338" height="689" key="DiffContextDialog" timestamp="1578956489915">
+    <state x="242" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1578993235031" />
+    <state x="33" y="28" width="1338" height="689" key="DiffContextDialog" timestamp="1578993192161">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="33" y="28" width="1338" height="689" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1578956489915" />
-    <state width="1537" height="309" key="GridCell.Tab.0.bottom" timestamp="1578957057884">
+    <state x="33" y="28" width="1338" height="689" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1578993192161" />
+    <state width="1537" height="309" key="GridCell.Tab.0.bottom" timestamp="1578997110172">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="309" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578957057884" />
-    <state width="1537" height="309" key="GridCell.Tab.0.center" timestamp="1578957057884">
+    <state width="1537" height="309" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578997110172" />
+    <state width="1537" height="309" key="GridCell.Tab.0.center" timestamp="1578997110172">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="309" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1578957057884" />
-    <state width="1537" height="309" key="GridCell.Tab.0.left" timestamp="1578957057884">
+    <state width="1537" height="309" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1578997110172" />
+    <state width="1537" height="309" key="GridCell.Tab.0.left" timestamp="1578997110172">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="309" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1578957057884" />
-    <state width="1537" height="309" key="GridCell.Tab.0.right" timestamp="1578957057884">
+    <state width="1537" height="309" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1578997110172" />
+    <state width="1537" height="309" key="GridCell.Tab.0.right" timestamp="1578997110172">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="309" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1578957057884" />
+    <state width="1537" height="309" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1578997110172" />
     <state width="1537" height="349" key="GridCell.Tab.1.bottom" timestamp="1578595575213">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
