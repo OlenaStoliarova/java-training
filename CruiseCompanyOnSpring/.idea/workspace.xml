@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="10" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="71f2c6bc-19de-4978-95c7-3cef884b802d" name="Default Changelist" comment="CruiseCompanyOnSpring: re-added Seaports and Excursions with small changes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/controller/AdminSeaportController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/controller/TravelAgentExcursionsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/entity/Excursion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/entity/Seaport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/repository/ExcursionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/repository/SeaportRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/ExcursionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/SeaportService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/seaports.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/common_fragments.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/travel_agent/add_excursion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/travel_agent/edit_excursion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/travel_agent/excursion_form_fragments.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/travel_agent/excursions.html" afterDir="false" />
+    <list default="true" id="71f2c6bc-19de-4978-95c7-3cef884b802d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/controller/AdminUsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/lang/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lang/messages.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/lang/messages_uk.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/lang/messages_uk.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/admin_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/admin_main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/users.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/travel_agent/travel_agent_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/travel_agent/travel_agent_main.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -383,7 +367,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578918556506</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="CruiseCompanyOnSpring: re-added Seaports and Excursions with small changes">
+      <created>1578956516902</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1578956516902</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -458,30 +449,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="491" y="271" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1578956297620" />
-    <state x="242" y="0" key="CommitChangelistDialog2" timestamp="1578956495417">
+    <state x="242" y="0" key="CommitChangelistDialog2" timestamp="1578956513414">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="242" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1578956495417" />
+    <state x="242" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1578956513414" />
     <state x="33" y="28" width="1338" height="689" key="DiffContextDialog" timestamp="1578956489915">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="33" y="28" width="1338" height="689" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1578956489915" />
-    <state width="1537" height="309" key="GridCell.Tab.0.bottom" timestamp="1578956227945">
+    <state width="1537" height="309" key="GridCell.Tab.0.bottom" timestamp="1578957057884">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="309" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578956227945" />
-    <state width="1537" height="309" key="GridCell.Tab.0.center" timestamp="1578956227945">
+    <state width="1537" height="309" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578957057884" />
+    <state width="1537" height="309" key="GridCell.Tab.0.center" timestamp="1578957057884">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="309" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1578956227945" />
-    <state width="1537" height="309" key="GridCell.Tab.0.left" timestamp="1578956227945">
+    <state width="1537" height="309" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1578957057884" />
+    <state width="1537" height="309" key="GridCell.Tab.0.left" timestamp="1578957057884">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="309" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1578956227945" />
-    <state width="1537" height="309" key="GridCell.Tab.0.right" timestamp="1578956227945">
+    <state width="1537" height="309" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1578957057884" />
+    <state width="1537" height="309" key="GridCell.Tab.0.right" timestamp="1578957057884">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="309" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1578956227945" />
+    <state width="1537" height="309" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1578957057884" />
     <state width="1537" height="349" key="GridCell.Tab.1.bottom" timestamp="1578595575213">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -506,10 +497,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="279" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1578683156211" />
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1578918565680">
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1578956522228">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1578918565680" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1578956522228" />
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578084067700">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
