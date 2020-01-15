@@ -7,6 +7,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -34,6 +35,7 @@ public class Cruise {
     private BigDecimal price;
 
     @Column(nullable = false)
+    @Min(value=0)
     private int vacancies;
 
     public Cruise() {

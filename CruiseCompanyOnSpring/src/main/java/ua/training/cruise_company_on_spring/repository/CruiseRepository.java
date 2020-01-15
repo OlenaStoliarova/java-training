@@ -9,5 +9,5 @@ import java.util.List;
 public interface CruiseRepository extends JpaRepository<Cruise, Long> {
     List<Cruise> findAllByOrderByStartingDateAsc();
 
-    List<Cruise> findByStartingDateGreaterThanEqual(LocalDate date);
+    List<Cruise> findByStartingDateGreaterThanEqualOrderByStartingDateAsc(LocalDate date);
 }

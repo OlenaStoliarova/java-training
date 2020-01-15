@@ -12,4 +12,7 @@ public interface ExcursionRepository extends JpaRepository<Excursion, Long> {
 
     List<Excursion> findBySeaportId(Long seaportId);
     Optional<Excursion> findByNameEnAndSeaport(String nameEn, Seaport seaport);
+
+    List<Excursion> findBySeaport_IdIn(Iterable<Long> ids);
+    List<Excursion> findByIdIn(Iterable<Long> ids);
 }
