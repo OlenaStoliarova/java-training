@@ -10,4 +10,5 @@ public interface CruiseRepository extends JpaRepository<Cruise, Long> {
     List<Cruise> findAllByOrderByStartingDateAsc();
 
     List<Cruise> findByStartingDateGreaterThanEqualOrderByStartingDateAsc(LocalDate date);
+    List<Cruise> findAllByStartingDateGreaterThanEqualAndVacanciesGreaterThanOrderByStartingDateAsc(LocalDate date, int minVacancies);
 }

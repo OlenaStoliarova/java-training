@@ -27,7 +27,7 @@ public class OrderCruiseService {
 
 
     public List<CruiseDTO> allCruisesFromToday() {
-        List<Cruise> cruises = cruiseRepository.findByStartingDateGreaterThanEqualOrderByStartingDateAsc(LocalDate.now());
+        List<Cruise> cruises = cruiseRepository.findAllByStartingDateGreaterThanEqualAndVacanciesGreaterThanOrderByStartingDateAsc(LocalDate.now(), 0);
         return cruises.stream().map(OrderCruiseService::cruiseToDTO).collect(Collectors.toList());
     }
 
