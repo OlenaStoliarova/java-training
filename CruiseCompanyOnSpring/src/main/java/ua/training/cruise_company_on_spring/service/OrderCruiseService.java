@@ -3,6 +3,9 @@ package ua.training.cruise_company_on_spring.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ua.training.cruise_company_on_spring.dto.CruiseDTO;
@@ -26,9 +29,12 @@ public class OrderCruiseService {
     private OrderRepository orderRepository;
 
 
-    public List<CruiseDTO> allCruisesFromToday() {
-        List<Cruise> cruises = cruiseRepository.findAllByStartingDateGreaterThanEqualAndVacanciesGreaterThanOrderByStartingDateAsc(LocalDate.now(), 0);
-        return cruises.stream().map(OrderCruiseService::cruiseToDTO).collect(Collectors.toList());
+    public Page<CruiseDTO> allCruisesFromTodayPaginated(Pageable pageable) {
+        Page<Cruise> cruises = cruiseRepository.findAllByStartingDateGreaterThanEqualAndVacanciesGreaterThanOrderByStartingDateAsc(LocalDate.now(), 0, pageable);
+        List<CruiseDTO> curPageDTO = cruises.getContent().stream()
+                .map(OrderCruiseService::cruiseToDTO)
+                .collect(Collectors.toList());
+        return new PageImpl<>(curPageDTO, pageable, cruises.getTotalElements());
     }
 
     @Transactional
