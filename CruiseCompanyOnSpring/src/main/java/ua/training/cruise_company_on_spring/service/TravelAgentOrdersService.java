@@ -3,65 +3,57 @@ package ua.training.cruise_company_on_spring.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ua.training.cruise_company_on_spring.dto.UserOrderDTO;
-import ua.training.cruise_company_on_spring.entity.*;
-import ua.training.cruise_company_on_spring.repository.ExcursionRepository;
+import ua.training.cruise_company_on_spring.dto.TravelAgentOrderDTO;
+import ua.training.cruise_company_on_spring.entity.Excursion;
+import ua.training.cruise_company_on_spring.entity.Extra;
+import ua.training.cruise_company_on_spring.entity.Order;
+import ua.training.cruise_company_on_spring.entity.OrderStatus;
+import ua.training.cruise_company_on_spring.repository.ExtraRepository;
 import ua.training.cruise_company_on_spring.repository.OrderRepository;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class TouristOrdersService {
+public class TravelAgentOrdersService {
     @Autowired
     private OrderRepository orderRepository;
     @Autowired
-    private ExcursionRepository excursionRepository;
+    private ExtraRepository extraRepository;
 
-    public List<UserOrderDTO> allOrdersOfUser(Long userId) {
-        return orderRepository.findByUser_IdOrderByCreationDateDesc(userId).stream().map(TouristOrdersService::orderToDTO).collect(Collectors.toList());
+
+    public List<TravelAgentOrderDTO> allOrders() {
+        return orderRepository.findAllByOrderByCreationDateDesc().stream().map(TravelAgentOrdersService::orderToDTO).collect(Collectors.toList());
     }
 
-    public void payOrder(Long orderId){
-        Optional<Order> orderFromDB = orderRepository.findById(orderId);
-
-        if (orderFromDB.isPresent()) {
-            Order order = orderFromDB.get();
-            order.setStatus(OrderStatus.PAID);
-            orderRepository.save(order);
-        }
-    }
-
-    public List<Excursion> allExcursionsForCruise(Long orderId) throws NoEntityFoundException {
+    public List<Extra> allBonusesForCruise(Long orderId) throws NoEntityFoundException {
         Order order = orderRepository.findById(orderId).orElseThrow(() -> new NoEntityFoundException("There is no order with provided id (" + orderId + ")"));
-        List<Long> portIds = order.getCruise().getShip().getVisitingPorts().stream().map(Seaport::getId).collect(Collectors.toList());
-        return excursionRepository.findBySeaport_IdIn(portIds);
+        return new ArrayList<>(order.getCruise().getShip().getExtras());
     }
 
     @Transactional
-    public void addExcursionsToOrder(Long orderId, List<Long> excursionsIds) throws NoEntityFoundException {
+    public void addBonusesToOrder(Long orderId, List<Long> bonusesIds) throws NoEntityFoundException {
         Order order = orderRepository.findById(orderId).orElseThrow(() -> new NoEntityFoundException("There is no order with provided id (" + orderId + ")"));
-        if( ! excursionsIds.isEmpty()){
-            Set<Excursion> excursionsSet = new HashSet<>(excursionRepository.findByIdIn(excursionsIds));
-            order.setExcursions(excursionsSet);
+        if( ! bonusesIds.isEmpty()){
+            Set<Extra> extras = new HashSet<>( extraRepository.findAllById(bonusesIds));
+            order.setFreeExtras(extras);
         }
-        order.setStatus(OrderStatus.EXCURSIONS_ADDED);
+        order.setStatus(OrderStatus.EXTRAS_ADDED);
         orderRepository.save(order);
     }
 
 
-    static UserOrderDTO orderToDTO(Order order){
-        UserOrderDTO result = UserOrderDTO.builder()
+    static TravelAgentOrderDTO orderToDTO(Order order){
+        TravelAgentOrderDTO result = TravelAgentOrderDTO.builder()
                 .orderId(order.getId())
+                .clientEmail( order.getUser().getEmail())
                 .orderDate(order.getCreationDate())
-                .routeNameEn(order.getCruise().getShip().getRouteNameEn())
-                .routeNameUkr(order.getCruise().getShip().getRouteNameUkr())
-                .cruiseStartingDate(order.getCruise().getStartingDate())
-                .cruiseFinishingDate( order.getCruise().getStartingDate().plusDays( order.getCruise().getShip().getOneTripDurationDays()))
                 .quantity(order.getQuantity())
+                .shipName( order.getCruise().getShip().getName())
+                .cruiseStartingDate(order.getCruise().getStartingDate())
                 .totalPrice(order.getTotalPrice())
                 .status(order.getStatus())
                 .build();
@@ -106,5 +98,6 @@ public class TouristOrdersService {
 
         return result;
     }
+
 
 }
