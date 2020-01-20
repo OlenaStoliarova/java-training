@@ -98,6 +98,4 @@ public class TravelAgentOrdersService {
 
         return result;
     }
-
-
 }

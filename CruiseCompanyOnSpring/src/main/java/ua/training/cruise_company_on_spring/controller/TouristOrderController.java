@@ -66,5 +66,10 @@ public class TouristOrderController {
         }
     }
 
-
+    //http://localhost:8080/tourist/print_order/9
+    @GetMapping ("/print_order/{orderId}")
+    @ResponseBody
+    public String showPrintPromise(@PathVariable Long orderId){
+        return "TO DO: finish this";
+    }
 }

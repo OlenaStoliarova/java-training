@@ -25,6 +25,7 @@ public class TouristOrdersService {
         return orderRepository.findByUser_IdOrderByCreationDateDesc(userId).stream().map(TouristOrdersService::orderToDTO).collect(Collectors.toList());
     }
 
+    @Transactional
     public void payOrder(Long orderId){
         Optional<Order> orderFromDB = orderRepository.findById(orderId);
 

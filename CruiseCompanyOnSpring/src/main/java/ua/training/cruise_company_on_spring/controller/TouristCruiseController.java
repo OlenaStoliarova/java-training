@@ -24,23 +24,16 @@ import java.util.stream.IntStream;
 @Controller
 @RequestMapping("/tourist")
 public class TouristCruiseController {
+    public static final int DEFAULT_PAGE_SIZE_FOR_CRUISE_LIST = 6;
+
     @Autowired
     private OrderCruiseService orderCruiseService;
 
     @GetMapping("/cruises")
     public String getAllPortsList(Model model,
-                                  @PageableDefault(size = 6) Pageable pageable)  {
-        Page<CruiseDTO> cruisesPage = orderCruiseService.allCruisesFromTodayPaginated( pageable);
+                                  @PageableDefault(size = DEFAULT_PAGE_SIZE_FOR_CRUISE_LIST) Pageable pageable)  {
+        Page<CruiseDTO> cruisesPage = orderCruiseService.allCruisesFromTodayPaginated( pageable.previousOrFirst());
         model.addAttribute("cruises", cruisesPage);
-
-        int totalPages = cruisesPage.getTotalPages();
-        if (totalPages > 0) {
-            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-                    .boxed()
-                    .collect(Collectors.toList());
-            model.addAttribute("pageNumbers", pageNumbers);
-        }
-
         return "/tourist/cruises";
     }
 

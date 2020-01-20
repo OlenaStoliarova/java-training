@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ua.training.cruise_company_on_spring.entity.User;
 import ua.training.cruise_company_on_spring.entity.UserRole;
 import ua.training.cruise_company_on_spring.repository.UserRepository;
@@ -54,6 +55,7 @@ public class UserService implements UserDetailsService {
         return true;
     }
 
+    @Transactional
     public boolean updateUserRole(String email, UserRole newRole) throws NoEntityFoundException {
         User userFromDB = userRepository.findByEmail(email)
                 .orElseThrow(() -> new NoEntityFoundException("User with provided email was not found: " + email));
