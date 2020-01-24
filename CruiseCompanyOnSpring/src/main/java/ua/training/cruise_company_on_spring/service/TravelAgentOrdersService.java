@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ua.training.cruise_company_on_spring.dto.TravelAgentOrderDTO;
-import ua.training.cruise_company_on_spring.entity.Excursion;
+import ua.training.cruise_company_on_spring.dto.utility.OrderDTOConvertUtils;
 import ua.training.cruise_company_on_spring.entity.Extra;
 import ua.training.cruise_company_on_spring.entity.Order;
 import ua.training.cruise_company_on_spring.entity.OrderStatus;
@@ -47,7 +47,7 @@ public class TravelAgentOrdersService {
 
 
     static TravelAgentOrderDTO orderToDTO(Order order){
-        TravelAgentOrderDTO result = TravelAgentOrderDTO.builder()
+        return TravelAgentOrderDTO.builder()
                 .orderId(order.getId())
                 .clientEmail( order.getUser().getEmail())
                 .orderDate(order.getCreationDate())
@@ -56,46 +56,10 @@ public class TravelAgentOrdersService {
                 .cruiseStartingDate(order.getCruise().getStartingDate())
                 .totalPrice(order.getTotalPrice())
                 .status(order.getStatus())
+                .addedExcursionsEn(OrderDTOConvertUtils.convertOrderExcursionsToString(order, "En"))
+                .addedExcursionsUkr(OrderDTOConvertUtils.convertOrderExcursionsToString(order, "Ukr"))
+                .freeExtrasEn(OrderDTOConvertUtils.convertOrderFreeExtrasToString(order, "En"))
+                .freeExtrasUkr(OrderDTOConvertUtils.convertOrderFreeExtrasToString(order, "Ukr"))
                 .build();
-
-        if( !order.getExcursions().isEmpty()){
-            Set<Excursion> excursions = order.getExcursions();
-            StringBuilder excursionsEn = new StringBuilder();
-            StringBuilder excursionsUkr = new StringBuilder();
-            for( Excursion excursion: excursions){
-                excursionsEn.append(excursion.getNameEn());
-                excursionsEn.append(", ");
-                excursionsUkr.append(excursion.getNameUkr());
-                excursionsUkr.append(", ");
-            }
-            excursionsEn.replace( excursionsEn.lastIndexOf(","), excursionsEn.length(), "");
-            excursionsUkr.replace( excursionsUkr.lastIndexOf(","), excursionsUkr.length(), "");
-            result.setAddedExcursionsEn(excursionsEn.toString());
-            result.setAddedExcursionsUkr(excursionsUkr.toString());
-        } else if (order.getStatus().compareTo( OrderStatus.EXCURSIONS_ADDED) >= 0){
-            result.setAddedExcursionsEn("-");
-            result.setAddedExcursionsUkr("-");
-        }
-
-        if( !order.getFreeExtras().isEmpty()){
-            Set<Extra> extras = order.getFreeExtras();
-            StringBuilder extrasEn = new StringBuilder();
-            StringBuilder extrasUkr = new StringBuilder();
-            for( Extra bonus: extras){
-                extrasEn.append( bonus.getNameEn());
-                extrasEn.append(", ");
-                extrasUkr.append( bonus.getNameUkr());
-                extrasUkr.append(", ");
-            }
-            extrasEn.replace( extrasEn.lastIndexOf(","), extrasEn.length(), "");
-            extrasUkr.replace( extrasUkr.lastIndexOf(","), extrasUkr.length(), "");
-            result.setFreeExtrasEn(extrasEn.toString());
-            result.setFreeExtrasUkr(extrasUkr.toString());
-        } else if (order.getStatus() == OrderStatus.EXTRAS_ADDED){
-            result.setFreeExtrasEn("-");
-            result.setFreeExtrasUkr("-");
-        }
-
-        return result;
     }
 }

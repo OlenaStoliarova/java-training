@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71f2c6bc-19de-4978-95c7-3cef884b802d" name="Default Changelist" comment="CruiseCompanyOnSpring: small improvements">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/dto/utility/OrderDTOConvertUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/controller/TouristCruiseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/controller/TouristCruiseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/controller/TouristOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/controller/TouristOrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/TouristOrdersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/TouristOrdersService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/TravelAgentOrdersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/TravelAgentOrdersService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/cruise_company_on_spring/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tourist/cruises.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tourist/cruises.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +20,8 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -427,7 +424,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579096902820</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="CruiseCompanyOnSpring: small improvements">
+      <created>1579529256591</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1579529256591</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -498,34 +502,34 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="297" y="157" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1578409205295" />
-    <state x="491" y="271" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1579255195427">
+    <state x="491" y="271" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1579867427068">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="491" y="271" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1579255195427" />
-    <state x="242" y="0" key="CommitChangelistDialog2" timestamp="1579529239521">
+    <state x="491" y="271" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1579867427068" />
+    <state x="242" y="0" key="CommitChangelistDialog2" timestamp="1579867128772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="242" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579529239521" />
-    <state x="33" y="28" width="1338" height="689" key="DiffContextDialog" timestamp="1579529232335">
+    <state x="242" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579867128772" />
+    <state x="33" y="28" width="1338" height="689" key="DiffContextDialog" timestamp="1579867127092">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="33" y="28" width="1338" height="689" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1579529232335" />
-    <state width="1537" height="309" key="GridCell.Tab.0.bottom" timestamp="1579529149697">
+    <state x="33" y="28" width="1338" height="689" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1579867127092" />
+    <state width="1537" height="309" key="GridCell.Tab.0.bottom" timestamp="1579867328561">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="309" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579529149697" />
-    <state width="1537" height="309" key="GridCell.Tab.0.center" timestamp="1579529149697">
+    <state width="1537" height="309" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579867328561" />
+    <state width="1537" height="309" key="GridCell.Tab.0.center" timestamp="1579867328560">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="309" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579529149697" />
-    <state width="1537" height="309" key="GridCell.Tab.0.left" timestamp="1579529149697">
+    <state width="1537" height="309" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579867328560" />
+    <state width="1537" height="309" key="GridCell.Tab.0.left" timestamp="1579867328560">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="309" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579529149697" />
-    <state width="1537" height="309" key="GridCell.Tab.0.right" timestamp="1579529149697">
+    <state width="1537" height="309" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579867328560" />
+    <state width="1537" height="309" key="GridCell.Tab.0.right" timestamp="1579867328561">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="309" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579529149697" />
+    <state width="1537" height="309" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579867328561" />
     <state width="1537" height="349" key="GridCell.Tab.1.bottom" timestamp="1579099031037">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -550,10 +554,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="279" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1579303710235" />
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1579096909175">
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1579529373779">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1579096909175" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1579529373779" />
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578084067700">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
