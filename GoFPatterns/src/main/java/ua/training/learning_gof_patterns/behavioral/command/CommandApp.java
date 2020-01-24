@@ -1,4 +1,4 @@
-package ua.training.learning_gof_patterns.behavioral;
+package ua.training.learning_gof_patterns.behavioral.command;
 
 public class CommandApp {
     public static void main(String[] args) {
