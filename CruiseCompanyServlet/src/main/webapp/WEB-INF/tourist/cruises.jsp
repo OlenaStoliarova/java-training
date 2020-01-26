@@ -10,11 +10,9 @@
 <body>
 <%@ include file="/WEB-INF/fragments/langlinks.jsp" %>
 
+<a href="${pageContext.request.contextPath}/main"><fmt:message key="ui.main.tomain" /></a>
 
-<h2><fmt:message key="ui.tourist.hello"/></h2>
-
-<br/>
-<a href="${pageContext.request.contextPath}/tourist/cruises"><fmt:message key="ui.cruises.view" /></a>
+<h2><fmt:message key="ui.cruise.all.title" /></h2>
 
 </body>
 </html>
