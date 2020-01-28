@@ -30,17 +30,13 @@ public class JDBCUserDao implements UserDao {
     }
 
     @Override
-    public Optional<User> findByEmail(String email) {
+    public Optional<User> findByEmail(String email) throws SQLException {
         String selectUserByEmail = "SELECT * FROM users WHERE email=\"" + email + "\"";
 
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(selectUserByEmail);
-            if (resultSet.next()) {
-                return Optional.of( extractFromResultSet(resultSet) );
-            }
-        }catch (Exception e){
-            throw new RuntimeException(e);
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(selectUserByEmail);
+        if (resultSet.next()) {
+            return Optional.of(extractFromResultSet(resultSet));
         }
 
         return Optional.empty();

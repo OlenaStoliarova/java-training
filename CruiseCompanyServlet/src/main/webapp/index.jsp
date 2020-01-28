@@ -17,7 +17,7 @@
 <br/><br/>
 <div class="container">
     <h2><fmt:message key="ui.main.greeting" /></h2>
-    <a class="btn btn-info" href="${pageContext.request.contextPath}/app/login">Login</a>
+    <a class="btn btn-info" href="${pageContext.request.contextPath}/app/login"><fmt:message key="ui.login.login"/></a>
 </div>
 
 </body>

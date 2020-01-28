@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <br/>
-            <c:if test = "${param.error} != null">
+            <c:if test = "${unknown_user == true}">
                 <div class="text-danger">
                     <fmt:message key="ui.login.error" />
                 </div>
@@ -27,7 +27,7 @@
                     <form action="${pageContext.request.contextPath}/app/login" method="post">
                         <div class="form-group">
                             <label for="username"><fmt:message key="ui.login.userName" /></label>
-                            <input type="email" class="form-control" id="username" name="username" required="required">
+                            <input type="email" class="form-control" id="username" name="username" required="required" value="${param.username}">
                         </div>
                         <div class="form-group">
                             <label for="password"><fmt:message key="ui.login.password" /></label>
