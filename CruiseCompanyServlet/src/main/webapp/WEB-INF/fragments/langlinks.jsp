@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <div class="langsDiv">
-    <c:url value="${pageContext.request.requestURL}" var="oldParams">
+    <c:url value="" var="oldParams">
        <c:forEach items="${param}" var="entry">
                <c:if test="${entry.key != 'lang'}">
                    <c:param name="${entry.key}" value="${entry.value}" />

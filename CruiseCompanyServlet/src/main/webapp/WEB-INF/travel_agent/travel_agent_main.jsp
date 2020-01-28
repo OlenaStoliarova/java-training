@@ -11,7 +11,8 @@
 <body>
 <%@ include file="/WEB-INF/fragments/langlinks.jsp" %>
 
-
+<a href="${pageContext.request.contextPath}/app/logout"><fmt:message key="ui.main.logout" /></a>
+<br/>
 <h2><fmt:message key="ui.travelagent.hello" /></h2>
 
 </body>

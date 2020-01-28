@@ -8,12 +8,16 @@
 <html lang="${sessionScope.lang}">
 <%@ include file="/WEB-INF/fragments/head.jsp" %>
 <body>
-<%@ include file="/WEB-INF/fragments/langlinks.jsp" %>
+<div class="langsDiv">
+    <a class="langlinks" href="?lang=en">English</a>
+    &nbsp;|&nbsp;
+    <a class="langlinks" href="?lang=uk">Українська</a>
+</div>
 
 <br/><br/>
 <div class="container">
     <h2><fmt:message key="ui.main.greeting" /></h2>
-    <a class="btn btn-info" href="main">Login</a>
+    <a class="btn btn-info" href="${pageContext.request.contextPath}/app/login">Login</a>
 </div>
 
 </body>

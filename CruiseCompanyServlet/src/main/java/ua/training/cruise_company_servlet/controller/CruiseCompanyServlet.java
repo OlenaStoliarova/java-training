@@ -3,9 +3,7 @@ package ua.training.cruise_company_servlet.controller;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-import ua.training.cruise_company_servlet.controller.command.Command;
-import ua.training.cruise_company_servlet.controller.command.ToMainPageCommand;
-import ua.training.cruise_company_servlet.controller.command.TouristCruisesCommand;
+import ua.training.cruise_company_servlet.controller.command.*;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -22,6 +20,8 @@ public class CruiseCompanyServlet extends HttpServlet {
     private Map<String, Command> commands = new HashMap<>();
 
     public void init(ServletConfig servletConfig){
+        commands.put("login", new LoginCommand());
+        commands.put("logout", new LogoutCommand());
         commands.put("main", new ToMainPageCommand());
         commands.put("tourist/cruises", new TouristCruisesCommand());
     }
@@ -36,11 +36,18 @@ public class CruiseCompanyServlet extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String path = request.getRequestURI();
-        path = path.replaceFirst("/" , "");
+        path = path.replaceAll(".*/app/" , "");
         Command command = commands.getOrDefault(path , (r)->"/index.jsp");
         logger.info(command.getClass().getName());
         String page = command.execute(request);
-        //request.getRequestDispatcher(page).forward(request,response);
-        request.getServletContext().getRequestDispatcher("/WEB-INF" + page).forward(request, response);
+
+        if( page.startsWith("redirect:")){
+            page = page.replaceFirst("redirect:", "");
+            response.sendRedirect(page);
+        }
+        else {
+            request.getRequestDispatcher(page).forward(request, response);
+            //request.getServletContext().getRequestDispatcher(page).forward(request, response);
+        }
     }
 }

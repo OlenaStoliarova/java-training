@@ -13,8 +13,10 @@
 
 <h2><fmt:message key="ui.tourist.hello"/></h2>
 
+<a href="${pageContext.request.contextPath}/app/logout"><fmt:message key="ui.main.logout" /></a>
+
 <br/>
-<a href="${pageContext.request.contextPath}/tourist/cruises"><fmt:message key="ui.cruises.view" /></a>
+<a href="${pageContext.request.contextPath}/app/tourist/cruises"><fmt:message key="ui.cruises.view" /></a>
 
 </body>
 </html>
