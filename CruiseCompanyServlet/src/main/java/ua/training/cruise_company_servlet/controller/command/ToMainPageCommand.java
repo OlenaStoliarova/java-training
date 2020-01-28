@@ -21,11 +21,11 @@ public class ToMainPageCommand implements Command{
         }
 
         if( curUserRole.equals( UserRole.ROLE_ADMIN ))
-            return "/WEB-INF/admin/admin_main.jsp";
+            return "/WEB-INF/admin/adminMain.jsp";
         if( curUserRole.equals( UserRole.ROLE_TRAVEL_AGENT))
-            return "/WEB-INF/travel_agent/travel_agent_main.jsp";
+            return "/WEB-INF/travel_agent/travelAgentMain.jsp";
         if( curUserRole.equals( UserRole.ROLE_TOURIST))
-            return "/WEB-INF/tourist/tourist_main.jsp";
+            return "/WEB-INF/tourist/touristMain.jsp";
 
          return "redirect:/";
     }
