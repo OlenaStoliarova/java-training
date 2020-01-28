@@ -37,7 +37,12 @@ public class CruiseCompanyServlet extends HttpServlet {
             throws ServletException, IOException {
         String path = request.getRequestURI();
         path = path.replaceAll(".*/app/" , "");
-        Command command = commands.getOrDefault(path , (r)->"/index.jsp");
+        Command command = commands.get(path);
+        if(command == null){
+            logger.warn("non existing page request (" + path + ")");
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
         logger.info(command.getClass().getName());
         String page = command.execute(request);
 
@@ -52,7 +57,6 @@ public class CruiseCompanyServlet extends HttpServlet {
         }
         else {
             request.getRequestDispatcher(page).forward(request, response);
-            //request.getServletContext().getRequestDispatcher(page).forward(request, response);
         }
     }
 }
