@@ -9,9 +9,7 @@
 <%@ include file="/WEB-INF/fragments/head.jsp" %>
 <body>
 <%@ include file="/WEB-INF/fragments/langlinks.jsp" %>
-
-<a href="${pageContext.request.contextPath}/app/main"><fmt:message key="ui.main.tomain" /></a>
-<a href="${pageContext.request.contextPath}/app/logout"><fmt:message key="ui.main.logout" /></a>
+<%@ include file="/WEB-INF/fragments/topMenu.jsp" %>
 
 <h2><fmt:message key="ui.cruise.all.title" /></h2>
 
