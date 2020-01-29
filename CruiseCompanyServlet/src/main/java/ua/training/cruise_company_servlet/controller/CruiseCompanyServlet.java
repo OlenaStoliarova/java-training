@@ -4,6 +4,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import ua.training.cruise_company_servlet.controller.command.*;
+import ua.training.cruise_company_servlet.controller.constants.PathConstants;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -20,10 +21,10 @@ public class CruiseCompanyServlet extends HttpServlet {
     private Map<String, Command> commands = new HashMap<>();
 
     public void init(ServletConfig servletConfig){
-        commands.put("login", new LoginCommand());
-        commands.put("logout", new LogoutCommand());
+        commands.put(PathConstants.LOGIN_COMMAND, new LoginCommand());
+        commands.put(PathConstants.LOGOUT_COMMAND, new LogoutCommand());
         commands.put("main", new ToMainPageCommand());
-        commands.put("tourist/cruises", new TouristCruisesCommand());
+        commands.put(PathConstants.TOURIST_CRUISES_COMMAND, new TouristCruisesCommand());
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

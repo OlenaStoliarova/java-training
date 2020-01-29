@@ -2,6 +2,8 @@ package ua.training.cruise_company_servlet.controller.filters;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ua.training.cruise_company_servlet.controller.constants.AttributesConstants;
+import ua.training.cruise_company_servlet.controller.constants.PathConstants;
 import ua.training.cruise_company_servlet.model.entity.UserRole;
 
 import javax.servlet.*;
@@ -34,13 +36,13 @@ public class AuthenticationFilter implements Filter {
             }
             return;
         }
-        UserRole role = UserRole.valueOf((String) request.getSession().getAttribute("user_role"));
+        UserRole role = UserRole.valueOf((String) request.getSession().getAttribute(AttributesConstants.USER_ROLE));
 
         if(isPathAllowedForUserRole(path,role)){
             filterChain.doFilter(servletRequest,servletResponse);
             return;
         }
-        String user = (String) request.getSession().getAttribute("user_name");
+        String user = (String) request.getSession().getAttribute(AttributesConstants.USER_NAME);
         logger.error(user + "(" + role + ") tried to access forbidden path '" + path + "'");
         response.sendError(HttpServletResponse.SC_FORBIDDEN);
     }
@@ -51,32 +53,32 @@ public class AuthenticationFilter implements Filter {
 
     private boolean isAuthenticationNeeded(String path){
         return path.startsWith("main") ||
-                path.startsWith("admin") ||
-                path.startsWith("tourist") ||
-                path.startsWith("travel_agent");
+                path.startsWith(PathConstants.ADMIN_FOLDER) ||
+                path.startsWith(PathConstants.TOURIST_FOLDER) ||
+                path.startsWith(PathConstants.TRAVEL_AGENT_FOLDER);
     }
 
     private boolean isUserLoggedIn(HttpSession session){
         return session != null &&
-                session.getAttribute("user_role") != null;
+                session.getAttribute(AttributesConstants.USER_ROLE) != null;
     }
 
     private boolean isPathAllowedForUserRole(String path, UserRole role){
-        if(path.startsWith("logout") || path.startsWith("login"))
+        if(path.startsWith(PathConstants.LOGOUT_COMMAND) || path.startsWith(PathConstants.LOGIN_COMMAND))
             return true;
 
         if( role.equals(UserRole.ROLE_ADMIN) &&
-                (path.startsWith("admin") || path.startsWith("main"))) {
+                (path.startsWith( PathConstants.ADMIN_FOLDER) || path.startsWith("main"))) {
             return true;
         }
 
         if( role.equals(UserRole.ROLE_TRAVEL_AGENT) &&
-                (path.startsWith("travel_agent") || path.startsWith("main"))) {
+                (path.startsWith(PathConstants.TRAVEL_AGENT_FOLDER) || path.startsWith("main"))) {
             return true;
         }
 
         if( role.equals(UserRole.ROLE_TOURIST) &&
-                (path.startsWith("tourist") || path.startsWith("main"))) {
+                (path.startsWith(PathConstants.TOURIST_FOLDER) || path.startsWith("main"))) {
             return true;
         }
 

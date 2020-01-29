@@ -2,6 +2,7 @@ package ua.training.cruise_company_servlet.controller.command;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ua.training.cruise_company_servlet.controller.constants.PathConstants;
 import ua.training.cruise_company_servlet.model.entity.UserRole;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,16 +18,16 @@ public class ToMainPageCommand implements Command{
         } catch (Exception e) {
             logger.warn("Accessing main with no role set");
             logger.warn(e.getMessage());
-            return "redirect:/";
+            return "redirect:/" + PathConstants.INDEX_PAGE_COMMAND;
         }
 
         if( curUserRole.equals( UserRole.ROLE_ADMIN ))
-            return "/WEB-INF/admin/adminMain.jsp";
+            return PathConstants.ADMIN_MAIN_JSP;
         if( curUserRole.equals( UserRole.ROLE_TRAVEL_AGENT))
-            return "/WEB-INF/travel_agent/travelAgentMain.jsp";
+            return PathConstants.TRAVEL_AGENT_MAIN_JSP;
         if( curUserRole.equals( UserRole.ROLE_TOURIST))
-            return "/WEB-INF/tourist/touristMain.jsp";
+            return PathConstants.TOURIST_MAIN_JSP;
 
-         return "redirect:/";
+         return "redirect:/" + PathConstants.INDEX_PAGE_COMMAND;
     }
 }
