@@ -62,7 +62,7 @@ public class AuthenticationFilter implements Filter {
     }
 
     private boolean isPathAllowedForUserRole(String path, UserRole role){
-        if(path.startsWith("logout"))
+        if(path.startsWith("logout") || path.startsWith("login"))
             return true;
 
         if( role.equals(UserRole.ROLE_ADMIN) &&
