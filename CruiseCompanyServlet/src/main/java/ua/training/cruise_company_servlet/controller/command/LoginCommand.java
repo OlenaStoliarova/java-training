@@ -2,6 +2,7 @@ package ua.training.cruise_company_servlet.controller.command;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ua.training.cruise_company_servlet.controller.Authorization;
 import ua.training.cruise_company_servlet.model.entity.UserRole;
 import ua.training.cruise_company_servlet.model.service.UserNotFoundException;
 import ua.training.cruise_company_servlet.model.service.UserService;
@@ -36,8 +37,12 @@ public class LoginCommand implements Command {
             return LOGIN_JSP;
         }
 
+        if( !Authorization.addUserToLoggedUsers(request.getServletContext(), login)){
+            request.setAttribute("already_loggedin", true);
+            return LOGIN_JSP;
+        }
         request.getSession().setAttribute("user_role", userRole.toString());
-
+        request.getSession().setAttribute("user_name", login);
         return "redirect:/app/main";
     }
 }

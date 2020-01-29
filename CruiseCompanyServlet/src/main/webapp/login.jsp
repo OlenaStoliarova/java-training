@@ -16,7 +16,12 @@
             <br/>
             <c:if test = "${unknown_user == true}">
                 <div class="text-danger">
-                    <fmt:message key="ui.login.error" />
+                    <fmt:message key="ui.login.error.incorrect.credentials" />
+                </div>
+            </c:if>
+            <c:if test = "${already_loggedin == true}">
+                <div class="text-danger">
+                    <fmt:message key="ui.login.error.already.logged.in" />
                 </div>
             </c:if>
             <div class="card" style="margin-top:45px">

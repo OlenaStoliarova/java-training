@@ -13,6 +13,10 @@
     <url-pattern>/app/*</url-pattern>
   </servlet-mapping>
 
+  <session-config>
+    <session-timeout>1</session-timeout>
+  </session-config>
+
   <filter>
     <filter-name>EncodingFilter</filter-name>
     <filter-class>ua.training.cruise_company_servlet.controller.filters.EncodingFilter</filter-class>
@@ -40,6 +44,10 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
+  <listener>
+    <listener-class>ua.training.cruise_company_servlet.controller.listeners.SessionListener</listener-class>
+  </listener>
+
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
@@ -49,13 +57,18 @@
     <location>/WEB-INF/errorpages/errorPage401.jsp</location>
   </error-page>
   <error-page>
+    <error-code>403</error-code>
+    <location>/WEB-INF/errorpages/errorPage403.jsp</location>
+  </error-page>
+  <error-page>
     <error-code>404</error-code>
     <location>/WEB-INF/errorpages/errorPage404.jsp</location>
   </error-page>
+  <!--
   <error-page>
     <error-code>500</error-code>
     <location>/WEB-INF/errorpages/errorPage500.jsp</location>
-  </error-page>
+  </error-page>-->
 
   <context-param>
     <param-name>log4jConfiguration</param-name>
