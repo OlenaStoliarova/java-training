@@ -36,7 +36,7 @@ public class AuthenticationFilter implements Filter {
             }
             return;
         }
-        UserRole role = UserRole.valueOf((String) request.getSession().getAttribute(AttributesConstants.USER_ROLE));
+        UserRole role = (UserRole) request.getSession().getAttribute(AttributesConstants.USER_ROLE);
 
         if(isPathAllowedForUserRole(path,role)){
             filterChain.doFilter(servletRequest,servletResponse);
@@ -52,8 +52,7 @@ public class AuthenticationFilter implements Filter {
     }
 
     private boolean isAuthenticationNeeded(String path){
-        return path.startsWith("main") ||
-                path.startsWith(PathConstants.ADMIN_FOLDER) ||
+        return  path.startsWith(PathConstants.ADMIN_FOLDER) ||
                 path.startsWith(PathConstants.TOURIST_FOLDER) ||
                 path.startsWith(PathConstants.TRAVEL_AGENT_FOLDER);
     }
@@ -64,24 +63,12 @@ public class AuthenticationFilter implements Filter {
     }
 
     private boolean isPathAllowedForUserRole(String path, UserRole role){
-        if(path.startsWith(PathConstants.LOGOUT_COMMAND) || path.startsWith(PathConstants.LOGIN_COMMAND))
+        if(path.startsWith(PathConstants.LOGOUT_COMMAND) || path.startsWith(PathConstants.LOGIN_COMMAND) ||
+                path.startsWith(PathConstants.MAIN_COMMAND))
             return true;
 
-        if( role.equals(UserRole.ROLE_ADMIN) &&
-                (path.startsWith( PathConstants.ADMIN_FOLDER) || path.startsWith("main"))) {
-            return true;
-        }
-
-        if( role.equals(UserRole.ROLE_TRAVEL_AGENT) &&
-                (path.startsWith(PathConstants.TRAVEL_AGENT_FOLDER) || path.startsWith("main"))) {
-            return true;
-        }
-
-        if( role.equals(UserRole.ROLE_TOURIST) &&
-                (path.startsWith(PathConstants.TOURIST_FOLDER) || path.startsWith("main"))) {
-            return true;
-        }
-
-        return false;
+        return (role.equals(UserRole.ROLE_ADMIN) && path.startsWith(PathConstants.ADMIN_FOLDER)) ||
+                (role.equals(UserRole.ROLE_TRAVEL_AGENT) && path.startsWith(PathConstants.TRAVEL_AGENT_FOLDER)) ||
+                (role.equals(UserRole.ROLE_TOURIST) && path.startsWith(PathConstants.TOURIST_FOLDER));
     }
 }

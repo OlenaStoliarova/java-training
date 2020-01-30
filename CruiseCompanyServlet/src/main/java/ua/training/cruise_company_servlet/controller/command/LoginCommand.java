@@ -41,8 +41,16 @@ public class LoginCommand implements Command {
             request.setAttribute(AttributesConstants.ERROR_ALREADY_LOGGED_IN, true);
             return PathConstants.LOGIN_JSP;
         }
-        request.getSession().setAttribute(AttributesConstants.USER_ROLE, userRole.toString());
+        request.getSession().setAttribute(AttributesConstants.USER_ROLE, userRole);
         request.getSession().setAttribute(AttributesConstants.USER_NAME, login);
-        return "redirect:/app/main";
+
+        if( userRole.equals( UserRole.ROLE_ADMIN ))
+            return "redirect:" + PathConstants.SERVLET_PATH + PathConstants.ADMIN_MAIN_COMMAND;
+        if( userRole.equals( UserRole.ROLE_TRAVEL_AGENT))
+            return "redirect:" + PathConstants.SERVLET_PATH + PathConstants.TRAVEL_AGENT_MAIN_COMMAND;
+        if( userRole.equals( UserRole.ROLE_TOURIST))
+            return "redirect:" + PathConstants.SERVLET_PATH + PathConstants.TOURIST_MAIN_COMMAND;
+
+        return "redirect:/" + PathConstants.INDEX_PAGE_COMMAND;
     }
 }

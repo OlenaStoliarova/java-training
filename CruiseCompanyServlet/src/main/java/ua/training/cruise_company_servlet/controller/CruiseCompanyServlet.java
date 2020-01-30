@@ -23,7 +23,10 @@ public class CruiseCompanyServlet extends HttpServlet {
     public void init(ServletConfig servletConfig){
         commands.put(PathConstants.LOGIN_COMMAND, new LoginCommand());
         commands.put(PathConstants.LOGOUT_COMMAND, new LogoutCommand());
-        commands.put("main", new ToMainPageCommand());
+        commands.put(PathConstants.MAIN_COMMAND, new ToMainPageCommand());
+        commands.put(PathConstants.ADMIN_MAIN_COMMAND, new AdminMainPageCommand());
+        commands.put(PathConstants.TRAVEL_AGENT_MAIN_COMMAND, new TravelAgentMainPageCommand());
+        commands.put(PathConstants.TOURIST_MAIN_COMMAND, new TouristMainPageCommand());
         commands.put(PathConstants.TOURIST_CRUISES_COMMAND, new TouristCruisesCommand());
     }
 
