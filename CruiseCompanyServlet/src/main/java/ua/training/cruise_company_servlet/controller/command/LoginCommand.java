@@ -2,12 +2,12 @@ package ua.training.cruise_company_servlet.controller.command;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ua.training.cruise_company_servlet.controller.Authorization;
+import ua.training.cruise_company_servlet.controller.authentication.AlreadyLoggedInException;
+import ua.training.cruise_company_servlet.controller.authentication.Authentication;
 import ua.training.cruise_company_servlet.controller.constants.AttributesConstants;
 import ua.training.cruise_company_servlet.controller.constants.PathConstants;
 import ua.training.cruise_company_servlet.model.entity.UserRole;
 import ua.training.cruise_company_servlet.model.service.UserNotFoundException;
-import ua.training.cruise_company_servlet.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,28 +18,25 @@ public class LoginCommand implements Command {
     public String execute(HttpServletRequest request) {
         String login = request.getParameter(AttributesConstants.LOGIN);
         String password = request.getParameter(AttributesConstants.PASSWORD);
+        Authentication authentication = new Authentication(request.getSession());
 
         if( login == null || login.equals("") || password == null || password.equals("")  ){
+            authentication.doLogout();
             return PathConstants.LOGIN_JSP;
         }
         logger.info( login + ", " + password);
 
-        UserService userService = new UserService();
         UserRole userRole;
         try {
-            userRole = userService.checkUserOnLogin(login,password);
+            userRole = authentication.doLogin(login,password);
         }
         catch (UserNotFoundException e) {
             request.setAttribute(AttributesConstants.ERROR_UNKNOWN_USER, true);
             return PathConstants.LOGIN_JSP;
-        }
-
-        if( !Authorization.addUserToLoggedUsers(request.getServletContext(), login)){
+        } catch (AlreadyLoggedInException e) {
             request.setAttribute(AttributesConstants.ERROR_ALREADY_LOGGED_IN, true);
             return PathConstants.LOGIN_JSP;
         }
-        request.getSession().setAttribute(AttributesConstants.USER_ROLE, userRole);
-        request.getSession().setAttribute(AttributesConstants.USER_NAME, login);
 
         if( userRole.equals( UserRole.ROLE_ADMIN ))
             return "redirect:" + PathConstants.SERVLET_PATH + PathConstants.ADMIN_MAIN_COMMAND;

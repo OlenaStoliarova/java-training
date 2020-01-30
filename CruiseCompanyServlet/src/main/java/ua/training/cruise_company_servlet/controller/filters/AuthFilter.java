@@ -2,18 +2,17 @@ package ua.training.cruise_company_servlet.controller.filters;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ua.training.cruise_company_servlet.controller.constants.AttributesConstants;
+import ua.training.cruise_company_servlet.controller.authentication.Authentication;
 import ua.training.cruise_company_servlet.controller.constants.PathConstants;
 import ua.training.cruise_company_servlet.model.entity.UserRole;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class AuthenticationFilter implements Filter {
-    private static final Logger logger = LogManager.getLogger(AuthenticationFilter.class);
+public class AuthFilter implements Filter {
+    private static final Logger logger = LogManager.getLogger(AuthFilter.class);
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -28,7 +27,8 @@ public class AuthenticationFilter implements Filter {
         path = path.toLowerCase();
         path = path.replaceAll(".*" + PathConstants.SERVLET_PATH , "");
 
-        if( !isUserLoggedIn(request.getSession())) {
+        Authentication authentication = new Authentication(request.getSession());
+        if( ! authentication.isLoggedIn() ) {
             if (isAuthenticationNeeded(path)) {
                 logger.warn("guest tried to access '" + path + "'");
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
@@ -37,13 +37,13 @@ public class AuthenticationFilter implements Filter {
             }
             return;
         }
-        UserRole role = (UserRole) request.getSession().getAttribute(AttributesConstants.USER_ROLE);
+        UserRole role = authentication.getUserRole();
 
         if(isPathAllowedForUserRole(path,role)){
             filterChain.doFilter(servletRequest,servletResponse);
             return;
         }
-        String user = (String) request.getSession().getAttribute(AttributesConstants.USER_NAME);
+        String user = authentication.getUserName();
         logger.error(user + "(" + role + ") tried to access forbidden path '" + path + "'");
         response.sendError(HttpServletResponse.SC_FORBIDDEN);
     }
@@ -56,11 +56,6 @@ public class AuthenticationFilter implements Filter {
         return  path.startsWith(PathConstants.ADMIN_FOLDER) ||
                 path.startsWith(PathConstants.TOURIST_FOLDER) ||
                 path.startsWith(PathConstants.TRAVEL_AGENT_FOLDER);
-    }
-
-    private boolean isUserLoggedIn(HttpSession session){
-        return session != null &&
-                session.getAttribute(AttributesConstants.USER_ROLE) != null;
     }
 
     private boolean isPathAllowedForUserRole(String path, UserRole role){
