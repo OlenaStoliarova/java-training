@@ -9,12 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 public class ToMainPageCommand implements Command{
     @Override
     public String execute(HttpServletRequest request) {
-        UserRole curUserRole;
-        try {
-            curUserRole = (UserRole) request.getSession().getAttribute(AttributesConstants.USER_ROLE);
-        } catch (Exception e) {
-            return "redirect:/" + PathConstants.INDEX_PAGE_COMMAND;
-        }
+        UserRole curUserRole = (UserRole) request.getSession().getAttribute(AttributesConstants.USER_ROLE);
+
         if(curUserRole == null)
             return "redirect:/" + PathConstants.INDEX_PAGE_COMMAND;
 

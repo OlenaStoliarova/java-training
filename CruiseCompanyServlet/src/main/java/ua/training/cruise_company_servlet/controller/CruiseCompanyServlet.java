@@ -48,12 +48,8 @@ public class CruiseCompanyServlet extends HttpServlet {
             return;
         }
         logger.info(command.getClass().getName());
-        String page = command.execute(request);
 
-        if( page.equals( String.valueOf(HttpServletResponse.SC_INTERNAL_SERVER_ERROR))){
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            return;
-        }
+        String page = command.execute(request);
 
         if( page.startsWith("redirect:")){
             page = page.replaceFirst("redirect:", "");

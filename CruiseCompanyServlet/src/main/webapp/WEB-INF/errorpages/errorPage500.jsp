@@ -10,7 +10,6 @@
 </head>
 <body>
 <div class="container text-center">
-    <h3>500</h3>
     <h1><fmt:message key="ui.error.500.title" /></h1>
     <h5><fmt:message key="ui.error.500.description1" /></h5>
     <h5><fmt:message key="ui.error.500.description2" /></h5>

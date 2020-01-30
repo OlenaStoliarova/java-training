@@ -64,11 +64,10 @@
     <error-code>404</error-code>
     <location>/WEB-INF/errorpages/errorPage404.jsp</location>
   </error-page>
-  <!--
   <error-page>
-    <error-code>500</error-code>
+    <exception-type>java.lang.Exception</exception-type>
     <location>/WEB-INF/errorpages/errorPage500.jsp</location>
-  </error-page>-->
+  </error-page>
 
   <context-param>
     <param-name>log4jConfiguration</param-name>

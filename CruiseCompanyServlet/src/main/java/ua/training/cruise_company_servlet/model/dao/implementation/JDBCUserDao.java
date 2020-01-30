@@ -1,5 +1,8 @@
 package ua.training.cruise_company_servlet.model.dao.implementation;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import ua.training.cruise_company_servlet.model.dao.DAOLevelException;
 import ua.training.cruise_company_servlet.model.dao.UserDao;
 import ua.training.cruise_company_servlet.model.entity.User;
 import ua.training.cruise_company_servlet.model.entity.UserRole;
@@ -13,6 +16,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class JDBCUserDao implements UserDao {
+    private static final Logger logger = LogManager.getLogger(JDBCUserDao.class);
+
     private Connection connection;
 
     public JDBCUserDao(Connection connection) {
@@ -30,33 +35,36 @@ public class JDBCUserDao implements UserDao {
     }
 
     @Override
-    public Optional<User> findByEmail(String email) throws SQLException {
+    public Optional<User> findByEmail(String email){
         String selectUserByEmail = "SELECT * FROM users WHERE email=\"" + email + "\"";
 
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(selectUserByEmail);
-        if (resultSet.next()) {
-            return Optional.of(extractFromResultSet(resultSet));
-        }
+        ResultSet resultSet = executeMyQuery(selectUserByEmail);
+        try{
+            if (resultSet.next()) {
+                return Optional.of(extractFromResultSet(resultSet));
+            }
+            return Optional.empty();
 
-        return Optional.empty();
+        } catch(SQLException e){
+            logger.error(e.getMessage(), e);
+            throw new DAOLevelException(e);
+        }
     }
 
     @Override
-    public List<User> findAll() {
+    public List<User> findAll(){
         String selectAllUsers = "SELECT * FROM users";
         List<User> resultList = new ArrayList<>();
 
+        ResultSet resultSet = executeMyQuery(selectAllUsers);
         try {
-            Statement statement = connection.createStatement();
-
-            ResultSet resultSet = statement.executeQuery(selectAllUsers);
             while (resultSet.next()) {
                 User user = extractFromResultSet(resultSet);
                 resultList.add(user);
             }
-        }catch (Exception e){
-            throw new RuntimeException(e);
+        }catch (SQLException e){
+            logger.error(e.getMessage(), e);
+            throw new DAOLevelException(e);
         }
 
         return resultList;
@@ -77,7 +85,17 @@ public class JDBCUserDao implements UserDao {
 
     }
 
-    static User extractFromResultSet(ResultSet rs) throws SQLException {
+    private ResultSet executeMyQuery(String sqlQuery) {
+        try {
+            Statement statement = connection.createStatement();
+            return statement.executeQuery(sqlQuery);
+        }catch(SQLException e){
+            logger.error(e.getMessage(), e);
+            throw new DAOLevelException(e);
+        }
+    }
+
+    private User extractFromResultSet(ResultSet rs) throws SQLException {
         User result = new User();
 
         result.setId( rs.getLong("id") );

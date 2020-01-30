@@ -5,7 +5,7 @@ import ua.training.cruise_company_servlet.model.dao.implementation.JDBCDaoFactor
 public abstract class DaoFactory {
     private static DaoFactory daoFactory;
 
-    public abstract UserDao createUserDao() throws DBConnectionException;
+    public abstract UserDao createUserDao() throws DataSourceConnectionException;
 
     public static DaoFactory getInstance(){
         if( daoFactory == null ){

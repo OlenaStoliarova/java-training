@@ -2,7 +2,7 @@ package ua.training.cruise_company_servlet.model.dao.implementation;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ua.training.cruise_company_servlet.model.dao.DBConnectionException;
+import ua.training.cruise_company_servlet.model.dao.DataSourceConnectionException;
 import ua.training.cruise_company_servlet.model.dao.DaoFactory;
 import ua.training.cruise_company_servlet.model.dao.UserDao;
 
@@ -19,21 +19,21 @@ public class JDBCDaoFactory extends DaoFactory {
     private static final String DB_PASSWORD = "reload12";
 
     @Override
-    public UserDao createUserDao() throws DBConnectionException {
+    public UserDao createUserDao() throws DataSourceConnectionException {
         return new JDBCUserDao(getConnection());
     }
 
-    private Connection getConnection() throws DBConnectionException {
+    private Connection getConnection() throws DataSourceConnectionException {
         try {
             Class.forName(JDBC_DRIVER);
             return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
         } catch (ClassNotFoundException e){
             logger.error("Unable to load class " + JDBC_DRIVER);
-            logger.debug( e.getMessage());
-            throw new DBConnectionException(e.getMessage());
+            throw new DataSourceConnectionException(e);
         }
         catch (SQLException ex) {
-            throw new DBConnectionException(ex.getMessage());
+            logger.error("Failed to get connection to DB " + DB_URL);
+            throw new DataSourceConnectionException(ex);
         }
     }
 }
