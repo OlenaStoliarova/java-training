@@ -25,7 +25,8 @@ public class AuthenticationFilter implements Filter {
         final HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String path = request.getRequestURI();
-        path = path.replaceAll(".*/app/" , "");
+        path = path.toLowerCase();
+        path = path.replaceAll(".*" + PathConstants.SERVLET_PATH , "");
 
         if( !isUserLoggedIn(request.getSession())) {
             if (isAuthenticationNeeded(path)) {

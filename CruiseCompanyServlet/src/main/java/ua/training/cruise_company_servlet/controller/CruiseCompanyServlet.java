@@ -40,7 +40,8 @@ public class CruiseCompanyServlet extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String path = request.getRequestURI();
-        path = path.replaceAll(".*/app/" , "");
+        path = path.toLowerCase();
+        path = path.replaceAll(".*" + PathConstants.SERVLET_PATH , "");
         Command command = commands.get(path);
         if(command == null){
             logger.warn("non existing page request (" + path + ")");
