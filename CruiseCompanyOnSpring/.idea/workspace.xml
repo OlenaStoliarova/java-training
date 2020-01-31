@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="71f2c6bc-19de-4978-95c7-3cef884b802d" name="Default Changelist" comment="CruiseCompanyOnSpring: small improvements">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/controller/Authorization.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/controller/Authorization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/resources/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/resources/messages_uk.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/resources/messages_uk.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/webapp/WEB-INF/admin/adminMain.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/webapp/WEB-INF/admin/adminMain.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,6 +176,7 @@
       <updated>1577993367899</updated>
       <workItem from="1580139437989" duration="20000" />
       <workItem from="1580224537608" duration="6501000" />
+      <workItem from="1580454803080" duration="576000" />
     </task>
     <task id="LOCAL-00001" summary="CruiseCompanyOnSpring: implemented authorization&#10;&#10;based on this tutorial:&#10;https://habr.com/ru/post/482552/">
       <created>1578054740269</created>
