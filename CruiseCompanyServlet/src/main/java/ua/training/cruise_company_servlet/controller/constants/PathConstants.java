@@ -25,6 +25,8 @@ public interface PathConstants {
 
     String ADMIN_MANAGE_USERS_COMMAND = "admin/users";
     String ADMIN_USERS_JSP = "/WEB-INF/" + ADMIN_FOLDER + "/users.jsp";
-
     String ADMIN_UPDATE_ROLE_COMMAND = "admin/updateuserrole";
+
+    String ADMIN_MANAGE_SEAPORTS_COMMAND = "admin/seaports";
+    String ADMIN_SEAPORTS_JSP = "/WEB-INF/" + ADMIN_FOLDER + "/seaports.jsp";
 }
