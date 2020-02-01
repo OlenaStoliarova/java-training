@@ -3,7 +3,7 @@ package ua.training.cruise_company_servlet.model.dao;
 import java.util.List;
 
 public interface GenericDao<T> extends AutoCloseable{
-    void create (T entity);
+    boolean create (T entity);
     T findById(int id);
     List<T> findAll();
     void update(T entity);

@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.training.cruise_company_servlet.model.dao.DataSourceConnectionException;
 import ua.training.cruise_company_servlet.model.dao.DaoFactory;
+import ua.training.cruise_company_servlet.model.dao.SeaportDao;
 import ua.training.cruise_company_servlet.model.dao.UserDao;
 
 import java.sql.Connection;
@@ -21,6 +22,11 @@ public class JDBCDaoFactory extends DaoFactory {
     @Override
     public UserDao createUserDao() throws DataSourceConnectionException {
         return new JDBCUserDao(getConnection());
+    }
+
+    @Override
+    public SeaportDao createSeaportDao() throws DataSourceConnectionException {
+        return new JDBCSeaportDao(getConnection());
     }
 
     private Connection getConnection() throws DataSourceConnectionException {

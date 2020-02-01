@@ -22,8 +22,8 @@ public class JDBCUserDao implements UserDao {
     }
 
     @Override
-    public void create(User entity) {
-
+    public boolean create(User entity) {
+        return false;
     }
 
     @Override

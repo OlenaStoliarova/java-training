@@ -6,6 +6,7 @@ public abstract class DaoFactory {
     private static DaoFactory daoFactory;
 
     public abstract UserDao createUserDao() throws DataSourceConnectionException;
+    public abstract SeaportDao createSeaportDao() throws DataSourceConnectionException;
 
     public static DaoFactory getInstance(){
         if( daoFactory == null ){
