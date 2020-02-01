@@ -3,12 +3,14 @@ package ua.training.cruise_company_servlet.model.service;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.mindrot.jbcrypt.BCrypt;
+import ua.training.cruise_company_servlet.model.dao.DAOLevelException;
 import ua.training.cruise_company_servlet.model.dao.DaoFactory;
 import ua.training.cruise_company_servlet.model.dao.DataSourceConnectionException;
 import ua.training.cruise_company_servlet.model.dao.UserDao;
 import ua.training.cruise_company_servlet.model.entity.User;
 import ua.training.cruise_company_servlet.model.entity.UserRole;
 
+import java.util.List;
 import java.util.Optional;
 
 public class UserService {
@@ -45,6 +47,18 @@ public class UserService {
         else {
             logger.error("entered password does not match the one from the DB");
             throw new UserNotFoundException("incorrect password");
+        }
+    }
+
+    public List<User> getAllUsers() {
+        return userDao.findAll();
+    }
+
+    public boolean updateUserRole(String email, UserRole newRole){
+        try {
+            return userDao.updateUserRole(email, newRole);
+        } catch(DAOLevelException ex){
+            return false;
         }
     }
 }
