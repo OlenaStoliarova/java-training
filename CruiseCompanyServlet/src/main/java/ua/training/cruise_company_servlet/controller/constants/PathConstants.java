@@ -29,4 +29,5 @@ public interface PathConstants {
 
     String ADMIN_MANAGE_SEAPORTS_COMMAND = "admin/seaports";
     String ADMIN_SEAPORTS_JSP = "/WEB-INF/" + ADMIN_FOLDER + "/seaports.jsp";
+    String ADMIN_ADD_SEAPORT_COMMAND = "admin/addport";
 }

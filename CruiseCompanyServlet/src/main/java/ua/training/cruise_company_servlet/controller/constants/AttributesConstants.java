@@ -9,4 +9,9 @@ public interface AttributesConstants {
     String PASSWORD = "password";
     String ERROR_UNKNOWN_USER = "unknown_user";
     String ERROR_ALREADY_LOGGED_IN = "already_loggedin";
+
+    String PORT_NAME_EN = "nameEn";
+    String PORT_NAME_UKR = "nameUkr";
+    String PORT_COUNTRY_EN = "countryEn";
+    String PORT_COUNTRY_UKR = "countryUkr";
 }
