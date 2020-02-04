@@ -95,8 +95,13 @@ public class JDBCUserDao implements UserDao {
     }
 
     @Override
-    public void close() throws Exception {
-
+    public void close(){
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
+            throw new DAOLevelException(e);
+        }
     }
 
     private User extractFromResultSet(ResultSet rs) throws SQLException {
