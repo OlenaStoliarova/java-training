@@ -32,6 +32,8 @@ public class CruiseCompanyServlet extends HttpServlet {
         commands.put(PathConstants.ADMIN_UPDATE_ROLE_COMMAND, new AdminUpdateRoleCommand());
         commands.put(PathConstants.ADMIN_MANAGE_SEAPORTS_COMMAND, new AdminManageSeaportsCommand());
         commands.put(PathConstants.ADMIN_ADD_SEAPORT_COMMAND, new AdminAddSeaportCommand());
+        commands.put(PathConstants.TRAVEL_AGENT_MANAGE_EXCURSIONS_COMMAND, new TravelAgentManageExcursionsCommand());
+        commands.put(PathConstants.TRAVEL_AGENT_ADD_EXCURSION_COMMAND, new TravelAgentAddExcursionCommand());
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
