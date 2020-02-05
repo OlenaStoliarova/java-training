@@ -1,14 +1,18 @@
-package ua.training.cruise_company_servlet.model.dao.implementation;
+ package ua.training.cruise_company_servlet.model.dao.implementation;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.training.cruise_company_servlet.model.dao.DAOLevelException;
 import ua.training.cruise_company_servlet.model.dao.SeaportDao;
+import ua.training.cruise_company_servlet.model.dao.mapper.SeaportDTOMapper;
+import ua.training.cruise_company_servlet.model.dao.mapper.SeaportMapper;
+import ua.training.cruise_company_servlet.model.dto.SeaportDTO;
 import ua.training.cruise_company_servlet.model.entity.Seaport;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 public class JDBCSeaportDao implements SeaportDao {
@@ -55,7 +59,7 @@ public class JDBCSeaportDao implements SeaportDao {
 
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                return Optional.of(extractFromResultSet(resultSet));
+                return Optional.of(new SeaportMapper().extractFromResultSet(resultSet));
             }
             return Optional.empty();
 
@@ -73,8 +77,31 @@ public class JDBCSeaportDao implements SeaportDao {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(selectAllSeaports);
             while (resultSet.next()) {
-                Seaport seaport = extractFromResultSet(resultSet);
+                Seaport seaport = new SeaportMapper().extractFromResultSet(resultSet);
                 resultList.add(seaport);
+            }
+        }catch (SQLException e){
+            logger.error(e.getMessage(), e);
+            throw new DAOLevelException(e);
+        }
+
+        return resultList;
+    }
+
+    @Override
+    public List<SeaportDTO> findAllLocalizedSortedByName(){
+        Locale currentLocale = Locale.getDefault();
+        String selectAllSeaportsSortedByName = "SELECT id, name_en AS name, country_en AS country FROM seaport ORDER BY name"; //by default select in English
+        if(currentLocale.getLanguage().equalsIgnoreCase("uk"))
+            selectAllSeaportsSortedByName = "SELECT id, name_ukr AS name, country_ukr AS country FROM seaport ORDER BY name COLLATE  utf8_unicode_ci";
+
+        List<SeaportDTO> resultList = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(selectAllSeaportsSortedByName);
+            while (resultSet.next()) {
+                SeaportDTO seaportDTO = new SeaportDTOMapper().extractFromResultSet(resultSet);
+                resultList.add(seaportDTO);
             }
         }catch (SQLException e){
             logger.error(e.getMessage(), e);
@@ -102,17 +129,5 @@ public class JDBCSeaportDao implements SeaportDao {
             logger.error(e.getMessage(), e);
             throw new DAOLevelException(e);
         }
-    }
-
-    private Seaport extractFromResultSet(ResultSet rs) throws SQLException {
-        Seaport result = new Seaport();
-
-        result.setId( rs.getLong("id") );
-        result.setNameEn( rs.getString("name_en") );
-        result.setCountryEn( rs.getString("country_en"));
-        result.setNameUkr( rs.getString("name_ukr") );
-        result.setCountryUkr( rs.getString("country_ukr") );
-
-        return result;
     }
 }
