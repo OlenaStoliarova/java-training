@@ -3,6 +3,7 @@ package ua.training.cruise_company_servlet.controller.filters;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.Locale;
 
 public class SessionLocaleFilter implements Filter {
     @Override
@@ -12,13 +13,26 @@ public class SessionLocaleFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
 
-        if (req.getParameter("lang") != null) {
-            req.getSession().setAttribute("lang", req.getParameter("lang"));
+        String chosenLanguage = req.getParameter("lang");
+        if (chosenLanguage != null) {
+            req.getSession().setAttribute("lang", chosenLanguage);
+            setDefaultLocaleByUserChoice(chosenLanguage);
         }
         chain.doFilter(request, response);
     }
 
     @Override
     public void destroy() {}
+
+
+    private void setDefaultLocaleByUserChoice(String chosenLanguage){
+
+        if(chosenLanguage.equalsIgnoreCase("uk")) {
+            Locale.setDefault(new Locale("uk")); // Ukrainian
+            return;
+        }
+
+        Locale.setDefault(new Locale("en")); // default - English
+    }
 }
 
