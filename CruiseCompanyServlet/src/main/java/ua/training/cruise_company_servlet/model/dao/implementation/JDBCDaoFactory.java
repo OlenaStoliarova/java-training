@@ -3,6 +3,7 @@ package ua.training.cruise_company_servlet.model.dao.implementation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.training.cruise_company_servlet.model.dao.DaoFactory;
+import ua.training.cruise_company_servlet.model.dao.ExcursionDao;
 import ua.training.cruise_company_servlet.model.dao.SeaportDao;
 import ua.training.cruise_company_servlet.model.dao.UserDao;
 
@@ -24,6 +25,10 @@ public class JDBCDaoFactory extends DaoFactory {
     public SeaportDao createSeaportDao() {
         return new JDBCSeaportDao(getConnection());
     }
+
+    @Override
+    public ExcursionDao createExcursionDao() { return new JDBCExcursionDao(getConnection()); }
+
 
     private Connection getConnection() {
         try {
