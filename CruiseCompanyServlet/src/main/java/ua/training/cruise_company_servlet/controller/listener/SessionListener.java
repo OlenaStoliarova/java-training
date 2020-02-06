@@ -9,18 +9,18 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 public class SessionListener implements HttpSessionListener {
-    private static final Logger logger = LogManager.getLogger(SessionListener.class);
+    private static final Logger LOG = LogManager.getLogger(SessionListener.class);
 
     @Override
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
         HttpSession session = httpSessionEvent.getSession();
-        logger.info("New session " + session.getId());
+        LOG.info("New session " + session.getId());
     }
 
     @Override
     public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
         HttpSession session = httpSessionEvent.getSession();
-        logger.info("session " + session.getId() + " is being destroyed");
+        LOG.info("session " + session.getId() + " is being destroyed");
         new Authentication(session).doLogout();
     }
 }

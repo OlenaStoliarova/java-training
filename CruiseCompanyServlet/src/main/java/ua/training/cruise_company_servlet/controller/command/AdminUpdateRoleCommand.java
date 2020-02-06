@@ -9,13 +9,13 @@ import ua.training.cruise_company_servlet.model.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 
 public class AdminUpdateRoleCommand implements Command {
-    private static final Logger logger = LogManager.getLogger(AdminUpdateRoleCommand.class);
+    private static final Logger LOG = LogManager.getLogger(AdminUpdateRoleCommand.class);
 
     @Override
     public String execute(HttpServletRequest request) {
         String userEmail = request.getParameter("email");
         UserRole userRole = UserRole.valueOf( request.getParameter("userRoles"));
-        logger.info("Updating role. User email: " + userEmail + "; new role: " + userRole);
+        LOG.info("Updating role. User email: " + userEmail + "; new role: " + userRole);
         UserService userService = new UserService();
         boolean isSuccess = userService.updateUserRole(userEmail, userRole);
         if( !isSuccess)

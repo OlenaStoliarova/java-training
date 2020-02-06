@@ -12,7 +12,7 @@ import ua.training.cruise_company_servlet.model.service.UserNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 
 public class LoginCommand implements Command {
-    private static final Logger logger = LogManager.getLogger(LoginCommand.class);
+    private static final Logger LOG = LogManager.getLogger(LoginCommand.class);
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -24,7 +24,7 @@ public class LoginCommand implements Command {
             authentication.doLogout();
             return PathConstants.LOGIN_JSP;
         }
-        logger.info( login + ", " + password);
+        LOG.info( login + ", " + password);
 
         UserRole userRole;
         try {

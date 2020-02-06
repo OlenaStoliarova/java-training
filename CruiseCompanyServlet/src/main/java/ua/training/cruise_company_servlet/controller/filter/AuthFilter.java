@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class AuthFilter implements Filter {
-    private static final Logger logger = LogManager.getLogger(AuthFilter.class);
+    private static final Logger LOG = LogManager.getLogger(AuthFilter.class);
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -30,7 +30,7 @@ public class AuthFilter implements Filter {
         Authentication authentication = new Authentication(request.getSession());
         if( ! authentication.isLoggedIn() ) {
             if (isAuthenticationNeeded(path)) {
-                logger.warn("guest tried to access '" + path + "'");
+                LOG.warn("guest tried to access '" + path + "'");
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             } else {
                 filterChain.doFilter(servletRequest, servletResponse);
@@ -44,7 +44,7 @@ public class AuthFilter implements Filter {
             return;
         }
         String user = authentication.getUserName();
-        logger.error(user + "(" + role + ") tried to access forbidden path '" + path + "'");
+        LOG.error(user + "(" + role + ") tried to access forbidden path '" + path + "'");
         response.sendError(HttpServletResponse.SC_FORBIDDEN);
     }
 

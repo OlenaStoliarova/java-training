@@ -10,7 +10,7 @@ import ua.training.cruise_company_servlet.model.service.SeaportService;
 import javax.servlet.http.HttpServletRequest;
 
 public class AdminAddSeaportCommand implements Command {
-    private static final Logger logger = LogManager.getLogger(AdminAddSeaportCommand.class);
+    private static final Logger LOG = LogManager.getLogger(AdminAddSeaportCommand.class);
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -22,8 +22,8 @@ public class AdminAddSeaportCommand implements Command {
             portNameUkr == null || portNameUkr.equals("") || portCountryUkr == null || portCountryUkr.equals("")){
             return "redirect:" + PathConstants.SERVLET_PATH + PathConstants.ADMIN_MANAGE_SEAPORTS_COMMAND;
         }
-        logger.info( "portNameEn: " + portNameEn + "; portCountryEn: " + portCountryEn + ";");
-        logger.info( "portNameUkr: " + portNameUkr + "; portCountryUkr: " + portCountryUkr + ";");
+        LOG.info( "portNameEn: " + portNameEn + "; portCountryEn: " + portCountryEn + ";");
+        LOG.info( "portNameUkr: " + portNameUkr + "; portCountryUkr: " + portCountryUkr + ";");
 
         Seaport addedSeaport = new Seaport();
         addedSeaport.setNameEn(portNameEn);
@@ -35,7 +35,7 @@ public class AdminAddSeaportCommand implements Command {
         boolean wasCreated = seaportService.savePort(addedSeaport);
         if( !wasCreated)
             return "redirect:" + PathConstants.SERVLET_PATH + PathConstants.ADMIN_MANAGE_SEAPORTS_COMMAND + "?error=true";
-        logger.info("Seaport was added successfully.");
+        LOG.info("Seaport was added successfully.");
         return "redirect:" + PathConstants.SERVLET_PATH + PathConstants.ADMIN_MANAGE_SEAPORTS_COMMAND;
     }
 }

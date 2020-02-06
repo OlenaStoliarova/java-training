@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Authentication {
-    private static final Logger logger = LogManager.getLogger(Authentication.class);
+    private static final Logger LOG = LogManager.getLogger(Authentication.class);
 
     private final HttpSession session;
 
@@ -57,22 +57,22 @@ public class Authentication {
         if(loggedUsers == null) {
             loggedUsers = new HashSet<>();
         }
-        logger.info("Logged users: " + loggedUsers);
+        LOG.info("Logged users: " + loggedUsers);
         if( !loggedUsers.add(login)){
-            logger.warn("User '" + login + "' is already logged in.");
+            LOG.warn("User '" + login + "' is already logged in.");
             return false;
         }
         context.setAttribute(AttributesConstants.LOGGED_USERS, loggedUsers);
-        logger.info("User '" + login + "' was added to loggedUsers list");
+        LOG.info("User '" + login + "' was added to loggedUsers list");
         return true;
     }
 
     private void removeUserFromLoggedUsers(ServletContext context, String login){
         Set<String> loggedUsers = (HashSet<String>) context.getAttribute(AttributesConstants.LOGGED_USERS);
         if(loggedUsers != null) {
-            logger.info("Logged users: " + loggedUsers);
+            LOG.info("Logged users: " + loggedUsers);
             if(loggedUsers.remove(login))
-                logger.info("User '" + login + "' was removed from loggedUsers list");
+                LOG.info("User '" + login + "' was removed from loggedUsers list");
             context.setAttribute(AttributesConstants.LOGGED_USERS, loggedUsers);
         }
     }
