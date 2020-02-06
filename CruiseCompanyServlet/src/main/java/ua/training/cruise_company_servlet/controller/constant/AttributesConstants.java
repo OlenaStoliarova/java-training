@@ -1,4 +1,4 @@
-package ua.training.cruise_company_servlet.controller.constants;
+package ua.training.cruise_company_servlet.controller.constant;
 
 public interface AttributesConstants {
     String USER_ROLE = "user_role";

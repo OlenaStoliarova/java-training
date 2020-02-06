@@ -2,7 +2,7 @@ package ua.training.cruise_company_servlet.controller.authentication;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ua.training.cruise_company_servlet.controller.constants.AttributesConstants;
+import ua.training.cruise_company_servlet.controller.constant.AttributesConstants;
 import ua.training.cruise_company_servlet.model.enums.UserRole;
 import ua.training.cruise_company_servlet.model.service.UserNotFoundException;
 import ua.training.cruise_company_servlet.model.service.UserService;

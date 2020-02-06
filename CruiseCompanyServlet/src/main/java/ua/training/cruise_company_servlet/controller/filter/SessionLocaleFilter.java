@@ -1,4 +1,4 @@
-package ua.training.cruise_company_servlet.controller.filters;
+package ua.training.cruise_company_servlet.controller.filter;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;

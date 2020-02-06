@@ -2,8 +2,8 @@ package ua.training.cruise_company_servlet.controller.command;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ua.training.cruise_company_servlet.controller.constants.AttributesConstants;
-import ua.training.cruise_company_servlet.controller.constants.PathConstants;
+import ua.training.cruise_company_servlet.controller.constant.AttributesConstants;
+import ua.training.cruise_company_servlet.controller.constant.PathConstants;
 import ua.training.cruise_company_servlet.model.entity.Seaport;
 import ua.training.cruise_company_servlet.model.service.SeaportService;
 

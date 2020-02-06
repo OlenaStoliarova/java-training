@@ -4,7 +4,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import ua.training.cruise_company_servlet.controller.command.*;
-import ua.training.cruise_company_servlet.controller.constants.PathConstants;
+import ua.training.cruise_company_servlet.controller.constant.PathConstants;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

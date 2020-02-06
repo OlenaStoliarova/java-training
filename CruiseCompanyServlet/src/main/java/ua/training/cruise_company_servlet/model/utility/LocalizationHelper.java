@@ -1,4 +1,4 @@
-package ua.training.cruise_company_servlet.model.utilities;
+package ua.training.cruise_company_servlet.model.utility;
 
 import java.math.BigDecimal;
 import java.util.Locale;

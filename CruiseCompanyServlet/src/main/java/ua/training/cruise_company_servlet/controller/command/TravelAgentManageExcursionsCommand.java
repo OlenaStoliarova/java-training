@@ -1,6 +1,6 @@
 package ua.training.cruise_company_servlet.controller.command;
 
-import ua.training.cruise_company_servlet.controller.constants.PathConstants;
+import ua.training.cruise_company_servlet.controller.constant.PathConstants;
 import ua.training.cruise_company_servlet.model.service.ExcursionService;
 import ua.training.cruise_company_servlet.model.service.SeaportService;
 

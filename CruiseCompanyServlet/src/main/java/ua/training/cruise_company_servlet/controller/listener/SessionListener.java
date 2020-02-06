@@ -1,4 +1,4 @@
-package ua.training.cruise_company_servlet.controller.listeners;
+package ua.training.cruise_company_servlet.controller.listener;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

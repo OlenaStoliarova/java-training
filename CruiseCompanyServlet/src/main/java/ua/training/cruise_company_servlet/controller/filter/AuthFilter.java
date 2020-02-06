@@ -1,9 +1,9 @@
-package ua.training.cruise_company_servlet.controller.filters;
+package ua.training.cruise_company_servlet.controller.filter;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.training.cruise_company_servlet.controller.authentication.Authentication;
-import ua.training.cruise_company_servlet.controller.constants.PathConstants;
+import ua.training.cruise_company_servlet.controller.constant.PathConstants;
 import ua.training.cruise_company_servlet.model.enums.UserRole;
 
 import javax.servlet.*;
