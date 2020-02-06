@@ -3,7 +3,7 @@ package ua.training.cruise_company_servlet.controller.command;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.training.cruise_company_servlet.controller.constants.PathConstants;
-import ua.training.cruise_company_servlet.model.entity.UserRole;
+import ua.training.cruise_company_servlet.model.enums.UserRole;
 import ua.training.cruise_company_servlet.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;

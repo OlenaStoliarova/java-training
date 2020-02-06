@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.training.cruise_company_servlet.controller.authentication.Authentication;
 import ua.training.cruise_company_servlet.controller.constants.PathConstants;
-import ua.training.cruise_company_servlet.model.entity.UserRole;
+import ua.training.cruise_company_servlet.model.enums.UserRole;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;

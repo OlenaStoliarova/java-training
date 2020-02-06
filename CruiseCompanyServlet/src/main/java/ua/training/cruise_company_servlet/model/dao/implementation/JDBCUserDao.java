@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 import ua.training.cruise_company_servlet.model.dao.DAOLevelException;
 import ua.training.cruise_company_servlet.model.dao.UserDao;
 import ua.training.cruise_company_servlet.model.entity.User;
-import ua.training.cruise_company_servlet.model.entity.UserRole;
+import ua.training.cruise_company_servlet.model.enums.UserRole;
 
 import java.sql.*;
 import java.util.ArrayList;

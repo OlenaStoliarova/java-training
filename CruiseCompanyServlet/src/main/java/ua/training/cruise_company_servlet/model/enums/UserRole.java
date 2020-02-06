@@ -1,4 +1,4 @@
-package ua.training.cruise_company_servlet.model.entity;
+package ua.training.cruise_company_servlet.model.enums;
 
 public enum UserRole {
     ROLE_ADMIN,

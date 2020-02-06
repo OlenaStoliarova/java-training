@@ -6,7 +6,7 @@ import ua.training.cruise_company_servlet.controller.authentication.AlreadyLogge
 import ua.training.cruise_company_servlet.controller.authentication.Authentication;
 import ua.training.cruise_company_servlet.controller.constants.AttributesConstants;
 import ua.training.cruise_company_servlet.controller.constants.PathConstants;
-import ua.training.cruise_company_servlet.model.entity.UserRole;
+import ua.training.cruise_company_servlet.model.enums.UserRole;
 import ua.training.cruise_company_servlet.model.service.UserNotFoundException;
 
 import javax.servlet.http.HttpServletRequest;

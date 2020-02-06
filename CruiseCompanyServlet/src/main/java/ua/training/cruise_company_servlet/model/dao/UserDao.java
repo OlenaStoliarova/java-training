@@ -1,7 +1,7 @@
 package ua.training.cruise_company_servlet.model.dao;
 
 import ua.training.cruise_company_servlet.model.entity.User;
-import ua.training.cruise_company_servlet.model.entity.UserRole;
+import ua.training.cruise_company_servlet.model.enums.UserRole;
 
 import java.util.Optional;
 

@@ -1,5 +1,7 @@
 package ua.training.cruise_company_servlet.model.entity;
 
+import ua.training.cruise_company_servlet.model.enums.UserRole;
+
 public class User {
     private Long id;
     private String email; //this is our login
