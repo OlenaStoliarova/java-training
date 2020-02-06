@@ -1,35 +1,43 @@
 package ua.training.cruise_company_servlet.model.dao.implementation;
 
-import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class ConnectionPoolHolder {
-    private static volatile DataSource dataSource;
+    private static final Logger LOG = LogManager.getLogger(ConnectionPoolHolder.class);
 
-    private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/cruise_company";
-    private static final String DB_USER = "elena";
-    private static final String DB_PASSWORD = "reload12";
+    private static DataSource dataSource;
 
-    public static DataSource getDataSource(){
-
-        if (dataSource == null){
-            synchronized (ConnectionPoolHolder.class) {
-                if (dataSource == null) {
-                    BasicDataSource ds = new BasicDataSource();
-                    ds.setDriverClassName(JDBC_DRIVER);
-                    ds.setUrl(DB_URL);
-                    ds.setUsername(DB_USER);
-                    ds.setPassword(DB_PASSWORD);
-                    ds.setMinIdle(5);
-                    ds.setMaxIdle(10);
-                    ds.setMaxOpenPreparedStatements(100);
-
-                    dataSource = ds;
-                }
-            }
+    static {
+        try {
+            Context initContext = new InitialContext();
+            dataSource = (DataSource) initContext.lookup("java:comp/env/jdbc/CruiseCompany");
+        } catch (NamingException ex) {
+            LOG.error("Could not find DataSource jdbc/CruiseCompany");
+            LOG.error(ex.getMessage(), ex);
+            throw new RuntimeException(ex);
         }
-        return dataSource;
+    }
+
+    private ConnectionPoolHolder(){
+    }
+
+    public static Connection getConnection() {
+        try {
+            Connection connection = dataSource.getConnection();
+            LOG.debug("Connection to DB has been obtained successfully " + connection);
+            return connection;
+        } catch (SQLException ex) {
+            LOG.error("Failed to get connection to DB");
+            LOG.error(ex.getMessage(), ex);
+            throw new RuntimeException(ex);
+        }
     }
 }

@@ -14,23 +14,19 @@ import java.util.stream.Collectors;
 public class ExcursionService {
     private static final Logger LOG = LogManager.getLogger(ExcursionService.class);
 
-    private final DaoFactory daoFactory = DaoFactory.getInstance();
+    private final ExcursionDao excursionDao = DaoFactory.getInstance().createExcursionDao();
 
     public List<ExcursionForTravelAgentDTO> getAllExcursionsForTravelAgent() {
-        List<Excursion> excursions;
-        try(ExcursionDao excursionDao = daoFactory.createExcursionDao()) {
-            excursions = excursionDao.findAll();
-        }
+        List<Excursion> excursions = excursionDao.findAll();
+
         return excursions.stream()
                 .map(ExcursionDTOConverter::convertToDTOForTravelAgent)
                 .collect(Collectors.toList());
     }
 
     public List<ExcursionForTravelAgentDTO> getAllExcursionsInSeaportForTravelAgent(long seaportId) {
-        List<Excursion> excursions;
-        try(ExcursionDao excursionDao = daoFactory.createExcursionDao()) {
-            excursions = excursionDao.findBySeaportId(seaportId);
-        }
+        List<Excursion> excursions = excursionDao.findBySeaportId(seaportId);
+
         return excursions.stream()
                 .map(ExcursionDTOConverter::convertToDTOForTravelAgent)
                 .collect(Collectors.toList());

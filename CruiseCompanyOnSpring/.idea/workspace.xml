@@ -5,10 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71f2c6bc-19de-4978-95c7-3cef884b802d" name="Default Changelist" comment="CruiseCompanyOnSpring: small improvements">
+      <change afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/ExtraDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/implementation/JDBCExtraDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/webapp/META-INF/context.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/resources/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/resources/messages_uk.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/resources/messages_uk.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/webapp/WEB-INF/admin/adminMain.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/webapp/WEB-INF/admin/adminMain.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/DaoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/GenericDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/GenericDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/implementation/ConnectionPoolHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/implementation/ConnectionPoolHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/implementation/JDBCDaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/implementation/JDBCDaoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/implementation/JDBCExcursionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/implementation/JDBCExcursionDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/implementation/JDBCSeaportDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/implementation/JDBCSeaportDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/implementation/JDBCUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/dao/implementation/JDBCUserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/service/ExcursionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/service/ExcursionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/service/SeaportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/service/SeaportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/java/ua/training/cruise_company_servlet/model/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CruiseCompanyServlet/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CruiseCompanyServlet/src/test/java/ua/training/cruise_company_servlet/model/dao/SeaportDaoTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,10 +58,12 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LocalizedNoteBookController" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
@@ -176,7 +191,12 @@
       <updated>1577993367899</updated>
       <workItem from="1580139437989" duration="20000" />
       <workItem from="1580224537608" duration="6501000" />
-      <workItem from="1580454803080" duration="576000" />
+      <workItem from="1580454803080" duration="5261000" />
+      <workItem from="1580484553878" duration="2078000" />
+      <workItem from="1580490209786" duration="613000" />
+      <workItem from="1580549940696" duration="4243000" />
+      <workItem from="1580634077636" duration="8429000" />
+      <workItem from="1580978176423" duration="2789000" />
     </task>
     <task id="LOCAL-00001" summary="CruiseCompanyOnSpring: implemented authorization&#10;&#10;based on this tutorial:&#10;https://habr.com/ru/post/482552/">
       <created>1578054740269</created>
@@ -522,14 +542,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="491" y="271" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1579867427068" />
-    <state x="242" y="0" key="CommitChangelistDialog2" timestamp="1579867128772">
+    <state x="242" y="0" key="CommitChangelistDialog2" timestamp="1580907494223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="242" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579867128772" />
-    <state x="33" y="28" width="1338" height="689" key="DiffContextDialog" timestamp="1579867127092">
+    <state x="242" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1580907494223" />
+    <state x="33" y="28" width="1338" height="689" key="DiffContextDialog" timestamp="1580907493227">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="33" y="28" width="1338" height="689" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1579867127092" />
+    <state x="33" y="28" width="1338" height="689" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1580907493227" />
+    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1580822335250">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1580822335250" />
     <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1580309207608">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

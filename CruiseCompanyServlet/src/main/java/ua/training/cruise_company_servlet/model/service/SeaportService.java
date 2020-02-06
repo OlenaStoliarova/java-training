@@ -18,26 +18,19 @@ import static java.util.Comparator.comparing;
 public class SeaportService {
     private static final Logger LOG = LogManager.getLogger(SeaportService.class);
 
-    private final DaoFactory daoFactory = DaoFactory.getInstance();
+    private final SeaportDao seaportDao = DaoFactory.getInstance().createSeaportDao();
 
     public boolean savePort(Seaport seaport) {
         LOG.info("Saving port " + seaport);
-        try(SeaportDao seaportDao = daoFactory.createSeaportDao()) {
-            return seaportDao.create(seaport);
-        }
+        return seaportDao.create(seaport);
     }
 
     public List<Seaport> getAllSeaports() {
-        try(SeaportDao seaportDao = daoFactory.createSeaportDao()) {
-            return seaportDao.findAll();
-        }
+        return seaportDao.findAll();
     }
 
     public List<SeaportDTO> getAllSeaportsLocalizedSorted() {
-        List<Seaport> seaports;
-        try(SeaportDao seaportDao = daoFactory.createSeaportDao()) {
-            seaports = seaportDao.findAll();
-        }
+        List<Seaport> seaports = seaportDao.findAll();
 
         Collator currentLocaleCollator = Collator.getInstance(Locale.getDefault());
         return seaports.stream()

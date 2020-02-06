@@ -37,13 +37,6 @@ public class JDBCExcursionDao implements ExcursionDao {
             "ON e.seaport_id = s.id " +
             "WHERE e.seaport_id = ?";
 
-
-    private final Connection connection;
-
-    public JDBCExcursionDao(Connection connection) {
-        this.connection = connection;
-    }
-
     @Override
     public boolean create(Excursion entity) {
         return false;
@@ -57,16 +50,18 @@ public class JDBCExcursionDao implements ExcursionDao {
     @Override
     public List<Excursion> findAll() {
         List<Excursion> resultList = new ArrayList<>();
-        try {
+
+        try(Connection connection = ConnectionPoolHolder.getConnection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SELECT_ALL_EXCURSIONS);
+            ResultSet resultSet = statement.executeQuery(SELECT_ALL_EXCURSIONS)) {
+
             while (resultSet.next()) {
                 Excursion excursion = new ExcursionMapper().extractFromResultSet(resultSet);
                 Seaport seaport = new SeaportMapper().extractFromResultSet(resultSet, "port_");
                 excursion.setSeaport(seaport);
                 resultList.add(excursion);
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
             throw new DAOLevelException(e);
         }
@@ -77,18 +72,20 @@ public class JDBCExcursionDao implements ExcursionDao {
     @Override
     public List<Excursion> findBySeaportId(long seaportId) {
         List<Excursion> resultList = new ArrayList<>();
-        try {
-            PreparedStatement statement = connection.prepareStatement(SELECT_ALL_EXCURSIONS_IN_SEAPORT);
-            statement.setLong(1, seaportId);
 
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                Excursion excursion = new ExcursionMapper().extractFromResultSet(resultSet);
-                Seaport seaport = new SeaportMapper().extractFromResultSet(resultSet, "port_");
-                excursion.setSeaport(seaport);
-                resultList.add(excursion);
+        try(Connection connection = ConnectionPoolHolder.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_EXCURSIONS_IN_SEAPORT)) {
+
+            preparedStatement.setLong(1, seaportId);
+            try(ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    Excursion excursion = new ExcursionMapper().extractFromResultSet(resultSet);
+                    Seaport seaport = new SeaportMapper().extractFromResultSet(resultSet, "port_");
+                    excursion.setSeaport(seaport);
+                    resultList.add(excursion);
+                }
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
             throw new DAOLevelException(e);
         }
@@ -104,15 +101,5 @@ public class JDBCExcursionDao implements ExcursionDao {
     @Override
     public void delete(int id) {
 
-    }
-
-    @Override
-    public void close() {
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            LOG.error(e.getMessage(), e);
-            throw new DAOLevelException(e);
-        }
     }
 }
