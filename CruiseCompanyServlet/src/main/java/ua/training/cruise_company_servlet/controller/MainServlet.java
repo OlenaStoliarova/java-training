@@ -15,8 +15,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CruiseCompanyServlet extends HttpServlet {
-    private static final Logger logger = LogManager.getLogger(CruiseCompanyServlet.class);
+public class MainServlet extends HttpServlet {
+    private static final Logger LOG = LogManager.getLogger(MainServlet.class);
 
     private Map<String, Command> commands = new HashMap<>();
 
@@ -50,11 +50,11 @@ public class CruiseCompanyServlet extends HttpServlet {
         path = path.replaceAll(".*" + PathConstants.SERVLET_PATH , "");
         Command command = commands.get(path);
         if(command == null){
-            logger.warn("non existing page request (" + path + ")");
+            LOG.warn("non existing page request (" + path + ")");
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
-        logger.info(command.getClass().getName());
+        LOG.info(command.getClass().getName());
 
         String page = command.execute(request);
 

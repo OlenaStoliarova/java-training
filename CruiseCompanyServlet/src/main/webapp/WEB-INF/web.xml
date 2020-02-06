@@ -5,7 +5,7 @@
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
     <servlet-name>CruisesServlet</servlet-name>
-    <servlet-class>ua.training.cruise_company_servlet.controller.CruiseCompanyServlet</servlet-class>
+    <servlet-class>ua.training.cruise_company_servlet.controller.MainServlet</servlet-class>
     <!--<load-on-startup>1</load-on-startup>-->
   </servlet>
   <servlet-mapping>
