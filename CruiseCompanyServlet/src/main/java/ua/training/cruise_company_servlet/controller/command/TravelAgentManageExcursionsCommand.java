@@ -16,10 +16,10 @@ public class TravelAgentManageExcursionsCommand implements Command{
         String strSeaportId = request.getParameter("seaportId");
         if(strSeaportId != null){
             long seaportId = Long.parseLong(strSeaportId);
-            request.setAttribute("all_excursions", excursionService.getAllExcursionsInSeaport(seaportId));
+            request.setAttribute("all_excursions", excursionService.getAllExcursionsInSeaportForTravelAgent(seaportId));
         }
         else {
-            request.setAttribute("all_excursions", excursionService.getAllExcursions());
+            request.setAttribute("all_excursions", excursionService.getAllExcursionsForTravelAgent());
         }
 
         return PathConstants.TRAVEL_AGENT_EXCURSIONS_JSP;
