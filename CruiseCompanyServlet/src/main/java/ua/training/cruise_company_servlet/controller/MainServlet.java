@@ -34,6 +34,8 @@ public class MainServlet extends HttpServlet {
         commands.put(PathConstants.ADMIN_ADD_SEAPORT_COMMAND, new AdminAddSeaportCommand());
         commands.put(PathConstants.TRAVEL_AGENT_MANAGE_EXCURSIONS_COMMAND, new TravelAgentManageExcursionsCommand());
         commands.put(PathConstants.TRAVEL_AGENT_ADD_EXCURSION_COMMAND, new TravelAgentAddExcursionCommand());
+        commands.put(PathConstants.TRAVEL_AGENT_DELETE_EXCURSION_COMMAND, new TravelAgentDeleteExcursionCommand());
+        commands.put(PathConstants.TRAVEL_AGENT_EDIT_EXCURSION_COMMAND, new TravelAgentEditExcursionCommand());
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -35,4 +35,8 @@ public interface PathConstants {
     String TRAVEL_AGENT_EXCURSIONS_JSP = "/WEB-INF/" + TRAVEL_AGENT_FOLDER + "/excursions.jsp";
     String TRAVEL_AGENT_ADD_EXCURSION_COMMAND = "travel_agent/add_excursion";
     String TRAVEL_AGENT_ADD_EXCURSION_JSP = "/WEB-INF/" + TRAVEL_AGENT_FOLDER + "/addExcursion.jsp";
+    String TRAVEL_AGENT_DELETE_EXCURSION_COMMAND = "travel_agent/delete_excursion";
+    String TRAVEL_AGENT_EDIT_EXCURSION_COMMAND = "travel_agent/edit_excursion";
+    String TRAVEL_AGENT_EDIT_EXCURSION_JSP = "/WEB-INF/" + TRAVEL_AGENT_FOLDER + "/editExcursion.jsp";
+
 }
