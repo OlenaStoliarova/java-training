@@ -14,27 +14,33 @@
 <h2 class="text-center"><fmt:message key="ui.excursion.all.title"/></h2>
 <div class="container-fluid">
     <div class="row">
-        <span class="col-6">
-            <form class="form-inline" method="get">
-                <span><fmt:message key="ui.seaport"/></span>
-                <select class="form-control" id="seaportId" name="seaportId" required>
-                    <option hidden disabled selected value>-</option>
-                    <c:forEach var="seaport" items="${all_seaports}">
-                        <option value="${seaport.id}" <c:if test="${seaport.id == param.seaportId}">selected</c:if>>
-                            <c:out value="${seaport.name}"/></option>
-                    </c:forEach>
-                </select>
-                <input type="submit" class="btn btn-light" value="<fmt:message key='ui.button.filter'/>" />
-                <a class="btn btn-light" href="${pageContext.request.contextPath}/app/travel_agent/excursions"><fmt:message key="ui.button.clear.filters"/></a>
-            </form>
-        </span>
+        <form class="col-6 form-inline" method="get">
+            <span><fmt:message key="ui.seaport"/></span>
+            <select class="form-control" id="seaportId" name="seaportId" required>
+                <option hidden disabled selected value>-</option>
+                <c:forEach var="seaport" items="${requestScope.all_seaports}">
+                    <option value="${seaport.id}" <c:if test="${seaport.id == param.seaportId}">selected</c:if>>
+                        <c:out value="${seaport.name}"/></option>
+                </c:forEach>
+            </select>
+            <input type="submit" class="btn btn-light" value="<fmt:message key='ui.button.filter'/>"/>
+            <a class="btn btn-light" href="${pageContext.request.contextPath}/app/travel_agent/excursions"><fmt:message
+                    key="ui.button.clear.filters"/></a>
+        </form>
         <span class="col-6 text-right">
             <a class="btn btn-success btn-lg" href="${pageContext.request.contextPath}/app/travel_agent/add_excursion"><fmt:message key="ui.button.add"/></a>
         </span>
     </div>
 
-    <c:if test="${empty all_excursions}">
+    <c:if test="${empty requestScope.all_excursions}">
         <div class="text-success"><fmt:message key="ui.excursion.all.empty.list"/></div>
+    </c:if>
+
+    <c:if test="${param.deleted == true}">
+        <div class="text-success"><fmt:message key="ui.excursion.deleted.ok"/></div>
+    </c:if>
+    <c:if test="${param.deleted == false}">
+        <div class="text-danger"><fmt:message key="ui.excursion.not.deleted"/></div>
     </c:if>
 
     <div class="table-responsive">
@@ -53,7 +59,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="excursion" items="${all_excursions}">
+            <c:forEach var="excursion" items="${requestScope.all_excursions}">
                 <tr>
                     <td><c:out value="${excursion.id}"/></td>
                     <td><c:out value="${excursion.nameEn}"/></td>

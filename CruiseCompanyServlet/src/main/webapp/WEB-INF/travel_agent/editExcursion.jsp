@@ -5,24 +5,26 @@
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="messages"/>
 
-<!DOCTYPE HTML>
 <html lang="${sessionScope.lang}">
 <%@ include file="/WEB-INF/fragments/head.jsp" %>
 <body>
 <%@ include file="/WEB-INF/fragments/langlinks.jsp" %>
 <%@ include file="/WEB-INF/fragments/topMenu.jsp" %>
 
-
 <div class="container">
-    <div class="row">
-        <div class="col-12">
+<div class="row">
+    <div class="col-12">
+        <c:if test="${requestScope.no_excursion_found == true}">
+            <h3 class="text-danger"><fmt:message key="ui.error.excursion.not.found" /></h3>
+        </c:if>
+        <c:if test="${requestScope.no_excursion_found == null}">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><fmt:message key="ui.excursion.add.invitation" /></h3>
+                    <h3 class="card-title"><fmt:message key="ui.excursion.edit.invitation" /></h3>
                 </div><br/>
                 <div class="card-body">
-                    <form action="${pageContext.request.contextPath}/app/travel_agent/add_excursion" method="post">
-
+                    <form action="${pageContext.request.contextPath}/app/travel_agent/edit_excursion" method="post">
+                        <input type="hidden" name="excursionId" value="${param.excursionId}">
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
@@ -99,15 +101,16 @@
                                     <h6 class="text-danger"><fmt:message key="ui.error.excursion.port.not.fond" /></h6>
                                 </c:if>
                                 <a class="btn btn-secondary" href="${pageContext.request.contextPath}/app/travel_agent/excursions"><fmt:message key="ui.button.cancel" /></a>
-                                <input type="submit" class="btn btn-success" value="<fmt:message key='ui.button.add'/>" />
+                                <input type="submit" class="btn btn-success" value="<fmt:message key='ui.button.save'/>" />
                             </div>
                         </div>
 
                     </form>
                 </div>
             </div>
-        </div>
+        </c:if>
     </div>
+</div>
 </div>
 
 </body>

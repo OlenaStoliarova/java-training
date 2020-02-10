@@ -14,4 +14,10 @@ public class LocalizationHelper {
 
         return localPriceMultiplier.multiply( priceInUSD );
     }
+
+    public static String getLocalizedMessage(String messageName){
+        Locale currentLocale = Locale.getDefault();
+        ResourceBundle bundle = ResourceBundle.getBundle(MESSAGES_BUNDLE_NAME, currentLocale);
+        return bundle.getString(messageName);
+    }
 }
