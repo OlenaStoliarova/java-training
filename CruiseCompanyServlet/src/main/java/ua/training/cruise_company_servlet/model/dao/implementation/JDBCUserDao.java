@@ -17,8 +17,10 @@ public class JDBCUserDao implements UserDao {
     private static final Logger LOG = LogManager.getLogger(JDBCUserDao.class);
 
     private static final String SELECT_USER_BY_EMAIL = "SELECT * FROM users WHERE email=?";
+    private static final String SELECT_USER_BY_ID = "SELECT * FROM users WHERE id=?";
     private static final String SELECT_ALL_USERS = "SELECT * FROM users";
     private static final String UPDATE_USER_ROLE = "UPDATE users SET role=? WHERE email=?";
+    private static final String DELETE_USER_BY_ID = "DELETE FROM users WHERE id=?";
 
     @Override
     public boolean create(User entity) {
@@ -26,8 +28,24 @@ public class JDBCUserDao implements UserDao {
     }
 
     @Override
-    public User findById(int id) {
-        return null;
+    public Optional<User> findById(long id) {
+        Optional<User> foundUser = Optional.empty();
+
+        try(Connection connection = ConnectionPoolHolder.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID)) {
+
+            preparedStatement.setLong(1, id);
+            try(ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    foundUser = Optional.of(new UserMapper().extractFromResultSet(resultSet));
+                }
+            }
+        } catch (SQLException e) {
+            LOG.error(e.getMessage(), e);
+            throw new DAOLevelException(e);
+        }
+
+        return foundUser;
     }
 
     @Override
@@ -88,12 +106,20 @@ public class JDBCUserDao implements UserDao {
     }
 
     @Override
-    public void update(User entity) {
-
+    public boolean update(User entity) {
+        return false;
     }
 
     @Override
-    public void delete(int id) {
+    public boolean delete(long id) {
+        try(Connection connection = ConnectionPoolHolder.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER_BY_ID)) {
 
+            preparedStatement.setLong(1, id);
+            return 1 == preparedStatement.executeUpdate(); //one row was deleted
+        } catch (SQLException e) {
+            LOG.error(e.getMessage(), e);
+            throw new DAOLevelException(e);
+        }
     }
 }

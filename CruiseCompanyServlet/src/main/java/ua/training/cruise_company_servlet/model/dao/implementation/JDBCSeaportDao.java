@@ -16,8 +16,14 @@ public class JDBCSeaportDao implements SeaportDao {
     private static final Logger LOG = LogManager.getLogger(JDBCSeaportDao.class);
 
     private static final String INSERT_NEW_PORT ="INSERT INTO seaport (name_en, country_en, name_ukr, country_ukr) VALUES (?, ?, ?, ?)";
+    private static final String SELECT_PORT_BY_ID = "SELECT * FROM seaport WHERE id=?";
     private static final String SELECT_PORT_BY_NAME_EN = "SELECT * FROM seaport WHERE name_en=?";
     private static final String SELECT_ALL_PORTS = "SELECT * FROM seaport";
+    private static final String DELETE_PORT_BY_ID = "DELETE FROM seaport WHERE id=?";
+
+    private static final String UPDATE_PORT = "UPDATE seaport " +
+            "SET name_en=? , country_en=?, name_ukr=?, country_ukr=? " +
+            "WHERE id=?";
 
     @Override
     public boolean create(Seaport entity) {
@@ -40,8 +46,24 @@ public class JDBCSeaportDao implements SeaportDao {
     }
 
     @Override
-    public Seaport findById(int id) {
-        return null;
+    public Optional<Seaport> findById(long id) {
+        Optional<Seaport> foundPort = Optional.empty();
+
+        try(Connection connection = ConnectionPoolHolder.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PORT_BY_ID)) {
+
+            preparedStatement.setLong(1, id);
+            try(ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    foundPort = Optional.of(new SeaportMapper().extractFromResultSet(resultSet));
+                }
+            }
+        } catch (SQLException e) {
+            LOG.error(e.getMessage(), e);
+            throw new DAOLevelException(e);
+        }
+
+        return foundPort;
     }
 
     @Override
@@ -86,12 +108,36 @@ public class JDBCSeaportDao implements SeaportDao {
     }
 
     @Override
-    public void update(Seaport entity) {
+    public boolean update(Seaport entity) {
+        try(Connection connection = ConnectionPoolHolder.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PORT)) {
 
+            preparedStatement.setString(1, entity.getNameEn());
+            preparedStatement.setString(2, entity.getCountryEn());
+            preparedStatement.setString(3, entity.getNameUkr());
+            preparedStatement.setString(4, entity.getCountryUkr());
+            preparedStatement.setLong(5, entity.getId());
+
+            return 1 == preparedStatement.executeUpdate(); //one row was updated
+        }catch (SQLIntegrityConstraintViolationException ex){
+            LOG.error(ex.getMessage(), ex);
+            return false;
+        } catch (SQLException e) {
+            LOG.error(e.getMessage(), e);
+            throw new DAOLevelException(e);
+        }
     }
 
     @Override
-    public void delete(int id) {
+    public boolean delete(long id) {
+        try(Connection connection = ConnectionPoolHolder.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_PORT_BY_ID)) {
 
+            preparedStatement.setLong(1, id);
+            return 1 == preparedStatement.executeUpdate(); //one row was deleted
+        } catch (SQLException e) {
+            LOG.error(e.getMessage(), e);
+            throw new DAOLevelException(e);
+        }
     }
 }
