@@ -1,6 +1,6 @@
 package ua.training.learning_gof_patterns.behavioral.state;
 
-public class Child implements KidState {
+class Child implements KidState {
 
     @Override
     public void eat() {
